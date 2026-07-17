@@ -1,0 +1,14 @@
+# Netlify-Konfiguration für die HYO-Website (Next.js App Router)
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Next.js Runtime von Netlify (SSR, Server Actions, Bild-Optimierung).
+# Netlify erkennt Next.js automatisch; die explizite Angabe stellt sicher,
+# dass immer die offizielle Runtime verwendet wird.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

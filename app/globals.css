@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   HYO Design-Tokens
+   Verbindliche Farbwelt aus dem Markenbriefing. Keine weiteren Akzentfarben.
+--------------------------------------------------------------------------- */
+:root {
+  --hyo-violet: #8281bd;
+  --hyo-mint: #c2e3db;
+  --hyo-light-violet: #b4b3d7;
+  --hyo-light-mint: #daeeea;
+  --hyo-ink: #20202a;
+  --hyo-warm-white: #fafaf7;
+  --hyo-soft-grey: #f2f3f1;
+  --hyo-medium-grey: #6b6b72;
+  --hyo-violet-deep: #6a69a6; /* Hover-Abdunklung von HYO Violet, kein neuer Markenton */
+}
+
+@theme inline {
+  --color-violet-brand: var(--hyo-violet);
+  --color-violet-deep: var(--hyo-violet-deep);
+  --color-mint-brand: var(--hyo-mint);
+  --color-violet-light: var(--hyo-light-violet);
+  --color-mint-light: var(--hyo-light-mint);
+  --color-ink: var(--hyo-ink);
+  --color-warm-white: var(--hyo-warm-white);
+  --color-soft-grey: var(--hyo-soft-grey);
+  --color-medium-grey: var(--hyo-medium-grey);
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --radius-hyo: 0.625rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--hyo-warm-white);
+  color: var(--hyo-ink);
+  font-feature-settings: "ss01" on;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--hyo-violet);
+  color: #fff;
+}
+
+/* Deutlich sichtbare, nicht nur farbliche Fokuszustände */
+:focus-visible {
+  outline: 3px solid var(--hyo-violet);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.on-violet :focus-visible {
+  outline-color: var(--hyo-mint);
+}
+
+/* Skip-Link */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 100;
+  background: var(--hyo-violet);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 var(--radius-hyo) 0;
+}
+.skip-link:focus-visible {
+  left: 0;
+}
+
+/* Sanftes Einblenden beim Scrollen (per FadeIn-Komponente gesteuert) */
+.fade-init {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+.fade-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Ruhiger Scroll-Hinweis im Hero */
+@keyframes hero-scroll-hint {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(7px);
+    opacity: 0.5;
+  }
+}
+.scroll-hint {
+  animation: hero-scroll-hint 2.6s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   Barrierefreiheits-Einstellungen („Ansicht anpassen“)
+   Werden als data-Attribute auf <html> gesetzt und lokal gespeichert.
+--------------------------------------------------------------------------- */
+
+/* Sehen: Textgröße (skaliert alle rem-basierten Größen) */
+html[data-acc-text="gross"] {
+  font-size: 112.5%;
+}
+html[data-acc-text="sehr-gross"] {
+  font-size: 125%;
+}
+
+/* Sehen: Hoher Kontrast – Töne abdunkeln, Pastellflächen aufhellen, Links unterstreichen */
+html[data-acc-contrast="hoch"] {
+  --hyo-ink: #000000;
+  --hyo-medium-grey: #3d3d46;
+  --hyo-violet: #55548f;
+  --hyo-violet-deep: #403f73;
+  --hyo-light-violet: #8d8cc2;
+  --hyo-warm-white: #ffffff;
+}
+html[data-acc-contrast="hoch"] a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+html[data-acc-contrast="hoch"] img,
+html[data-acc-contrast="hoch"] video {
+  filter: contrast(1.05);
+}
+
+/* Lesen & Konzentration: erweiterte Abstände */
+html[data-acc-spacing="erweitert"] body {
+  letter-spacing: 0.02em;
+  word-spacing: 0.1em;
+}
+html[data-acc-spacing="erweitert"] p,
+html[data-acc-spacing="erweitert"] li {
+  line-height: 1.9;
+}
+
+/* Lesen & Konzentration: Links immer hervorheben */
+html[data-acc-links="hervorgehoben"] main a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+
+/* Motorik: größere Bedienelemente */
+html[data-acc-targets="gross"] button,
+html[data-acc-targets="gross"] input:not([type="checkbox"]):not([type="radio"]),
+html[data-acc-targets="gross"] select,
+html[data-acc-targets="gross"] textarea,
+html[data-acc-targets="gross"] a.rounded-hyo {
+  min-height: 3rem;
+}
+html[data-acc-targets="gross"] input[type="checkbox"],
+html[data-acc-targets="gross"] input[type="radio"] {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+html[data-acc-targets="gross"] nav a {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Bewegungsempfindlichkeit: Animationen per Einstellung reduzieren */
+html[data-acc-motion="reduziert"] {
+  scroll-behavior: auto;
+}
+html[data-acc-motion="reduziert"] .hero-video {
+  display: none;
+}
+html[data-acc-motion="reduziert"] .fade-init {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+html[data-acc-motion="reduziert"] .scroll-hint {
+  animation: none;
+}
+html[data-acc-motion="reduziert"] *,
+html[data-acc-motion="reduziert"] *::before,
+html[data-acc-motion="reduziert"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+/* Reduzierte Bewegung: Video ausblenden, Animationen abschalten */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-video {
+    display: none;
+  }
+  .fade-init {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .scroll-hint {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
