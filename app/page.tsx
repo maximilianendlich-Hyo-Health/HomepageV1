@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { FadeIn } from "@/components/FadeIn";
 import { HeroVideo } from "@/components/HeroVideo";
-import { CarePathGraphic, GeoIcon } from "@/components/GeoShapes";
+import { CarePathShowcase } from "@/components/CarePathShowcase";
+import { GeoIcon } from "@/components/GeoShapes";
 import { ButtonLink, TextLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import { AppointmentForm } from "@/components/forms/AppointmentForm";
@@ -105,7 +106,7 @@ export default function HomePage() {
               Behandlung und ambulanter Weiterversorgung.
             </p>
           </Lead>
-          <CarePathGraphic />
+          <CarePathShowcase />
         </FadeIn>
       </Section>
 
