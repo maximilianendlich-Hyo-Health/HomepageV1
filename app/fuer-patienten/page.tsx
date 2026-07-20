@@ -27,7 +27,7 @@ const steps = [
   },
   {
     title: "Erster Termin",
-    text: "Nach der Eröffnung Ende 2026 starten wir mit Anamnese und Diagnostik und entwickeln daraus Ihren individuellen Behandlungsweg.",
+    text: "Nach der Eröffnung 2026 starten wir mit Anamnese und Diagnostik und entwickeln daraus Ihren individuellen Behandlungsweg.",
   },
 ];
 
@@ -147,7 +147,7 @@ export default function FuerPatientenPage() {
         </ol>
         <FadeIn className="mt-10">
           <p className="max-w-2xl leading-relaxed text-ink/80">
-            HYO eröffnet Ende 2026 im MEDICUM Friedrichshain. Mit Ihrer Vormerkung sichern Sie sich
+            HYO eröffnet 2026 im MEDICUM Friedrichshain. Mit Ihrer Vormerkung sichern Sie sich
             eine frühzeitige Information, sobald die Terminvergabe beginnt.
           </p>
         </FadeIn>

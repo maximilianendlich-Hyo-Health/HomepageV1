@@ -3,7 +3,7 @@
 **HYO. Eine neue Ebene in der Versorgung von Menschen mit Schluckstörungen.**
 
 Website der spezialisierten ambulanten Praxis für Dysphagie-Therapie und
-Trachealkanülen-Management in Berlin-Friedrichshain. Eröffnung Ende 2026.
+Trachealkanülen-Management in Berlin-Friedrichshain. Eröffnung 2026.
 
 Die Seite funktioniert zunächst als professionelle Coming-Soon-Präsenz und enthält
 bereits die vollständige spätere Informationsarchitektur: Leistungen, Bereiche für

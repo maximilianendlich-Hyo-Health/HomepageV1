@@ -186,3 +186,27 @@ export function HeroBackdrop() {
     </svg>
   );
 }
+
+/** Stilisierte Form des Os hyoideum (Zungenbein): U-förmiger Körper mit den
+ *  beiden großen Hörnern – bewusst geometrisch abstrahiert, keine anatomische
+ *  Abbildung. */
+export function HyoidGraphic({ className = "h-24 w-32" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 160 110" aria-hidden="true" className={className}>
+      {/* Körper: U-Bogen */}
+      <path
+        d="M30 34 C30 78, 130 78, 130 34"
+        fill="none"
+        stroke={V}
+        strokeWidth="20"
+        strokeLinecap="round"
+      />
+      {/* Große Hörner (Cornua majora) */}
+      <path d="M30 34 L14 14" stroke={LV} strokeWidth="14" strokeLinecap="round" fill="none" />
+      <path d="M130 34 L146 14" stroke={LV} strokeWidth="14" strokeLinecap="round" fill="none" />
+      {/* Kleine Hörner (Cornua minora) */}
+      <circle cx="30" cy="34" r="9" fill={M} />
+      <circle cx="130" cy="34" r="9" fill={M} />
+    </svg>
+  );
+}

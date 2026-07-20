@@ -69,6 +69,38 @@ export default function WissenPage() {
       </Section>
 
       {/* Kategorien */}
+      {/* Erklärvideo: Der Schluckvorgang */}
+      <Section surface="white">
+        <FadeIn>
+          <Eyebrow>Einfach erklärt</Eyebrow>
+          <Headline>Der Schluckvorgang in vier Phasen</Headline>
+          <Lead>
+            <p>
+              Was passiert eigentlich beim Schlucken – und wo kann es haken? Unser kurzes
+              Erklärvideo zeigt die vier Phasen des Schluckvorgangs in gut einer halben Minute.
+            </p>
+          </Lead>
+          <div className="mt-8 max-w-3xl overflow-hidden rounded-hyo border-2 border-ink/10 bg-ink">
+            {/* Nutzergesteuertes Video: kein Autoplay, mit Bedienelementen */}
+            <video
+              controls
+              preload="metadata"
+              playsInline
+              poster="/images/schluckvorgang-poster.jpg"
+              className="aspect-video w-full"
+            >
+              <source src="/video/schluckvorgang.mp4" type="video/mp4" />
+              Ihr Browser kann dieses Video nicht abspielen.
+            </video>
+          </div>
+          <p className="mt-3 max-w-3xl text-sm text-medium-grey">
+            Hinweis: Das Video vermittelt allgemeine Informationen und ersetzt keine
+            individuelle Untersuchung oder Beratung.
+            {/* TODO: Untertitel (VTT) für Barrierefreiheit ergänzen */}
+          </p>
+        </FadeIn>
+      </Section>
+
       <Section surface="white">
         <FadeIn>
           <Headline>Themengebiete</Headline>

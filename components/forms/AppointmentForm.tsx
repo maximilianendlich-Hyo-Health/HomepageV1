@@ -92,7 +92,7 @@ export function AppointmentForm() {
       <SubmitButton pending={pending}>Für Termin vormerken</SubmitButton>
 
       <p className="text-sm leading-relaxed text-medium-grey">
-        HYO eröffnet Ende 2026. Das Absenden stellt noch keine Terminbestätigung dar und begründet
+        HYO eröffnet 2026. Das Absenden stellt noch keine Terminbestätigung dar und begründet
         keinen Behandlungsvertrag. Dieses Formular ist nicht für akute medizinische Notfälle
         geeignet – wählen Sie im Notfall die 112.
       </p>

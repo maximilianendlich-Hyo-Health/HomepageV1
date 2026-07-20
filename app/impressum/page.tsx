@@ -37,7 +37,7 @@ export default function ImpressumPage() {
             {site.legal.country}
           </p>
           <p>
-            <strong>Praxisstandort (in Vorbereitung, Eröffnung Ende 2026):</strong>
+            <strong>Praxisstandort (in Vorbereitung, Eröffnung 2026):</strong>
             <br />
             {site.address.building}
             <br />

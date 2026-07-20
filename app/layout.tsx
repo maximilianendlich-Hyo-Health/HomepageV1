@@ -26,14 +26,14 @@ export const metadata: Metadata = {
     template: "%s | HYO Berlin",
   },
   description:
-    "HYO ist eine spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Diagnostik in Berlin-Friedrichshain. Eröffnung Ende 2026.",
+    "HYO ist eine spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Diagnostik in Berlin-Friedrichshain. Eröffnung 2026.",
   openGraph: {
     type: "website",
     locale: "de_DE",
     siteName: "HYO",
     title: "HYO Berlin | Dysphagie-Therapie und Trachealkanülen-Management",
     description:
-      "Spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Diagnostik in Berlin-Friedrichshain. Eröffnung Ende 2026.",
+      "Spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Diagnostik in Berlin-Friedrichshain. Eröffnung 2026.",
     images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "HYO" }],
   },
   alternates: { canonical: "/" },

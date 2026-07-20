@@ -141,7 +141,7 @@ export default function StandortPage() {
           <p className="mt-4 max-w-2xl leading-relaxed text-ink/80">
             {/* TODO: Öffnungszeiten vor Livegang ergänzen oder Abschnitt entfernen */}
             Die Öffnungszeiten veröffentlichen wir mit dem Start der Terminvergabe. HYO eröffnet
-            Ende 2026.
+            2026.
           </p>
         </FadeIn>
       </Section>

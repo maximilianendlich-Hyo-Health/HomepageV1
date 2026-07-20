@@ -276,7 +276,7 @@ export const articles: Article[] = [
       },
     ],
     professionalNote:
-      "Für Kliniken und Entlassmanagement: HYO nimmt bereits vor der Eröffnung Ende 2026 Kooperationsanfragen entgegen, um Übergabeprozesse frühzeitig abzustimmen.",
+      "Für Kliniken und Entlassmanagement: HYO nimmt bereits vor der Eröffnung 2026 Kooperationsanfragen entgegen, um Übergabeprozesse frühzeitig abzustimmen.",
     sources: [
       { label: "TODO: Quellenangaben nach fachlicher Prüfung ergänzen (z. B. Rahmenvertrag Entlassmanagement)" },
     ],

@@ -6,9 +6,9 @@
 
 export const site = {
   name: "HYO",
-  claim: "HYO. Eine neue Ebene in der Versorgung von Menschen mit Schluckstörungen.",
+  claim: "Dysphagie. Spezialisiert.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.example.com", // TODO: finale Domain eintragen
-  openingNote: "HYO eröffnet Ende 2026 in Berlin.",
+  openingNote: "HYO eröffnet 2026 in Berlin.",
   address: {
     building: "HYO im MEDICUM Friedrichshain",
     street: "Matthiasstraße 7",

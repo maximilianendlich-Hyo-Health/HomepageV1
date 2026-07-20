@@ -173,7 +173,7 @@ export default function LeistungenPage() {
             </ButtonLink>
           </div>
           <p className="mt-5 text-sm text-mint-light">
-            HYO eröffnet Ende 2026. Eine Anfrage stellt noch keine Terminbestätigung dar.
+            HYO eröffnet 2026. Eine Anfrage stellt noch keine Terminbestätigung dar.
           </p>
         </FadeIn>
       </Section>

@@ -28,7 +28,7 @@ export function CtaBand() {
         </ButtonLink>
       </div>
       <p className="mt-6 text-sm text-mint-light/90">
-        HYO eröffnet Ende 2026. Eine Anfrage stellt noch keine Terminbestätigung dar.
+        HYO eröffnet 2026. Eine Anfrage stellt noch keine Terminbestätigung dar.
       </p>
     </Section>
   );

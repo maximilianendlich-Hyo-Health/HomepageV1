@@ -7,7 +7,7 @@ import { CarePathGraphic, GeoIcon } from "@/components/GeoShapes";
 import { ButtonLink, TextLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import { AppointmentForm } from "@/components/forms/AppointmentForm";
-import { dysphagieArea, focusModules, homeVisitTile, trachealArea } from "@/content/leistungen";
+import { dysphagieArea, homeVisitTile, trachealArea } from "@/content/leistungen";
 import { articles } from "@/content/wissen";
 import { knownTeam } from "@/content/team";
 import { cta } from "@/lib/site";
@@ -15,11 +15,11 @@ import { cta } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "HYO Berlin | Dysphagie-Therapie und Trachealkanülen-Management" },
   description:
-    "HYO ist eine spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Diagnostik in Berlin-Friedrichshain. Eröffnung Ende 2026.",
+    "HYO ist eine spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Diagnostik in Berlin-Friedrichshain. Eröffnung 2026.",
   alternates: { canonical: "/" },
 };
 
-const featuredArticles = articles.filter((article) => article.featured).slice(0, 4);
+const featuredArticles = articles.filter((article) => article.featured).slice(0, 2);
 
 export default function HomePage() {
   return (
@@ -32,14 +32,15 @@ export default function HomePage() {
             Coming Soon · Berlin-Friedrichshain
           </p>
           <h1 className="max-w-3xl text-4xl leading-[1.08] font-extrabold tracking-tight text-balance sm:text-5xl lg:text-[3.6rem]">
-            HYO. Eine neue Ebene in der Versorgung von Menschen mit Schluckstörungen.
+            Dysphagie. Spezialisiert.
           </h1>
           <p className="mt-6 max-w-2xl text-xl font-semibold text-mint-light">
-            Spezialisierte ambulante Dysphagie-Therapie und Trachealkanülen-Versorgung in Berlin.
+            Spezialisierte ambulante Therapie bei Schluckstörungen und Trachealkanülen – für
+            Patientinnen, Patienten und ihre Angehörigen in Berlin.
           </p>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/90">
-            HYO eröffnet Ende 2026 im MEDICUM Friedrichshain. Bereits jetzt können Patientinnen und
-            Patienten, Angehörige sowie Versorgungspartner Kontakt mit uns aufnehmen.
+            HYO eröffnet 2026 im MEDICUM Friedrichshain. Bereits jetzt können Sie Ihr Interesse
+            an einem Termin hinterlegen.
           </p>
           <div className="on-violet mt-9 flex flex-wrap items-center gap-4">
             <ButtonLink href="#termin" variant="on-violet">
@@ -48,16 +49,10 @@ export default function HomePage() {
             <ButtonLink href="/fuer-partner#kooperation-anfragen" variant="on-violet-outline">
               {cta.cooperation}
             </ButtonLink>
-            <Link
-              href="#positionierung"
-              className="font-semibold text-mint-light underline decoration-2 underline-offset-4 hover:text-white"
-            >
-              HYO kennenlernen
-            </Link>
           </div>
         </div>
         <a
-          href="#positionierung"
+          href="#fuer-patienten"
           aria-label="Nach unten scrollen"
           className="scroll-hint absolute bottom-6 left-1/2 -translate-x-1/2 text-mint-light"
         >
@@ -67,7 +62,33 @@ export default function HomePage() {
         </a>
       </section>
 
-      {/* Abschnitt 1: Positionierung */}
+      {/* Für Patientinnen, Patienten und Angehörige */}
+      <Section id="fuer-patienten" surface="mint">
+        <FadeIn>
+          <Eyebrow>Für Patientinnen, Patienten und Angehörige</Eyebrow>
+          <Headline size="xl">Schlucken ist Leben.</Headline>
+          <Lead>
+            <p>
+              Eine Schluckstörung oder Trachealkanüle verändert den Alltag – beim Essen und
+              Trinken, beim Sprechen, in der Sicherheit und im Miteinander. Bei HYO finden Sie
+              und Ihre Angehörigen eine spezialisierte Anlaufstelle, die zuhört, sorgfältig
+              untersucht und Sie Schritt für Schritt begleitet.
+            </p>
+            <p>
+              Wir erklären verständlich, was hinter den Beschwerden steckt, beziehen Angehörige
+              und Pflege aktiv ein und kommen bei ärztlicher Verordnung auch zu Ihnen nach Hause
+              oder in die Pflegeeinrichtung.
+            </p>
+          </Lead>
+          <div className="mt-9 flex flex-wrap items-center gap-4">
+            <ButtonLink href="#termin">{cta.appointment}</ButtonLink>
+            <TextLink href="/fuer-patienten">Mehr für Patienten und Angehörige</TextLink>
+            <TextLink href="/wissen">Wissen verständlich erklärt</TextLink>
+          </div>
+        </FadeIn>
+      </Section>
+
+      {/* Positionierung */}
       <Section id="positionierung" surface="white">
         <FadeIn>
           <Eyebrow>Positionierung</Eyebrow>
@@ -86,46 +107,6 @@ export default function HomePage() {
           </Lead>
           <CarePathGraphic />
         </FadeIn>
-      </Section>
-
-      {/* Abschnitt 2: Mission */}
-      <Section surface="violet">
-        <FadeIn>
-          <Eyebrow onViolet>Unsere Mission</Eyebrow>
-          <Headline onViolet size="xl">
-            Schlucken ist Leben.
-          </Headline>
-          <Lead onViolet>
-            <p className="text-xl font-semibold text-white">
-              Jeder Mensch mit Dysphagie verdient eine Versorgung, die nicht an der Kliniktür endet.
-            </p>
-            <p>
-              Unser Anspruch ist es, modernste Diagnostik und Therapie bei Dysphagie und
-              Tracheostoma in die ambulante Versorgung zu bringen. Dafür arbeiten wir mit
-              strukturierten Versorgungsprozessen, instrumenteller Diagnostik und einem
-              hochspezialisierten Team.
-            </p>
-          </Lead>
-        </FadeIn>
-      </Section>
-
-      {/* Abschnitt 3: Schwerpunkte */}
-      <Section surface="mint-light">
-        <FadeIn>
-          <Eyebrow>Unsere Schwerpunkte</Eyebrow>
-          <Headline>Konsequent fokussiert auf Schluckstörungen und Trachealkanülen.</Headline>
-        </FadeIn>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {focusModules.map((module) => (
-            <FadeIn key={module.title}>
-              <div className="flex h-full flex-col gap-4 rounded-hyo bg-warm-white p-7 transition-transform duration-200 hover:-translate-y-1 motion-reduce:hover:translate-y-0">
-                <GeoIcon name={module.icon} />
-                <h3 className="text-xl font-extrabold">{module.title}</h3>
-                <p className="leading-relaxed text-ink/80">{module.text}</p>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
       </Section>
 
       {/* Leistungsspektrum: zwei Themenbereiche */}
@@ -248,53 +229,6 @@ export default function HomePage() {
         </FadeIn>
       </Section>
 
-      {/* Conversion nach dem Servicebereich */}
-      <Section surface="violet-light">
-        <FadeIn>
-          <Headline>Sie möchten klären, welches Angebot zu Ihrer Situation passt?</Headline>
-          <Lead>
-            <p>
-              Beschreiben Sie uns kurz Ihr Anliegen. Wir prüfen, ob und wie HYO Sie nach der
-              Eröffnung unterstützen kann.
-            </p>
-          </Lead>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <ButtonLink href="#termin">{cta.appointment}</ButtonLink>
-            <ButtonLink href="/kontakt" variant="secondary">
-              {cta.professionalContact}
-            </ButtonLink>
-          </div>
-          <p className="mt-5 text-sm text-ink/70">
-            HYO eröffnet Ende 2026. Eine Anfrage stellt noch keine Terminbestätigung dar.
-          </p>
-        </FadeIn>
-      </Section>
-
-      {/* Abschnitt 4: Für Patienten und Angehörige */}
-      <Section surface="mint">
-        <FadeIn>
-          <Eyebrow>Für Patienten und Angehörige</Eyebrow>
-          <Headline>Spezialisierte Unterstützung bei Schluckstörungen und Trachealkanülen</Headline>
-          <Lead>
-            <p>
-              Eine Dysphagie oder Trachealkanüle betrifft nicht nur die Nahrungsaufnahme. Sie
-              beeinflusst Sicherheit, Kommunikation, Selbstständigkeit und Lebensqualität.
-            </p>
-            <p>
-              HYO bietet spezialisierte ambulante Unterstützung für Menschen mit komplexem
-              Versorgungsbedarf sowie für ihre Angehörigen.
-            </p>
-          </Lead>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <ButtonLink href="#termin">{cta.appointment}</ButtonLink>
-            <ButtonLink href="#termin" variant="secondary">
-              {cta.appointmentReserve}
-            </ButtonLink>
-            <TextLink href="/fuer-patienten">Mehr für Patienten</TextLink>
-          </div>
-        </FadeIn>
-      </Section>
-
       {/* Abschnitt 5: Für Kliniken und Partner */}
       <Section surface="white">
         <FadeIn>
@@ -303,22 +237,15 @@ export default function HomePage() {
           <Lead>
             <p>
               HYO unterstützt Kliniken, Entlassmanagement, Pflegeeinrichtungen und behandelnde
-              Ärztinnen und Ärzte bei der ambulanten Weiterversorgung von Menschen mit Dysphagie
-              und Trachealkanüle.
-            </p>
-            <p>
-              Unser Ziel ist eine strukturierte Übergabe, eine verlässliche Kommunikation und eine
-              spezialisierte therapeutische Weiterbehandlung.
+              Ärztinnen und Ärzte bei der ambulanten Weiterversorgung – mit strukturierter
+              Übergabe, verlässlicher Kommunikation und spezialisierter Weiterbehandlung.
             </p>
           </Lead>
           <ul className="mt-8 grid max-w-3xl gap-x-10 gap-y-2.5 sm:grid-cols-2">
             {[
               "Übernahme nach stationärer Behandlung",
               "Strukturierte Übergabe relevanter Befunde",
-              "Ambulante Dysphagie-Therapie",
-              "Trachealkanülen-Management",
               "FEES-gestützte Diagnostik",
-              "Fachlicher Austausch",
               "Rückmeldung zum Versorgungsverlauf",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
@@ -339,7 +266,7 @@ export default function HomePage() {
       <Section surface="violet">
         <FadeIn>
           <Eyebrow onViolet>Eröffnung</Eyebrow>
-          <Headline onViolet>HYO startet Ende 2026 in Berlin.</Headline>
+          <Headline onViolet>HYO startet 2026 in Berlin.</Headline>
           <Lead onViolet>
             <p>
               Aktuell entstehen die räumlichen, organisatorischen und medizinischen Strukturen für
@@ -352,7 +279,7 @@ export default function HomePage() {
               "Aufbau der Praxis und Versorgungsstrukturen",
               "Aufbau des spezialisierten Teams",
               "Start der Terminvergabe und Patientenaufnahme",
-              "Eröffnung Ende 2026",
+              "Eröffnung 2026",
             ].map((step, index) => (
               <li key={step} className="rounded-hyo bg-white/10 p-6">
                 <p className="text-3xl font-extrabold text-mint-brand">{index + 1}</p>
@@ -443,7 +370,7 @@ export default function HomePage() {
           <Headline>Interesse an einem Termin bei HYO?</Headline>
           <Lead>
             <p>
-              HYO eröffnet Ende 2026. Bereits jetzt können Sie Ihr Interesse an einem Termin
+              HYO eröffnet 2026. Bereits jetzt können Sie Ihr Interesse an einem Termin
               unverbindlich hinterlegen. Wir informieren Sie, sobald die Terminvergabe beginnt.
             </p>
           </Lead>

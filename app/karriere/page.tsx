@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { FadeIn } from "@/components/FadeIn";
 import { GeoIcon } from "@/components/GeoShapes";
 import { ApplicationForm } from "@/components/forms/ApplicationForm";
+import { ButtonLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 
 export const metadata: Metadata = {
@@ -58,7 +59,40 @@ export default function KarrierePage() {
       </Section>
 
       <Section surface="white">
-        <div className="grid gap-6 lg:grid-cols-2">
+        {/* Ankerpersonen: Therapeutinnen und Therapeuten */}
+        <FadeIn>
+          <div className="on-violet relative overflow-hidden rounded-hyo bg-violet-brand p-8 text-white sm:p-12">
+            <svg viewBox="0 0 160 160" aria-hidden="true" className="absolute -top-10 -right-10 h-44 w-44 opacity-40">
+              <circle cx="80" cy="80" r="72" fill="none" stroke="var(--hyo-mint)" strokeWidth="18" />
+            </svg>
+            <h2 className="relative max-w-2xl text-3xl leading-[1.12] font-extrabold text-balance sm:text-4xl">
+              Therapeutinnen und Therapeuten mit Interesse an Dysphagie &amp; Tracheostomie
+            </h2>
+            <div className="relative mt-5 max-w-2xl space-y-3 leading-relaxed text-mint-light">
+              <p>
+                Du bist Logopädin, Logopäde oder akademische Sprachtherapeutin bzw.
+                akademischer Sprachtherapeut und möchtest dich konsequent auf Dysphagie,
+                FEES-gestützte Diagnostik und Trachealkanülen-Management spezialisieren?
+              </p>
+              <p>
+                Dann bist du bei HYO die zentrale Person: Unser Versorgungskonzept steht und
+                fällt mit spezialisierten Therapeutinnen und Therapeuten. Du arbeitest
+                fokussiert an einem Störungsbild, in enger interdisziplinärer Abstimmung und
+                mit strukturierten Prozessen – und baust die Versorgung von Anfang an mit auf.
+              </p>
+            </div>
+            <div className="relative mt-8 flex flex-wrap items-center gap-4">
+              <ButtonLink href="#bewerben" variant="on-violet">
+                Jetzt bewerben
+              </ButtonLink>
+              <ButtonLink href="/kontakt" variant="on-violet-outline">
+                Erst unverbindlich austauschen
+              </ButtonLink>
+            </div>
+          </div>
+        </FadeIn>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <FadeIn>
             <article className="h-full rounded-hyo bg-mint-light p-8">
               <GeoIcon name="arc-up" />

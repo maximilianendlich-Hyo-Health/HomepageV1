@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { FadeIn } from "@/components/FadeIn";
-import { TeamPlaceholderArt } from "@/components/GeoShapes";
+import { TeamPlaceholderArt, HyoidGraphic } from "@/components/GeoShapes";
 import { ButtonLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import { knownTeam, teamPlaceholders } from "@/content/team";
@@ -73,6 +73,36 @@ export default function TeamPage() {
         </div>
       </Section>
 
+      {/* Namensherkunft: Warum HYO? */}
+      <Section surface="white">
+        <FadeIn>
+          <div className="grid items-center gap-10 overflow-hidden rounded-hyo bg-soft-grey p-8 sm:p-10 lg:grid-cols-[auto_1fr]">
+            <div className="flex h-44 w-56 items-center justify-center rounded-hyo bg-mint-light">
+              <HyoidGraphic />
+            </div>
+            <div>
+              <Eyebrow>Warum HYO?</Eyebrow>
+              <h2 className="text-2xl font-extrabold sm:text-[1.7rem]">
+                Ein Knochen. Ein Prinzip. Ein Name.
+              </h2>
+              <div className="mt-4 max-w-2xl space-y-3 leading-relaxed text-ink/85">
+                <p>
+                  HYO leitet sich vom <strong>Os hyoideum</strong> ab – dem Zungenbein. Dieser
+                  kleine, U-förmige Knochen ist ein zentraler Dreh- und Angelpunkt für
+                  Schlucken, Atmung und Stimme – genau die Funktionen, um die sich unsere
+                  Arbeit dreht.
+                </p>
+                <p>
+                  Zugleich steht <strong>Hyo (효)</strong> als gesellschaftliches Prinzip für
+                  die Verantwortung, sich fürsorglich um kranke und ältere Menschen zu kümmern.
+                  Beides zusammen beschreibt HYO: fachliche Spezialisierung und echte Fürsorge.
+                </p>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+      </Section>
+
       {/* Therapeutisches Team: vier Platzhalterkarten, Coming Soon */}
       <Section surface="mint-light">
         <FadeIn>
@@ -82,7 +112,7 @@ export default function TeamPage() {
             <p>
               Wir bauen ein hochspezialisiertes therapeutisches Team für Dysphagie-Therapie und
               Trachealkanülen-Management auf. Die Teammitglieder stellen wir hier bis zur
-              Eröffnung Ende 2026 vor.
+              Eröffnung 2026 vor.
             </p>
           </Lead>
         </FadeIn>

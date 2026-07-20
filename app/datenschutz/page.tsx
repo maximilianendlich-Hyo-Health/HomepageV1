@@ -333,7 +333,7 @@ export default function DatenschutzPage() {
             <p>
               Stand: Juli 2026. Wir passen diese Datenschutzerklärung an, sobald sich die
               Rechtslage oder die auf dieser Website eingesetzten Dienste ändern – etwa mit
-              Aufnahme des Praxisbetriebs Ende 2026.
+              Aufnahme des Praxisbetriebs 2026.
             </p>
           </Block>
         </div>

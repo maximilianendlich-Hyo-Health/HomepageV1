@@ -158,7 +158,7 @@ export default function FuerPartnerPage() {
           <Headline>Frühzeitig Kontakt aufnehmen.</Headline>
           <Lead>
             <p>
-              HYO eröffnet Ende 2026 – Kooperationen bereiten wir bereits jetzt vor. Beschreiben
+              HYO eröffnet 2026 – Kooperationen bereiten wir bereits jetzt vor. Beschreiben
               Sie kurz Ihre Einrichtung und Ihr Anliegen, wir melden uns für die weitere
               Abstimmung.
             </p>
