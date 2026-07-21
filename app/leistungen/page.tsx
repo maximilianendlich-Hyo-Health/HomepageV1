@@ -9,7 +9,7 @@ import { cta } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Leistungen",
   description:
-    "Dysphagietherapie, Trachealkanülen-Management, FEES-gestützte Diagnostik und Versorgung nach der Klinikentlassung – das Leistungsspektrum von HYO in Berlin.",
+    "Dysphagietherapie, Trachealkanülen-Management, FEES-gestützte Befunderhebung und Versorgung nach der Klinikentlassung – das Leistungsspektrum von HYO in Berlin.",
   alternates: { canonical: "/leistungen" },
 };
 
@@ -112,23 +112,22 @@ export default function LeistungenPage() {
         </div>
       ))}
 
-      {/* Hausbesuche und Pflegeeinrichtungen */}
-      <Section surface="mint" id="hausbesuche">
+      {/* Behandlung in Partnereinrichtungen */}
+      <Section surface="mint" id="partnereinrichtungen">
         <FadeIn>
           <Eyebrow>Therapie vor Ort</Eyebrow>
-          <Headline>Hausbesuche und Behandlung in Pflegeeinrichtungen</Headline>
+          <Headline>Behandlung in Partnereinrichtungen</Headline>
           <Lead>
             <p>
               Wenn ein Besuch in der Praxis medizinisch oder organisatorisch nicht möglich ist,
-              kann die Therapie bei entsprechender ärztlicher Verordnung auch im häuslichen Umfeld
-              oder in einer Pflegeeinrichtung stattfinden. Welche Leistungen vor Ort möglich und
-              sinnvoll sind, klären wir individuell.
+              kann die Therapie bei entsprechender ärztlicher Verordnung direkt in einer unserer
+              Partnereinrichtungen stattfinden. Welche Leistungen vor Ort möglich und sinnvoll
+              sind, klären wir individuell mit der Einrichtung.
             </p>
           </Lead>
           <ul className="mt-8 grid max-w-3xl gap-x-10 gap-y-2.5 sm:grid-cols-2">
             {[
-              "Hausbesuche",
-              "Senioren- und Pflegeeinrichtungen",
+              "Kooperierende Senioren- und Pflegeeinrichtungen",
               "Einrichtungen der außerklinischen Intensivpflege",
               "Abstimmung mit Pflege und Angehörigen",
               "Therapie im konkreten Lebensumfeld",
@@ -144,12 +143,12 @@ export default function LeistungenPage() {
             ))}
           </ul>
           <p className="mt-6 max-w-2xl rounded-hyo border-l-4 border-violet-brand bg-white/70 p-4 text-[0.95rem] leading-relaxed">
-            Der mögliche Umfang von Diagnostik und Therapie hängt von der ärztlichen Verordnung,
+            Der mögliche Umfang von Befunderhebung und Therapie hängt von der ärztlichen Verordnung,
             der individuellen Situation, den räumlichen Voraussetzungen und den geltenden
             fachlichen und rechtlichen Rahmenbedingungen ab.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <ButtonLink href="/#termin">Hausbesuch anfragen</ButtonLink>
+            <ButtonLink href="/fuer-partner#kooperation-anfragen">Kooperation anfragen</ButtonLink>
             <TextLink href="/kontakt">Voraussetzungen besprechen</TextLink>
           </div>
         </FadeIn>

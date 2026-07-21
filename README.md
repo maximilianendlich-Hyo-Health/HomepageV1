@@ -14,7 +14,7 @@ Kontakt sowie Termin-, Kooperations- und Bewerbungsformulare.
 
 - Next.js (App Router) + TypeScript
 - Tailwind CSS 4 mit zentralen HYO-Design-Tokens (`app/globals.css`)
-- Zod für serverseitige Formularvalidierung, Server Actions für die Verarbeitung
+- Netlify Forms für die Formularverarbeitung, Zod für die Validierung
 - Manrope über `next/font` (wird zur Build-Zeit geladen und ausschließlich von der
   eigenen Domain ausgeliefert – keine Anfragen an Google zur Laufzeit)
 - ESLint, GitHub Actions CI
@@ -41,7 +41,7 @@ components/dashboard/ Wissensdashboard (Client-Komponente)
 content/              Inhalte: Leistungen, Wissen, Team, Dashboard-Daten
 lib/                  Site-Konstanten, Zod-Schemas, Server Actions, Formularadapter
 public/images/        Logo-Varianten, Teamfotos, OG-Bild, Hero-Poster
-public/video/         Hero-Video (TODO: Dateien ergänzen, siehe unten)
+public/video/         Erklärvideo Schluckvorgang (Hero-Video optional)
 ```
 
 ## Umgebungsvariablen
@@ -51,28 +51,26 @@ Siehe `.env.example`:
 | Variable | Zweck |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Öffentliche Basis-URL (Canonical, Sitemap, OG) |
-| `CONTACT_RECIPIENT_EMAIL` | Empfänger der Formular-Anfragen (Standard: corinna.schwarz@hyo-health.de) |
-| `RESEND_API_KEY` | E-Mail-Zustellung über Resend (optional in Entwicklung) |
-
-Ohne `RESEND_API_KEY` werden Formulareingaben nur serverseitig protokolliert.
-Der Versandweg ist in `lib/adapter.ts` gekapselt und kann dort gegen ein CRM-
-oder Praxissystem ausgetauscht werden, ohne die Formulare anzufassen.
 
 ## Formulare
 
 Alle drei Formulare (Terminanfrage, Kooperationsanfrage, Bewerbung/Personal)
-sind bewusst kurz gehalten, werden serverseitig mit Zod validiert, besitzen
-Honeypot-Spamschutz sowie klare Fehler- und Erfolgszustände und erheben nur
-zweckgebundene Daten. Freitextfelder weisen darauf hin, keine unnötigen
-medizinischen Details zu übermitteln.
+laufen über **Netlify Forms**: Die statische Definitionsdatei
+`public/__forms.html` registriert die Formulare beim Deploy, die
+React-Formulare senden ihre Daten URL-codiert (inkl. `form-name`) an diesen
+Pfad. Eingaben werden vor dem Absenden clientseitig mit Zod validiert
+(`lib/schemas.ts`), ein Honeypot-Feld (`netlify-honeypot="website"`) filtert
+Spam zusätzlich zu Netlifys eigener Spam-Erkennung.
 
-Beim Absenden wird der Inhalt als formatierte E-Mail an
-**corinna.schwarz@hyo-health.de** zugestellt (Reply-To = Absenderadresse aus dem
-Formular). Voraussetzung für den echten Versand ist ein gesetzter
-`RESEND_API_KEY`; ohne Schlüssel wird die Anfrage in der Entwicklung nur
-serverseitig protokolliert. Ein Lebenslauf-Upload wird bewusst nicht mehr
-angeboten – Unterlagen werden nach dem Erstkontakt angefragt (vereinfacht
-Datenschutz und Zustellung).
+Submissions erscheinen im Netlify-Dashboard unter **Forms**. E-Mail-
+Benachrichtigungen an corinna.schwarz@hyo-health.de dort einrichten:
+„Site configuration → Notifications → Form submission notifications“.
+
+Wichtig bei Feldänderungen: Neue oder umbenannte Felder immer auch in
+`public/__forms.html` nachziehen, sonst verwirft Netlify die Werte.
+Hinweis: Lokal (ohne Netlify) werden POSTs an `/__forms.html` nicht
+angenommen – der Versand funktioniert erst im Netlify-Deploy bzw. mit
+`netlify dev`. Im kostenlosen Netlify-Tarif sind Submissions limitiert.
 
 ## Barrierefreiheit
 
@@ -139,7 +137,7 @@ Next.js-Runtime von Netlify inkl. SSR, Server Actions und Bild-Optimierung).
    übernommen (Command `npm run build`, Publish `.next`)
 3. Umgebungsvariablen aus `.env.example` unter
    „Site configuration → Environment variables“ hinterlegen
-   (`NEXT_PUBLIC_SITE_URL`, `CONTACT_RECIPIENT_EMAIL`, `RESEND_API_KEY`)
+   (`NEXT_PUBLIC_SITE_URL`)
 4. Erstes Deployment prüfen (Netlify-Vorschau-URL `*.netlify.app`)
 5. Eigene Domain unter „Domain management“ verbinden; DNS beim Registrar per
    CNAME/ALIAS auf Netlify zeigen lassen (Anzeige in Netlify) oder Netlify DNS
@@ -183,7 +181,7 @@ genutzt.
 ### Technik
 - [ ] `npm run build` ohne TypeScript-/ESLint-Fehler
 - [ ] Keine defekten Links, 404-Seite vorhanden
-- [ ] Formulare inkl. E-Mail-Zustellung getestet
+- [ ] Formulare im Netlify-Deploy getestet, Submissions sichtbar, Benachrichtigung an corinna.schwarz@hyo-health.de aktiv
 - [ ] Mobile Darstellung und Tastaturnavigation getestet
 - [ ] Kontraste geprüft (WCAG 2.2 AA)
 - [ ] Sitemap (`/sitemap.xml`) und `robots.txt` erreichbar

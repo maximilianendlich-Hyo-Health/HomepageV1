@@ -1,8 +1,8 @@
 "use client";
 
-import { useActionState } from "react";
-import { submitApplication } from "@/lib/actions";
-import { applicationPositions, initialFormState } from "@/lib/schemas";
+import { useState, useTransition } from "react";
+import { applicationPositions, applicationSchema, initialFormState, type FormState } from "@/lib/schemas";
+import { submitToNetlifyForm } from "@/lib/netlify-forms";
 import { SubmitButton } from "@/components/ui/Buttons";
 import {
   Checkbox,
@@ -14,9 +14,28 @@ import {
   TextInput,
 } from "@/components/forms/Fields";
 
-/** Kurzes Bewerbungsformular (Personal). */
-export function ApplicationForm() {
-  const [state, action, pending] = useActionState(submitApplication, initialFormState);
+/** Kurzes Bewerbungsformular (Personal). Optional mit fest zugeordneter Position. */
+export function ApplicationForm({
+  position,
+}: {
+  position?: (typeof applicationPositions)[number];
+}) {
+  const [state, setState] = useState<FormState>(initialFormState);
+  const [pending, startTransition] = useTransition();
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    startTransition(async () => {
+      const result = await submitToNetlifyForm(
+        "bewerbung",
+        formData,
+        applicationSchema,
+        "Vielen Dank für Ihre Bewerbung. Wir melden uns bei Ihnen.",
+      );
+      setState(result);
+    });
+  };
   const errors = state.fieldErrors ?? {};
 
   if (state.status === "success") {
@@ -29,7 +48,8 @@ export function ApplicationForm() {
   }
 
   return (
-    <form action={action} noValidate className="relative space-y-6 rounded-hyo bg-white p-6 sm:p-8">
+    <form name="bewerbung" onSubmit={handleSubmit} noValidate className="relative space-y-6 rounded-hyo bg-white p-6 sm:p-8">
+      <input type="hidden" name="form-name" value="bewerbung" />
       <Honeypot />
       <div className="grid gap-6 sm:grid-cols-2">
         <Field label="Name" name="name" error={errors.name}>
@@ -41,9 +61,13 @@ export function ApplicationForm() {
         <Field label="Telefonnummer" name="phone" optional error={errors.phone}>
           <TextInput name="phone" type="tel" autoComplete="tel" error={errors.phone} />
         </Field>
-        <Field label="Gewünschte Position" name="position" error={errors.position}>
-          <Select name="position" required options={applicationPositions} error={errors.position} />
-        </Field>
+        {position ? (
+          <input type="hidden" name="position" value={position} />
+        ) : (
+          <Field label="Gewünschte Position" name="position" error={errors.position}>
+            <Select name="position" required options={applicationPositions} error={errors.position} />
+          </Field>
+        )}
         <Field label="Möglicher Startzeitpunkt" name="startDate" optional error={errors.startDate}>
           <TextInput name="startDate" error={errors.startDate} />
         </Field>

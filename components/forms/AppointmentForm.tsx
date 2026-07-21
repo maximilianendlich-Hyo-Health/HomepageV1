@@ -1,8 +1,8 @@
 "use client";
 
-import { useActionState } from "react";
-import { submitAppointment } from "@/lib/actions";
-import { appointmentTopics, initialFormState } from "@/lib/schemas";
+import { useState, useTransition } from "react";
+import { appointmentTopics, appointmentSchema, initialFormState, type FormState } from "@/lib/schemas";
+import { submitToNetlifyForm } from "@/lib/netlify-forms";
 import { SubmitButton } from "@/components/ui/Buttons";
 import {
   Checkbox,
@@ -17,7 +17,22 @@ import {
 
 /** Kurzes Terminanfrage-Formular. Zustellung per E-Mail an die Praxis. */
 export function AppointmentForm() {
-  const [state, action, pending] = useActionState(submitAppointment, initialFormState);
+  const [state, setState] = useState<FormState>(initialFormState);
+  const [pending, startTransition] = useTransition();
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    startTransition(async () => {
+      const result = await submitToNetlifyForm(
+        "terminanfrage",
+        formData,
+        appointmentSchema,
+        "Vielen Dank. Ihre Anfrage ist bei uns eingegangen. Wir informieren Sie, sobald die Terminvergabe bei HYO beginnt.",
+      );
+      setState(result);
+    });
+  };
   const errors = state.fieldErrors ?? {};
 
   if (state.status === "success") {
@@ -30,7 +45,8 @@ export function AppointmentForm() {
   }
 
   return (
-    <form action={action} noValidate className="relative space-y-6 rounded-hyo bg-white p-6 sm:p-8">
+    <form name="terminanfrage" onSubmit={handleSubmit} noValidate className="relative space-y-6 rounded-hyo bg-white p-6 sm:p-8">
+      <input type="hidden" name="form-name" value="terminanfrage" />
       <Honeypot />
       <div className="grid gap-6 sm:grid-cols-2">
         <Field label="Vorname" name="firstName" error={errors.firstName}>

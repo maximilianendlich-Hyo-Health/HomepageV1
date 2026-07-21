@@ -52,7 +52,7 @@ export default function DatenUndQuellenPage() {
               <dt className="text-sm font-bold tracking-wide text-violet-brand uppercase">
                 Zuletzt fachlich geprüft
               </dt>
-              <dd className="mt-1 font-semibold">TODO</dd>
+              <dd className="mt-1 font-semibold">Corinna Schwarz, fachliche Leitung</dd>
             </div>
           </dl>
         </div>
@@ -145,7 +145,7 @@ export default function DatenUndQuellenPage() {
           <div>
             <h2 className="text-xl font-extrabold">Verantwortlichkeit</h2>
             <p className="mt-3 leading-relaxed text-ink/80">
-              Verantwortlich für die fachliche Prüfung der Inhalte: TODO (wird vor Livegang
+              Verantwortlich für die fachliche Prüfung der Inhalte: Corinna Schwarz (wird vor Livegang
               benannt).
             </p>
           </div>

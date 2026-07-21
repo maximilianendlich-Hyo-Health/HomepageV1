@@ -1,0 +1,53 @@
+<!doctype html>
+<!--
+  Netlify-Forms-Erkennung für die HYO-Website.
+
+  Netlify scannt beim Deploy statische HTML-Dateien nach Formularen mit
+  data-netlify="true" und registriert sie. Da die sichtbaren Formulare in
+  React/Next.js gerendert werden, definiert diese (nicht verlinkte) Datei die
+  drei Formulare mit allen Feldnamen. Die React-Formulare senden ihre Daten
+  per POST (application/x-www-form-urlencoded, inkl. "form-name") an diesen
+  Pfad; Netlify fängt die Anfrage ab und speichert die Submission.
+
+  Wichtig: Feldnamen hier müssen exakt zu den gesendeten Feldern passen.
+  Spam-Schutz: netlify-honeypot="website".
+-->
+<html lang="de">
+  <head><meta charset="utf-8" /><title>HYO Formulardefinitionen</title></head>
+  <body>
+    <form name="terminanfrage" data-netlify="true" netlify-honeypot="website" hidden>
+      <input type="text" name="website" />
+      <input type="text" name="firstName" />
+      <input type="text" name="lastName" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="requestFor" />
+      <input type="text" name="topic" />
+      <textarea name="message"></textarea>
+      <input type="text" name="consentPrivacy" />
+    </form>
+
+    <form name="kooperationsanfrage" data-netlify="true" netlify-honeypot="website" hidden>
+      <input type="text" name="website" />
+      <input type="text" name="organization" />
+      <input type="text" name="organizationType" />
+      <input type="text" name="contactName" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="interest" />
+      <textarea name="message"></textarea>
+      <input type="text" name="consentPrivacy" />
+    </form>
+
+    <form name="bewerbung" data-netlify="true" netlify-honeypot="website" hidden>
+      <input type="text" name="website" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="position" />
+      <input type="text" name="startDate" />
+      <textarea name="message"></textarea>
+      <input type="text" name="consentPrivacy" />
+    </form>
+  </body>
+</html>

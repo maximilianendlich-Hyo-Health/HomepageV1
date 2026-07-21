@@ -215,16 +215,3 @@ html[data-acc-motion="reduziert"] *::after {
   }
 }
 
-/* Versorgungspfad: sehr dezentes Schweben der Icon-Flächen */
-@keyframes care-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
-}
-.care-float {
-  animation: care-float 5.5s ease-in-out infinite;
-}

@@ -295,7 +295,7 @@ function DiagnosticPathModule() {
   const [active, setActive] = useState(0);
   return (
     <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
-      <ol className="space-y-2" aria-label="Diagnostikpfad">
+      <ol className="space-y-2" aria-label="Befunderhebungpfad">
         {diagnosticPath.map((entry, index) => (
           <li key={entry.step}>
             <button
@@ -462,7 +462,7 @@ function MythsModule() {
                 </p>
                 <p className="mt-3 text-[0.95rem] leading-relaxed text-ink/85">{myth.explanation}</p>
                 <p className="mt-3 text-xs text-ink/60">
-                  {myth.source} · Ob eine Aussage im Einzelfall zutrifft, klärt die individuelle Diagnostik.
+                  {myth.source} · Ob eine Aussage im Einzelfall zutrifft, klärt die individuelle Befunderhebung.
                 </p>
               </div>
             ) : (
@@ -483,7 +483,7 @@ function MythsModule() {
 
 function GlossaryModule() {
   const [topic, setTopic] = useState<string>("Alle");
-  const topics = ["Alle", "Dysphagie", "Diagnostik", "Tracheostomie"];
+  const topics = ["Alle", "Dysphagie", "Befunderhebung", "Tracheostomie"];
   const entries = glossary.filter((entry) => topic === "Alle" || entry.topic === topic);
   return (
     <div className="mt-8">
@@ -614,7 +614,7 @@ export function Dashboard() {
         >
           <p>
             Die Balken zeigen berichtete Spannweiten aus der Fachliteratur – keine exakten
-            Einzelwerte. Je nach untersuchter Population und Diagnostikmethode unterscheiden sich
+            Einzelwerte. Je nach untersuchter Population und Untersuchungsmethode unterscheiden sich
             die Ergebnisse erheblich.
           </p>
         </ModuleHeading>
@@ -640,9 +640,9 @@ export function Dashboard() {
         </ul>
       </section>
 
-      {/* Modul E: Diagnostik */}
+      {/* Modul E: Befunderhebung */}
       <section aria-labelledby="modul-e">
-        <ModuleHeading eyebrow="Modul E · Diagnostik" title="Wie wird Dysphagie erkannt?">
+        <ModuleHeading eyebrow="Modul E · Befunderhebung" title="Wie wird Dysphagie erkannt?">
           <p>Wählen Sie einen Schritt aus, um ihn genauer kennenzulernen.</p>
         </ModuleHeading>
         <DiagnosticPathModule />

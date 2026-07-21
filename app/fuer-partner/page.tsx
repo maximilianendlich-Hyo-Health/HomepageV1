@@ -26,7 +26,7 @@ const targetGroups = [
 
 const handoverInfo = [
   "Hauptdiagnose und dysphagierelevante Nebendiagnosen",
-  "Vorliegende Diagnostikergebnisse (FEES, Videofluoroskopie)",
+  "Vorliegende Befundergebnisse (FEES, Videofluoroskopie)",
   "Aktuelle Kostform- und Flüssigkeitsempfehlung",
   "Angaben zu Trachealkanüle, Kanülentyp und Entblockungsstatus",
   "Bisherige therapeutische Maßnahmen und Verlauf",
@@ -46,8 +46,8 @@ const cooperationModels = [
   },
   {
     icon: "ring" as const,
-    title: "Diagnostik-Kooperation",
-    text: "FEES-gestützte Diagnostik als ergänzendes ambulantes Angebot, etwa zur Verlaufskontrolle nach Entlassung oder zur Vorbereitung von Dekanülierungsentscheidungen.",
+    title: "Befunderhebungs-Kooperation",
+    text: "FEES-gestützte Befunderhebung als ergänzendes ambulantes Angebot, etwa zur Verlaufskontrolle nach Entlassung oder zur Vorbereitung von Dekanülierungsentscheidungen.",
   },
   {
     icon: "wave" as const,
@@ -67,7 +67,7 @@ export default function FuerPartnerPage() {
         <Lead onViolet>
           <p>
             Nach der stationären Behandlung reißt die spezialisierte Dysphagie-Versorgung häufig
-            ab: Ambulante Angebote mit instrumenteller Diagnostik und Trachealkanülen-Expertise
+            ab: Ambulante Angebote mit instrumenteller Befunderhebung und Trachealkanülen-Expertise
             sind knapp, Übergaben verlaufen unstrukturiert, Befunde gehen verloren.
           </p>
           <p>

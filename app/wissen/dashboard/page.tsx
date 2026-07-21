@@ -7,7 +7,7 @@ import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 export const metadata: Metadata = {
   title: "Dysphagie und Tracheostomie in Zahlen",
   description:
-    "Interaktives Wissensdashboard: epidemiologische Daten, Risikogruppen, Diagnostik- und Versorgungspfade rund um Dysphagie, Tracheostomie und Trachealkanülen – mit transparenten Quellen.",
+    "Interaktives Wissensdashboard: epidemiologische Daten, Risikogruppen, Befunderhebungs- und Versorgungspfade rund um Dysphagie, Tracheostomie und Trachealkanülen – mit transparenten Quellen.",
   alternates: { canonical: "/wissen/dashboard" },
 };
 
@@ -43,7 +43,7 @@ export default function DashboardPage() {
           <p className="mt-6 max-w-2xl rounded-hyo bg-white/10 p-4 text-[0.95rem] leading-relaxed text-mint-light">
             Das Dashboard ermöglicht keine Diagnose und gibt keine individuellen
             Therapieempfehlungen. Alle Kennzahlen sind mit Quelle, Population und Datenqualität
-            ausgewiesen; Datenlücken werden offen dargestellt. Zuletzt fachlich geprüft: TODO.
+            ausgewiesen; Datenlücken werden offen dargestellt. Fachlich geprüft: Corinna Schwarz, fachliche Leitung (Juli 2026).
           </p>
         </div>
       </Section>

@@ -1,8 +1,14 @@
 "use client";
 
-import { useActionState } from "react";
-import { submitPartner } from "@/lib/actions";
-import { initialFormState, partnerInterests, partnerOrganizationTypes } from "@/lib/schemas";
+import { useState, useTransition } from "react";
+import {
+  initialFormState,
+  partnerInterests,
+  partnerOrganizationTypes,
+  partnerSchema,
+  type FormState,
+} from "@/lib/schemas";
+import { submitToNetlifyForm } from "@/lib/netlify-forms";
 import { SubmitButton } from "@/components/ui/Buttons";
 import {
   Checkbox,
@@ -16,7 +22,22 @@ import {
 
 /** Kurzes Kooperationsformular für Kliniken und Versorgungspartner. */
 export function PartnerForm() {
-  const [state, action, pending] = useActionState(submitPartner, initialFormState);
+  const [state, setState] = useState<FormState>(initialFormState);
+  const [pending, startTransition] = useTransition();
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    startTransition(async () => {
+      const result = await submitToNetlifyForm(
+        "kooperationsanfrage",
+        formData,
+        partnerSchema,
+        "Vielen Dank für Ihre Anfrage. Wir melden uns zeitnah für die weitere Abstimmung.",
+      );
+      setState(result);
+    });
+  };
   const errors = state.fieldErrors ?? {};
 
   if (state.status === "success") {
@@ -29,7 +50,8 @@ export function PartnerForm() {
   }
 
   return (
-    <form action={action} noValidate className="relative space-y-6 rounded-hyo bg-white p-6 sm:p-8">
+    <form name="kooperationsanfrage" onSubmit={handleSubmit} noValidate className="relative space-y-6 rounded-hyo bg-white p-6 sm:p-8">
+      <input type="hidden" name="form-name" value="kooperationsanfrage" />
       <Honeypot />
       <div className="grid gap-6 sm:grid-cols-2">
         <Field label="Einrichtung" name="organization" error={errors.organization}>

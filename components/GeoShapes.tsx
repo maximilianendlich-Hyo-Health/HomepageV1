@@ -210,3 +210,41 @@ export function HyoidGraphic({ className = "h-24 w-32" }: { className?: string }
     </svg>
   );
 }
+
+/** Versorgungspfad als ruhige, großzügige Kacheln (Startseite). */
+export function CarePathTiles() {
+  const stations: { label: string; icon: GeoIconName; tone: "mint" | "violet" }[] = [
+    { label: "Klinik", icon: "gate", tone: "violet" },
+    { label: "Entlassung", icon: "arc-down", tone: "mint" },
+    { label: "Ambulante spezialisierte Versorgung", icon: "half-split", tone: "violet" },
+    { label: "Langfristige Begleitung", icon: "dot-ring", tone: "mint" },
+  ];
+  return (
+    <ol aria-label="Versorgungspfad" className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {stations.map((station, index) => (
+        <li key={station.label} className="h-full">
+          <div
+            className={`relative flex h-full min-h-56 flex-col overflow-hidden rounded-hyo p-7 transition-transform duration-300 hover:-translate-y-1.5 motion-reduce:hover:translate-y-0 ${
+              station.tone === "mint" ? "bg-mint-light" : "bg-violet-light/30"
+            }`}
+          >
+            {/* Große Ziffer als ruhiges Gestaltungselement */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -top-5 right-3 text-[7rem] leading-none font-extrabold text-violet-brand/12 select-none"
+            >
+              {index + 1}
+            </span>
+            <GeoIcon name={station.icon} className="h-14 w-14" />
+            <p className="mt-auto pt-8 text-sm font-bold tracking-[0.14em] text-violet-brand uppercase">
+              Schritt {index + 1}
+            </p>
+            <p className="mt-1.5 text-lg leading-snug font-extrabold text-balance">
+              {station.label}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+}

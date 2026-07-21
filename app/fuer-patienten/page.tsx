@@ -27,7 +27,7 @@ const steps = [
   },
   {
     title: "Erster Termin",
-    text: "Nach der Eröffnung 2026 starten wir mit Anamnese und Diagnostik und entwickeln daraus Ihren individuellen Behandlungsweg.",
+    text: "Nach der Eröffnung 2026 starten wir mit Anamnese und Befunderhebung und entwickeln daraus Ihren individuellen Behandlungsweg.",
   },
 ];
 

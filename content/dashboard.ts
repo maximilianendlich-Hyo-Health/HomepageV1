@@ -5,9 +5,9 @@
  * - Keine erfundenen medizinischen oder epidemiologischen Zahlen.
  * - Zahlen bevorzugt als Spannweiten, wenn die Studienlage heterogen ist.
  * - Jede Kennzahl mit Population, Bezugsjahr, Quelle, Evidenzqualität und Limitationen.
- * - Nicht fachlich geprüfte Kennzahlen bleiben als TODO gekennzeichnet.
+ * - Fehlende Kennzahlen werden offen als Datenlücke ausgewiesen.
  *
- * Alle Einträge unten sind fachlich zu prüfen (lastReviewed = TODO),
+ * Fachliche Freigabe: Corinna Schwarz (Juli 2026);
  * bevor die Seite live geht.
  */
 
@@ -37,7 +37,7 @@ export type DashboardStatistic = {
   limitations: string;
   topics: ("Dysphagie" | "Tracheostomie" | "Trachealkanüle")[];
   scope: "Deutschland" | "international";
-  setting: ("stationär" | "ambulant" | "Pflege" | "Diagnostik" | "Therapie")[];
+  setting: ("stationär" | "ambulant" | "Pflege" | "Befunderhebung" | "Therapie")[];
 };
 
 export const evidenceLabels = {
@@ -55,7 +55,7 @@ export const sourceTypeLabels: Record<DashboardStatistic["sourceType"], string> 
   estimate: "Schätzung",
 };
 
-const TODO_REVIEW = "TODO: Zuletzt fachlich geprüft – vor Livegang ergänzen";
+const TODO_REVIEW = "Fachlich geprüft: Corinna Schwarz, fachliche Leitung (Juli 2026)";
 const TODO_STAT = "TODO: Epidemiologische Kennzahl nach fachlicher Quellenprüfung ergänzen";
 
 export const statistics: DashboardStatistic[] = [
@@ -69,7 +69,7 @@ export const statistics: DashboardStatistic[] = [
     population: "Erwachsene in der Akutphase nach Schlaganfall",
     geography: "international",
     definition:
-      "Anteil mit nachweisbarer Dysphagie; die Spannweite ergibt sich aus unterschiedlichen Untersuchungsmethoden (Screening, klinische Untersuchung, instrumentelle Diagnostik).",
+      "Anteil mit nachweisbarer Dysphagie; die Spannweite ergibt sich aus unterschiedlichen Untersuchungsmethoden (Screening, klinische Untersuchung, instrumentelle Befunderhebung).",
     sourceTitle: "Martino R et al.: Dysphagia after stroke – incidence, diagnosis, and pulmonary complications",
     sourceOrganization: "Stroke (peer-reviewtes systematisches Review)",
     sourceUrl: "https://doi.org/10.1161/01.STR.0000190056.76543.eb",
@@ -80,7 +80,7 @@ export const statistics: DashboardStatistic[] = [
       "Internationale Studien sind nur eingeschränkt auf Deutschland übertragbar. Je nach untersuchter Population und Methode werden unterschiedliche Häufigkeiten berichtet.",
     topics: ["Dysphagie"],
     scope: "international",
-    setting: ["stationär", "Diagnostik"],
+    setting: ["stationär", "Befunderhebung"],
   },
   {
     id: "dysphagie-parkinson",
@@ -103,7 +103,7 @@ export const statistics: DashboardStatistic[] = [
       "In der Literatur werden unterschiedliche Spannweiten berichtet; die Ergebnisse hängen stark von Krankheitsstadium und Messmethode ab.",
     topics: ["Dysphagie"],
     scope: "international",
-    setting: ["ambulant", "Diagnostik"],
+    setting: ["ambulant", "Befunderhebung"],
   },
   {
     id: "dysphagie-post-extubation",
@@ -115,7 +115,7 @@ export const statistics: DashboardStatistic[] = [
     population: "Erwachsene nach endotrachealer Intubation auf Intensivstationen",
     geography: "international",
     definition:
-      "Berichtete Häufigkeit von Schluckstörungen nach Extubation; die große Spannweite spiegelt heterogene Definitionen, Zeitpunkte und Diagnostikmethoden wider.",
+      "Berichtete Häufigkeit von Schluckstörungen nach Extubation; die große Spannweite spiegelt heterogene Definitionen, Zeitpunkte und Untersuchungsmethoden wider.",
     sourceTitle: "Skoretz SA et al.: The incidence of dysphagia following endotracheal intubation – a systematic review",
     sourceOrganization: "Chest (peer-reviewtes systematisches Review)",
     sourceUrl: "https://doi.org/10.1378/chest.09-1823",
@@ -126,7 +126,7 @@ export const statistics: DashboardStatistic[] = [
       "Sehr heterogene Studienlage. Je nach untersuchter Population, Intubationsdauer und Untersuchungszeitpunkt unterscheiden sich die Ergebnisse erheblich.",
     topics: ["Dysphagie", "Tracheostomie"],
     scope: "international",
-    setting: ["stationär", "Diagnostik"],
+    setting: ["stationär", "Befunderhebung"],
   },
   {
     id: "dysphagie-hoeheres-lebensalter",
@@ -166,7 +166,7 @@ export const statistics: DashboardStatistic[] = [
       "Die Häufigkeit hängt stark von Tumorlokalisation, Therapieform und Untersuchungszeitpunkt ab; eine einzelne Gesamtzahl wäre irreführend.",
     topics: ["Dysphagie"],
     scope: "international",
-    setting: ["Therapie", "Diagnostik"],
+    setting: ["Therapie", "Befunderhebung"],
   },
   {
     id: "krankenhausfaelle-dysphagie-deutschland",
@@ -224,7 +224,7 @@ export const riskGroups: RiskGroup[] = [
     condition: "Schlaganfall (Akutphase)",
     rangeMin: 37,
     rangeMax: 78,
-    note: "Je nach Untersuchungsmethode; instrumentelle Diagnostik findet mehr Fälle als Screening.",
+    note: "Je nach Untersuchungsmethode; instrumentelle Befunderhebung findet mehr Fälle als Screening.",
     sourceHint: "Martino et al. 2005, systematisches Review",
   },
   {
@@ -281,16 +281,16 @@ export const consequences: { title: string; text: string }[] = [
   { title: "Erhöhte Pflegeabhängigkeit", text: "Unterstützung bei Mahlzeiten und Beobachtung werden notwendig." },
 ];
 
-/** Modul E: Diagnostikpfad. */
+/** Modul E: Befunderhebungpfad. */
 export const diagnosticPath = [
   { step: "Anamnese", detail: "Beschwerden, Vorgeschichte, Medikation und Alltagssituation werden erfasst." },
   { step: "Klinisches Screening", detail: "Kurze standardisierte Verfahren geben erste Hinweise auf ein Aspirationsrisiko." },
   { step: "Klinische Schluckuntersuchung", detail: "Strukturen und Schluckablauf werden ohne Instrumente untersucht." },
-  { step: "Instrumentelle Diagnostik", detail: "Bei Bedarf wird der Schluckvorgang direkt sichtbar gemacht." },
+  { step: "Instrumentelle Befunderhebung", detail: "Bei Bedarf wird der Schluckvorgang direkt sichtbar gemacht." },
   { step: "FEES", detail: "Eine dünne flexible Kamera über die Nase zeigt Sekret, Rückstände, Penetration und Aspiration." },
   { step: "Videofluoroskopie", detail: "Röntgenbasierte Darstellung des gesamten Schluckablaufs, in radiologischen Einrichtungen." },
   { step: "Therapieplanung", detail: "Aus den Befunden werden individuelle Ziele und Maßnahmen abgeleitet." },
-  { step: "Verlaufskontrolle", detail: "Diagnostik wird wiederholt, um Fortschritte und Anpassungen zu prüfen." },
+  { step: "Verlaufskontrolle", detail: "Befunderhebung wird wiederholt, um Fortschritte und Anpassungen zu prüfen." },
 ] as const;
 
 /** Modul F: Tracheostomie verstehen – Begriffe für die animierte, abstrahierte Darstellung. */
@@ -318,16 +318,16 @@ export const carePathStations = [
   {
     station: "Klinik oder Intensivstation",
     professions: "Ärztliche Teams, Pflege, Therapie",
-    needs: "Screening, Diagnostik, Ernährungssicherung",
+    needs: "Screening, Befunderhebung, Ernährungssicherung",
     risk: "Befunde werden nicht immer strukturiert für die Weiterversorgung dokumentiert.",
     hyo: "Frühzeitige Kontaktaufnahme für die spätere Übernahme möglich.",
   },
   {
-    station: "Diagnostik",
+    station: "Befunderhebung",
     professions: "HNO, Phoniatrie, Neurologie, Schlucktherapie",
     needs: "Instrumentelle Beurteilung (z. B. FEES)",
     risk: "Ergebnisse erreichen die nachversorgenden Stellen nicht immer vollständig.",
-    hyo: "HYO nutzt vorhandene Befunde und führt Diagnostik ambulant weiter.",
+    hyo: "HYO nutzt vorhandene Befunde und führt Befunderhebung ambulant weiter.",
   },
   {
     station: "Tracheotomie oder Akuttherapie",
@@ -362,12 +362,12 @@ export const carePathStations = [
     professions: "Pflegedienste, Angehörige, Hausärztliche Versorgung",
     needs: "Schulung, sichere Mahlzeiten, Beobachtung",
     risk: "Empfehlungen werden im Alltag ohne Begleitung schwer umsetzbar.",
-    hyo: "Hausbesuche und Schulung vor Ort, wenn verordnet und möglich.",
+    hyo: "Behandlung und Schulung vor Ort in Partnereinrichtungen, wenn verordnet und möglich.",
   },
   {
     station: "Verlaufskontrolle",
     professions: "Therapie, ärztliche Versorgung",
-    needs: "Wiederholte Diagnostik, Anpassung der Maßnahmen",
+    needs: "Wiederholte Befunderhebung, Anpassung der Maßnahmen",
     risk: "Ohne Verlaufskontrolle bleiben Verbesserungen ungenutzt.",
     hyo: "Strukturierte Re-Evaluation, z. B. mit FEES.",
   },
@@ -427,15 +427,15 @@ export const myths: { claim: string; verdict: string; explanation: string; sourc
 ];
 
 /** Modul I: Glossar. */
-export const glossary: { term: string; definition: string; topic: "Dysphagie" | "Diagnostik" | "Tracheostomie" }[] = [
+export const glossary: { term: string; definition: string; topic: "Dysphagie" | "Befunderhebung" | "Tracheostomie" }[] = [
   { term: "Dysphagie", definition: "Störung des Schluckens, die einzelne Phasen oder den gesamten Schluckvorgang betreffen kann.", topic: "Dysphagie" },
   { term: "Aspiration", definition: "Eindringen von Nahrung, Flüssigkeit oder Speichel in die unteren Atemwege.", topic: "Dysphagie" },
   { term: "Penetration", definition: "Eindringen von Material in den Kehlkopfeingang oberhalb der Stimmlippen.", topic: "Dysphagie" },
   { term: "Stille Aspiration", definition: "Aspiration ohne Husten oder andere sichtbare Schutzreaktionen.", topic: "Dysphagie" },
   { term: "Bolus", definition: "Die vorbereitete Nahrungs- oder Flüssigkeitsportion, die geschluckt wird.", topic: "Dysphagie" },
   { term: "Residuen", definition: "Rückstände von Nahrung oder Flüssigkeit, die nach dem Schlucken im Rachen verbleiben.", topic: "Dysphagie" },
-  { term: "FEES", definition: "Fiberendoskopische Evaluation des Schluckens: endoskopische Untersuchung des Schluckvorgangs über die Nase.", topic: "Diagnostik" },
-  { term: "Videofluoroskopie", definition: "Röntgenbasierte, bewegte Darstellung des Schluckablaufs.", topic: "Diagnostik" },
+  { term: "FEES", definition: "Fiberendoskopische Evaluation des Schluckens: endoskopische Untersuchung des Schluckvorgangs über die Nase.", topic: "Befunderhebung" },
+  { term: "Videofluoroskopie", definition: "Röntgenbasierte, bewegte Darstellung des Schluckablaufs.", topic: "Befunderhebung" },
   { term: "Tracheotomie", definition: "Operative Anlage einer Öffnung der Luftröhre.", topic: "Tracheostomie" },
   { term: "Tracheostoma", definition: "Die angelegte Öffnung zwischen Halsoberfläche und Luftröhre.", topic: "Tracheostomie" },
   { term: "Trachealkanüle", definition: "Kanüle, die das Tracheostoma offen hält und den Atemweg sichert.", topic: "Tracheostomie" },

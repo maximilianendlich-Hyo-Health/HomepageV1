@@ -3,8 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { FadeIn } from "@/components/FadeIn";
 import { HeroVideo } from "@/components/HeroVideo";
-import { CarePathShowcase } from "@/components/CarePathShowcase";
-import { GeoIcon } from "@/components/GeoShapes";
+import { CarePathTiles, GeoIcon } from "@/components/GeoShapes";
 import { ButtonLink, TextLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import { AppointmentForm } from "@/components/forms/AppointmentForm";
@@ -14,9 +13,9 @@ import { knownTeam } from "@/content/team";
 import { cta } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: { absolute: "HYO Berlin | Dysphagie-Therapie und Trachealkanülen-Management" },
+  title: { absolute: "Dysphagie. Spezialisiert." },
   description:
-    "HYO ist eine spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Diagnostik in Berlin-Friedrichshain. Eröffnung 2026.",
+    "HYO ist eine spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Befunderhebung in Berlin-Friedrichshain. Eröffnung 2026.",
   alternates: { canonical: "/" },
 };
 
@@ -43,7 +42,11 @@ export default function HomePage() {
             HYO eröffnet 2026 im MEDICUM Friedrichshain. Bereits jetzt können Sie Ihr Interesse
             an einem Termin hinterlegen.
           </p>
-          <div className="on-violet mt-9 flex flex-wrap items-center gap-4">
+          <p className="mt-7 text-sm font-semibold tracking-wide text-mint-light/85">
+            Gesetzlich und privat Versicherte · Selbstzahler ·{" "}
+            <span aria-hidden="true">🇩🇪</span> DE · <span aria-hidden="true">🇬🇧</span> EN
+          </p>
+          <div className="on-violet mt-4 flex flex-wrap items-center gap-4">
             <ButtonLink href="#termin" variant="on-violet">
               {cta.appointment}
             </ButtonLink>
@@ -77,8 +80,8 @@ export default function HomePage() {
             </p>
             <p>
               Wir erklären verständlich, was hinter den Beschwerden steckt, beziehen Angehörige
-              und Pflege aktiv ein und kommen bei ärztlicher Verordnung auch zu Ihnen nach Hause
-              oder in die Pflegeeinrichtung.
+              und Pflege aktiv ein und behandeln bei ärztlicher Verordnung auch direkt in
+              unseren Partnereinrichtungen – etwa Senioren- und Pflegeeinrichtungen.
             </p>
           </Lead>
           <div className="mt-9 flex flex-wrap items-center gap-4">
@@ -106,7 +109,7 @@ export default function HomePage() {
               Behandlung und ambulanter Weiterversorgung.
             </p>
           </Lead>
-          <CarePathShowcase />
+          <CarePathTiles />
         </FadeIn>
       </Section>
 
@@ -207,7 +210,7 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* Hausbesuche & Pflegeheime – gilt für beide Themengebiete */}
+        {/* Vor Ort in Partnereinrichtungen – gilt für beide Themengebiete */}
         <FadeIn className="mt-8">
           <div className="relative overflow-hidden rounded-hyo bg-mint-light p-8 sm:p-10">
             <svg viewBox="0 0 200 100" aria-hidden="true" className="absolute right-0 bottom-0 h-24 w-48 opacity-60">
@@ -223,7 +226,7 @@ export default function HomePage() {
             <p className="relative mt-4 font-bold text-violet-deep">{homeVisitTile.teaserHeadline}</p>
             <p className="relative mt-1.5 max-w-3xl leading-relaxed text-ink/85">{homeVisitTile.teaser}</p>
             <div className="relative mt-7 flex flex-wrap items-center gap-5">
-              <ButtonLink href="/#termin">Hausbesuch anfragen</ButtonLink>
+              <ButtonLink href="/fuer-partner#kooperation-anfragen">Kooperation anfragen</ButtonLink>
               <TextLink href="/kontakt">Voraussetzungen besprechen</TextLink>
             </div>
           </div>
@@ -246,7 +249,7 @@ export default function HomePage() {
             {[
               "Übernahme nach stationärer Behandlung",
               "Strukturierte Übergabe relevanter Befunde",
-              "FEES-gestützte Diagnostik",
+              "FEES-gestützte Befunderhebung",
               "Rückmeldung zum Versorgungsverlauf",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">
@@ -380,6 +383,7 @@ export default function HomePage() {
           <AppointmentForm />
         </FadeIn>
       </Section>
+
     </>
   );
 }

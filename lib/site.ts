@@ -7,7 +7,7 @@
 export const site = {
   name: "HYO",
   claim: "Dysphagie. Spezialisiert.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.example.com", // TODO: finale Domain eintragen
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hyo-health.de",
   openingNote: "HYO eröffnet 2026 in Berlin.",
   address: {
     building: "HYO im MEDICUM Friedrichshain",
@@ -24,6 +24,7 @@ export const site = {
     primaryContactLinkedIn: "https://www.linkedin.com/in/corinna-schwarz/",
   },
   linkedInCompany: "https://de.linkedin.com/company/hyo-health",
+  instagram: "https://www.instagram.com/hyo_gmbh/",
   /** Sitz der Gesellschaft und Registerangaben (Impressum, Footer). */
   legal: {
     company: "HYO Health GmbH",

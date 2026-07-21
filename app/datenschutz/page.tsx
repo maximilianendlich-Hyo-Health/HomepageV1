@@ -14,7 +14,7 @@ export const metadata: Metadata = {
  * Hinweis für die Redaktion (nicht sichtbar):
  * Diese Datenschutzerklärung ist auf die tatsächlich eingesetzte Technik
  * dieser Website zugeschnitten (keine Analyse-/Marketing-Cookies, lokale
- * Schriften, Formulare mit optionalem E-Mail-Versand über Resend,
+ * Schriften, Formulare über Netlify Forms,
  * einwilligungsbasierte OpenStreetMap-Einbettung mit Cookie-Banner,
  * lokale Speicherung der Barrierefreiheits-Einstellungen). TODO vor Livegang: durch eine datenschutzrechtlich
  * qualifizierte Stelle prüfen lassen und Hosting-Anbieter, AV-Verträge
@@ -102,7 +102,7 @@ export default function DatenschutzPage() {
           <Block title="3. Hosting und Server-Logfiles">
             <p>
               Diese Website wird bei einem externen Dienstleister gehostet.
-              {/* TODO: Hosting-Anbieter (Netlify, Inc., San Francisco, USA) konkret benennen, AV-Vertrag
+              {/* Rechts-TODO (bleibt): AV-Vertrag
                   nach Art. 28 DSGVO schließen und ggf. Hinweise zu Drittlandübermittlung
                   (EU-Standardvertragsklauseln / Data Privacy Framework) ergänzen. */}
               Beim Aufruf der Website verarbeitet der Hosting-Anbieter automatisch
@@ -161,12 +161,16 @@ export default function DatenschutzPage() {
                 Speicherung eingewilligt haben.
               </p>
             </Sub>
-            <Sub title="Zustellung der Formulardaten">
+            <Sub title="Verarbeitung der Formulardaten">
               <p>
-                Zur Zustellung der Formulareingaben per E-Mail setzen wir den technischen
-                Dienstleister Resend (Resend, Inc.) im Rahmen einer Auftragsverarbeitung ein.
-                {/* TODO: AV-Vertrag mit Resend prüfen/schließen; Hinweise zur
-                    Drittlandübermittlung (USA, Standardvertragsklauseln) ergänzen. */}{" "}
+                Die Formulareingaben werden über die Funktion „Netlify Forms“ unseres
+                Hosting-Anbieters Netlify (Netlify, Inc., San Francisco, USA) im Rahmen einer
+                Auftragsverarbeitung entgegengenommen, gespeichert und uns zur Bearbeitung
+                bereitgestellt. Dabei kann eine Übermittlung in die USA stattfinden; die
+                Absicherung erfolgt über EU-Standardvertragsklauseln bzw. das EU-US Data
+                Privacy Framework.
+                {/* TODO: AV-Vertrag (Netlify DPA) prüfen/abschließen und
+                    Zertifizierungsstatus verifizieren. */}{" "}
                 Ihre Angaben werden ausschließlich für die Bearbeitung Ihres Anliegens
                 verwendet und nicht zu Werbezwecken weitergegeben.
               </p>

@@ -34,6 +34,34 @@ export function Footer() {
             <br />
             {site.address.zip} {site.address.city}
           </p>
+          <ul className="mt-6 flex items-center gap-3" aria-label="HYO in sozialen Netzwerken">
+            <li>
+              <a
+                href={site.linkedInCompany}
+                rel="noopener noreferrer"
+                aria-label="HYO auf LinkedIn"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-mint-brand hover:text-ink"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5" fill="currentColor">
+                  <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05a3.74 3.74 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.55V9h3.57ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0Z" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a
+                href={site.instagram}
+                rel="noopener noreferrer"
+                aria-label="HYO auf Instagram"
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-mint-brand hover:text-ink"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.9">
+                  <rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.2" />
+                  <circle cx="12" cy="12" r="4.4" />
+                  <circle cx="17.4" cy="6.6" r="1.3" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+            </li>
+          </ul>
         </div>
 
         <nav aria-label="Footer-Navigation">
@@ -46,15 +74,7 @@ export function Footer() {
                 </Link>
               </li>
             ))}
-            <li>
-              <a
-                href={site.linkedInCompany}
-                rel="noopener noreferrer"
-                className="text-white/90 hover:text-mint-brand hover:underline"
-              >
-                LinkedIn
-              </a>
-            </li>
+
           </ul>
         </nav>
 
@@ -99,18 +119,12 @@ export function Footer() {
               Kontakt
             </h2>
             <p className="mt-3 text-white/85">
-              Telefon:{" "}
-              <a href={site.contact.phoneHref} className="underline decoration-1 underline-offset-2 hover:text-mint-brand">
-                {site.contact.phone}
-              </a>
-              <br />
-              E-Mail:{" "}
-              <a
-                href={`mailto:${site.contact.email}`}
+              <Link
+                href="/kontakt"
                 className="underline decoration-1 underline-offset-2 hover:text-mint-brand"
               >
-                {site.contact.email}
-              </a>
+                Zur Kontaktseite
+              </Link>
             </p>
           </div>
           <div>

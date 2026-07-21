@@ -22,18 +22,18 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "HYO Berlin | Dysphagie-Therapie und Trachealkanülen-Management",
+    default: "Dysphagie. Spezialisiert.",
     template: "%s | HYO Berlin",
   },
   description:
-    "HYO ist eine spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Diagnostik in Berlin-Friedrichshain. Eröffnung 2026.",
+    "HYO ist eine spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Befunderhebung in Berlin-Friedrichshain. Eröffnung 2026.",
   openGraph: {
     type: "website",
     locale: "de_DE",
     siteName: "HYO",
-    title: "HYO Berlin | Dysphagie-Therapie und Trachealkanülen-Management",
+    title: "Dysphagie. Spezialisiert.",
     description:
-      "Spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Diagnostik in Berlin-Friedrichshain. Eröffnung 2026.",
+      "Spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Befunderhebung in Berlin-Friedrichshain. Eröffnung 2026.",
     images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "HYO" }],
   },
   alternates: { canonical: "/" },
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 
 /**
  * Strukturierte Daten: MedicalBusiness-Markup.
- * TODO vor Livegang fachlich und rechtlich prüfen; Telefon/E-Mail ergänzen.
+ * Juristische Endprüfung vor Livegang siehe README-Checkliste.
  */
 const jsonLd = {
   "@context": "https://schema.org",

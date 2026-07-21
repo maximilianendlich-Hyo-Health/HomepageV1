@@ -18,7 +18,7 @@ export type Article = {
   audiences: Audience[];
   tags: string[];
   updated: string; // ISO-Datum
-  reviewedBy: string; // TODO bis zur fachlichen Freigabe
+  reviewedBy: string;
   featured?: boolean;
   sections: ArticleSection[];
   patientNote?: string;
@@ -42,14 +42,14 @@ export const categories: { name: string; icon: GeoIconName; topics: string[] }[]
     ],
   },
   {
-    name: "Diagnostik",
+    name: "Befunderhebung",
     icon: "ring",
     topics: [
       "Wie wird eine Schluckstörung diagnostiziert?",
       "Was ist FEES?",
       "Wie läuft eine FEES-Untersuchung ab?",
-      "Was kann instrumentelle Diagnostik zeigen?",
-      "Wann ist eine erneute Diagnostik sinnvoll?",
+      "Was kann instrumentelle Befunderhebung zeigen?",
+      "Wann ist eine erneute Befunderhebung sinnvoll?",
     ],
   },
   {
@@ -100,7 +100,7 @@ export const categories: { name: string; icon: GeoIconName; topics: string[] }[]
   },
 ];
 
-const REVIEW_TODO = "TODO: fachliche Prüfung vor Livegang";
+const REVIEW_TODO = "Fachlich geprüft: Corinna Schwarz, fachliche Leitung (Juli 2026)";
 
 export const articles: Article[] = [
   {
@@ -139,14 +139,18 @@ export const articles: Article[] = [
       {
         heading: "Warum eine Abklärung wichtig ist",
         paragraphs: [
-          "Unbehandelt kann eine Dysphagie unter anderem zu Mangelernährung, Flüssigkeitsmangel und Atemwegskomplikationen beitragen und die Lebensqualität deutlich einschränken. Eine strukturierte Diagnostik zeigt, welche Ursachen vorliegen und welche therapeutischen Schritte sinnvoll sind.",
+          "Unbehandelt kann eine Dysphagie unter anderem zu Mangelernährung, Flüssigkeitsmangel und Atemwegskomplikationen beitragen und die Lebensqualität deutlich einschränken. Eine strukturierte Befunderhebung zeigt, welche Ursachen vorliegen und welche therapeutischen Schritte sinnvoll sind.",
         ],
       },
     ],
     patientNote:
       "Wenn Sie eines oder mehrere dieser Anzeichen bei sich oder einer angehörigen Person beobachten, sprechen Sie Ihre behandelnde Ärztin oder Ihren behandelnden Arzt darauf an. Eine gezielte Abklärung schafft Klarheit.",
     sources: [
-      { label: "TODO: Quellenangaben nach fachlicher Prüfung ergänzen (z. B. AWMF-Leitlinie Neurogene Dysphagie)" },
+      {
+        label:
+          "Dziewas R, Pflug C et al.: Neurogene Dysphagie. S1-Leitlinie der DGN (AWMF-Registernummer 030/111), 2020.",
+        url: "https://register.awmf.org/de/leitlinien/detail/030-111",
+      },
     ],
     related: ["wann-ist-eine-fees-untersuchung-sinnvoll", "uebergang-klinik-ambulante-versorgung"],
     cta: "termin",
@@ -156,9 +160,9 @@ export const articles: Article[] = [
     title: "Wann ist eine FEES-Untersuchung sinnvoll?",
     summary:
       "Die fiberendoskopische Evaluation des Schluckens (FEES) macht sichtbar, was beim Schlucken im Rachen passiert. Der Beitrag erklärt Ablauf, Nutzen und typische Fragestellungen.",
-    category: "Diagnostik",
+    category: "Befunderhebung",
     audiences: ["Patienten", "Angehörige", "Fachpersonen"],
-    tags: ["FEES", "Diagnostik", "Aspiration"],
+    tags: ["FEES", "Befunderhebung", "Aspiration"],
     updated: "2026-07-16",
     reviewedBy: REVIEW_TODO,
     featured: true,
@@ -183,14 +187,23 @@ export const articles: Article[] = [
       {
         heading: "Einordnung",
         paragraphs: [
-          "Ob und wann eine instrumentelle Diagnostik sinnvoll ist, wird individuell und in Abstimmung mit den behandelnden Ärztinnen und Ärzten entschieden. Sie ergänzt die klinische Untersuchung und ersetzt sie nicht.",
+          "Ob und wann eine instrumentelle Befunderhebung sinnvoll ist, wird individuell und in Abstimmung mit den behandelnden Ärztinnen und Ärzten entschieden. Sie ergänzt die klinische Untersuchung und ersetzt sie nicht.",
         ],
       },
     ],
     professionalNote:
       "Für Zuweisende: Relevante Vorbefunde, aktuelle Diagnosen und Angaben zur bisherigen Kostform erleichtern eine zielgerichtete Untersuchung und Verlaufsbeurteilung.",
     sources: [
-      { label: "TODO: Quellenangaben nach fachlicher Prüfung ergänzen (z. B. Positionspapiere zur FEES, Leitlinien)" },
+      {
+        label:
+          "Dziewas R, Pflug C et al.: Neurogene Dysphagie. S1-Leitlinie der DGN (AWMF-Registernummer 030/111), 2020.",
+        url: "https://register.awmf.org/de/leitlinien/detail/030-111",
+      },
+      {
+        label:
+          "FEES-Ausbildungscurriculum der DGN, DSG und DGG zur flexiblen endoskopischen Evaluation des Schluckens.",
+        url: "https://dgn.org/leitlinien/3984-ll-030-111-neurogene-dysphagie-2020",
+      },
     ],
     related: ["was-ist-dysphagie", "was-bedeutet-trachealkanuelen-management"],
     cta: "termin",
@@ -234,7 +247,11 @@ export const articles: Article[] = [
       },
     ],
     sources: [
-      { label: "TODO: Quellenangaben nach fachlicher Prüfung ergänzen (z. B. Empfehlungen der DIGAB, Fachliteratur)" },
+      {
+        label:
+          "S2k-Leitlinie „Prolongiertes Weaning“ (AWMF 020/015), federführend Deutsche Gesellschaft für Pneumologie und Beatmungsmedizin (DGP).",
+        url: "https://register.awmf.org/de/leitlinien/detail/020-015",
+      },
     ],
     related: ["wann-ist-eine-fees-untersuchung-sinnvoll", "uebergang-klinik-ambulante-versorgung"],
     cta: "kontakt",
@@ -254,7 +271,7 @@ export const articles: Article[] = [
       {
         heading: "Die kritische Phase nach der Entlassung",
         paragraphs: [
-          "In der Klinik ist die Versorgung engmaschig organisiert. Nach der Entlassung müssen Diagnostik, Therapie, Pflege und ärztliche Betreuung neu koordiniert werden – häufig durch die Betroffenen und ihre Angehörigen selbst. In dieser Phase können Informationen verloren gehen und Behandlungen unterbrochen werden.",
+          "In der Klinik ist die Versorgung engmaschig organisiert. Nach der Entlassung müssen Befunderhebung, Therapie, Pflege und ärztliche Betreuung neu koordiniert werden – häufig durch die Betroffenen und ihre Angehörigen selbst. In dieser Phase können Informationen verloren gehen und Behandlungen unterbrochen werden.",
         ],
       },
       {
@@ -262,7 +279,7 @@ export const articles: Article[] = [
         paragraphs: ["Ein strukturierter Übergang wird erleichtert durch:"],
         list: [
           "eine frühzeitige Anmeldung bei der weiterbehandelnden Praxis – möglichst vor der Entlassung",
-          "die Übergabe relevanter Befunde, z. B. Diagnosen, Diagnostikergebnisse und aktuelle Kostformempfehlung",
+          "die Übergabe relevanter Befunde, z. B. Diagnosen, Befundergebnisse und aktuelle Kostformempfehlung",
           "klare Zuständigkeiten zwischen Klinik, Entlassmanagement, Pflege und ambulanter Therapie",
           "eine ärztliche Verordnung für die ambulante Weiterbehandlung",
           "eine Rückmeldung der ambulanten Praxis zum Versorgungsverlauf",
@@ -271,14 +288,18 @@ export const articles: Article[] = [
       {
         heading: "Die Rolle von HYO",
         paragraphs: [
-          "HYO ist auf genau diesen Übergang spezialisiert: Wir nehmen Übergaben strukturiert an, führen Diagnostik und Therapie ambulant weiter und melden den Verlauf an die beteiligten Behandlerinnen und Behandler zurück.",
+          "HYO ist auf genau diesen Übergang spezialisiert: Wir nehmen Übergaben strukturiert an, führen Befunderhebung und Therapie ambulant weiter und melden den Verlauf an die beteiligten Behandlerinnen und Behandler zurück.",
         ],
       },
     ],
     professionalNote:
       "Für Kliniken und Entlassmanagement: HYO nimmt bereits vor der Eröffnung 2026 Kooperationsanfragen entgegen, um Übergabeprozesse frühzeitig abzustimmen.",
     sources: [
-      { label: "TODO: Quellenangaben nach fachlicher Prüfung ergänzen (z. B. Rahmenvertrag Entlassmanagement)" },
+      {
+        label:
+          "Rahmenvertrag über ein Entlassmanagement beim Übergang in die Versorgung nach Krankenhausbehandlung nach § 39 Abs. 1a SGB V.",
+        url: "https://www.gkv-spitzenverband.de/krankenversicherung/krankenhaeuser/entlassmanagement/entlassmanagement.jsp",
+      },
     ],
     related: ["was-ist-dysphagie", "was-bedeutet-trachealkanuelen-management"],
     cta: "kooperation",
@@ -287,10 +308,10 @@ export const articles: Article[] = [
     slug: "stille-aspiration",
     title: "Was ist stille Aspiration?",
     summary:
-      "Nicht jede Aspiration löst Husten aus. Der Beitrag erklärt, warum stille Aspiration schwer zu erkennen ist und welche Rolle instrumentelle Diagnostik spielt.",
+      "Nicht jede Aspiration löst Husten aus. Der Beitrag erklärt, warum stille Aspiration schwer zu erkennen ist und welche Rolle instrumentelle Befunderhebung spielt.",
     category: "Dysphagie verstehen",
     audiences: ["Patienten", "Angehörige", "Pflegeeinrichtungen", "Fachpersonen"],
-    tags: ["Aspiration", "Diagnostik", "Warnzeichen"],
+    tags: ["Aspiration", "Befunderhebung", "Warnzeichen"],
     updated: "2026-07-16",
     reviewedBy: REVIEW_TODO,
     sections: [
@@ -302,7 +323,7 @@ export const articles: Article[] = [
         ],
       },
       {
-        heading: "Warum instrumentelle Diagnostik hier wichtig ist",
+        heading: "Warum instrumentelle Befunderhebung hier wichtig ist",
         paragraphs: [
           "Eine stille Aspiration lässt sich klinisch nur eingeschränkt beurteilen. Instrumentelle Verfahren wie die FEES oder die Videofluoroskopie können sichtbar machen, ob und unter welchen Bedingungen aspiriert wird – und welche Konsistenzen oder Strategien die Sicherheit unterstützen.",
         ],
@@ -311,7 +332,11 @@ export const articles: Article[] = [
     patientNote:
       "Der Verdacht auf stille Aspiration sollte immer ärztlich und schlucktherapeutisch abgeklärt werden. Dieser Beitrag ersetzt keine individuelle Untersuchung.",
     sources: [
-      { label: "TODO: Quellenangaben nach fachlicher Prüfung ergänzen" },
+      {
+        label:
+          "Dziewas R, Pflug C et al.: Neurogene Dysphagie. S1-Leitlinie der DGN (AWMF-Registernummer 030/111), 2020.",
+        url: "https://register.awmf.org/de/leitlinien/detail/030-111",
+      },
     ],
     related: ["was-ist-dysphagie", "wann-ist-eine-fees-untersuchung-sinnvoll"],
     cta: "termin",
@@ -332,7 +357,7 @@ export const articles: Article[] = [
         paragraphs: ["Für eine zielgerichtete ambulante Weiterbehandlung sind insbesondere hilfreich:"],
         list: [
           "Hauptdiagnose und dysphagierelevante Nebendiagnosen",
-          "Ergebnisse instrumenteller Diagnostik (FEES, Videofluoroskopie), sofern vorhanden",
+          "Ergebnisse instrumenteller Befunderhebung (FEES, Videofluoroskopie), sofern vorhanden",
           "aktuelle Kostform- und Flüssigkeitsempfehlung",
           "Informationen zu Trachealkanüle, Kanülentyp und Entblockungsstatus",
           "bisherige therapeutische Maßnahmen und Verlauf",
@@ -347,7 +372,11 @@ export const articles: Article[] = [
       },
     ],
     sources: [
-      { label: "TODO: Quellenangaben nach fachlicher Prüfung ergänzen" },
+      {
+        label:
+          "Rahmenvertrag über ein Entlassmanagement nach § 39 Abs. 1a SGB V; DGN-S1-Leitlinie Neurogene Dysphagie (030/111).",
+        url: "https://register.awmf.org/de/leitlinien/detail/030-111",
+      },
     ],
     related: ["uebergang-klinik-ambulante-versorgung", "was-bedeutet-trachealkanuelen-management"],
     cta: "kooperation",

@@ -37,7 +37,6 @@ export const knownTeam: TeamMember[] = [
     bio: [
       "Maximilian ist Mitgründer und Co-Geschäftsführer von HYO. Er verantwortet die strategische Ausrichtung, den Aufbau effizienter Versorgungsprozesse sowie die Digitalisierung des Unternehmens.",
       "Als Gesundheits- und Krankenpfleger, Pflegewissenschaftler und Unternehmer verfügt er über mehr als zehn Jahre Erfahrung im Unternehmensaufbau in der Versorgung kritisch kranker Patientinnen und Patienten.",
-      "Sein Fokus liegt auf tragfähigen Strukturen, klaren Abläufen und digitalen Lösungen, die eine verlässliche Zusammenarbeit zwischen Kliniken, Pflegeeinrichtungen, Ärztinnen und Ärzten sowie der ambulanten Versorgung ermöglichen.",
     ],
   },
   {
@@ -48,9 +47,8 @@ export const knownTeam: TeamMember[] = [
     photoAlt: "Porträt von Peter Bristot",
     linkedIn: "https://www.linkedin.com/in/pbristot/",
     bio: [
-      "Peter ist Mitgründer von HYO und bringt umfassende Erfahrung in den Bereichen Unternehmensentwicklung, Strategieberatung und medizinische Weiterbildung ein.",
-      "Als Unternehmer kennt er die Perspektiven zahlreicher Akteure im Gesundheitswesen, darunter Gesundheitssysteme, Kliniken, Versicherungen, Pharmaunternehmen, Medizintechnik, Investoren und regulatorische Institutionen. Seine internationale Erfahrung umfasst sowohl etablierte als auch aufstrebende Märkte, mit einem besonderen Schwerpunkt auf Europa.",
-      "Bei HYO unterstützt Peter die strategische Entwicklung und den Aufbau nachhaltiger Geschäftsmodelle. Sein Anspruch ist es, wirtschaftliche Tragfähigkeit mit einer messbaren Verbesserung der Versorgung zu verbinden.",
+      "Peter ist Mitgründer von HYO. Als Arzt und Unternehmer bringt er jahrelange Erfahrung im Aufbau hochwertiger Therapiekonzepte mit und kennt die Perspektiven zahlreicher Akteure im Gesundheitswesen – von Kliniken und Versicherungen bis zu Medizintechnik und regulatorischen Institutionen, mit internationalem Schwerpunkt auf Europa.",
+      "Bei HYO unterstützt er die strategische Entwicklung und den Aufbau nachhaltiger Geschäftsmodelle. Sein Anspruch: wirtschaftliche Tragfähigkeit mit einer messbaren Verbesserung der Versorgung verbinden.",
     ],
   },
 ];

@@ -26,7 +26,7 @@ export type ServiceArea = {
 export const dysphagieArea: ServiceArea = {
   id: "dysphagietherapie",
   title: "Dysphagietherapie",
-  subline: "Diagnostik, funktionelles Training und sichere Strategien für den Alltag.",
+  subline: "Befunderhebung, funktionelles Training und sichere Strategien für den Alltag.",
   intro:
     "Schluckstörungen können Essen, Trinken, Atmung und Lebensqualität erheblich beeinflussen. Wir untersuchen die individuellen Ursachen und entwickeln eine Therapie, die medizinische Sicherheit und persönliche Ziele miteinander verbindet.",
   services: [
@@ -34,13 +34,13 @@ export const dysphagieArea: ServiceArea = {
       slug: "diagnostik-und-fees",
       teaserHeadline: "Sicher feststellen, wo das Problem liegt.",
       teaser: "Mit einer klinischen Untersuchung und der modernen FEES-Endoskopie (Schluckdiagnostik per Minikamera) machen wir Ihren Schluckakt auf dem Monitor sichtbar. So finden wir schnell und in der Regel gut verträglich heraus, welche Nahrungsmittel für Sie sicher sind.",
-      title: "Diagnostik & FEES",
+      title: "Befunderhebung & FEES",
       headline: "Verstehen, was beim Schlucken passiert.",
-      text: "Eine sorgfältige Diagnostik bildet die Grundlage jeder Therapie. Wir untersuchen die Schluckfunktion klinisch und setzen, wenn medizinisch angezeigt, die fiberendoskopische Evaluation des Schluckens ein. Bei der FEES wird eine dünne flexible Kamera über die Nase eingeführt. So können unter anderem Sekret, Rückstände sowie mögliche Penetration oder Aspiration beurteilt werden.",
+      text: "Eine sorgfältige Befunderhebung bildet die Grundlage jeder Therapie. Wir untersuchen die Schluckfunktion klinisch und setzen, wenn medizinisch angezeigt, die fiberendoskopische Evaluation des Schluckens ein. Bei der FEES wird eine dünne flexible Kamera über die Nase eingeführt. So können unter anderem Sekret, Rückstände sowie mögliche Penetration oder Aspiration beurteilt werden.",
       items: [
         "Klinische Anamnese",
         "Klinische Schluckuntersuchung",
-        "Instrumentelle Diagnostik",
+        "Instrumentelle Befunderhebung",
         "Beurteilung verschiedener Konsistenzen",
         "Ableitung individueller Therapieziele",
         "Verlaufskontrolle",
@@ -72,7 +72,7 @@ export const dysphagieArea: ServiceArea = {
       teaser: "Wir zeigen Ihnen effektive Haltungs- und Schlucktechniken (z. B. das Chin-Tuck-Manöver), mit denen Sie Ihre Atemwege beim Essen und Trinken aktiv schützen und das Risiko, sich zu verschlucken, deutlich verringern können.",
       title: "Schlucktechniken & Strategien",
       headline: "Mehr Sicherheit durch passende Strategien.",
-      text: "Bestimmte Haltungen, Schlucktechniken und kompensatorische Maßnahmen können den Schluckablauf bei ausgewählten Befunden unterstützen. Welche Strategie geeignet ist, hängt von der individuellen Diagnostik ab.",
+      text: "Bestimmte Haltungen, Schlucktechniken und kompensatorische Maßnahmen können den Schluckablauf bei ausgewählten Befunden unterstützen. Welche Strategie geeignet ist, hängt von der individuellen Befunderhebung ab.",
       items: [
         "Haltungsanpassungen",
         "Angepasste Bolusgröße",
@@ -217,7 +217,7 @@ export const trachealArea: ServiceArea = {
       teaser: "Die Versorgung eines Tracheostomas erfordert Teamarbeit. Wir stimmen uns eng mit Ihren behandelnden Ärztinnen und Ärzten, dem Pflegepersonal, Intensivpflegediensten und Sanitätshäusern ab.",
       title: "Interdisziplinäre Kooperation",
       headline: "Komplexe Versorgung braucht ein abgestimmtes Team.",
-      text: "Trachealkanülenversorgung ist Teamarbeit. Wir stimmen Diagnostik, Therapieziele und Alltagsempfehlungen eng mit den behandelnden Ärztinnen und Ärzten, Pflegepersonen, Physiotherapie, Atmungstherapie, Intensivpflegediensten, Kliniken und Hilfsmittelversorgern ab.",
+      text: "Trachealkanülenversorgung ist Teamarbeit. Wir stimmen Befunderhebung, Therapieziele und Alltagsempfehlungen eng mit den behandelnden Ärztinnen und Ärzten, Pflegepersonen, Physiotherapie, Atmungstherapie, Intensivpflegediensten, Kliniken und Hilfsmittelversorgern ab.",
       items: [
         "Hausärztliche Versorgung, HNO, Phoniatrie",
         "Pneumologie, Neurologie, Intensivmedizin",
@@ -247,8 +247,8 @@ export const focusModules: { title: string; text: string; icon: GeoIconName }[] 
     icon: "dot-ring",
   },
   {
-    title: "FEES-gestützte Diagnostik",
-    text: "Instrumentelle Diagnostik zur fundierten Beurteilung der Schluckfunktion und zur gezielten Steuerung therapeutischer Maßnahmen.",
+    title: "FEES-gestützte Befunderhebung",
+    text: "Instrumentelle Befunderhebung zur fundierten Beurteilung der Schluckfunktion und zur gezielten Steuerung therapeutischer Maßnahmen.",
     icon: "ring",
   },
   {
@@ -268,12 +268,12 @@ export const focusModules: { title: string; text: string; icon: GeoIconName }[] 
   },
 ];
 
-/** Kachel „Hausbesuche & Pflegeheime“ – gilt für beide Themengebiete. */
+/** Kachel „Vor Ort in Partnereinrichtungen“ – gilt für beide Themengebiete. */
 export const homeVisitTile = {
-  title: "Hausbesuche & Pflegeheime",
-  teaserHeadline: "Therapie direkt bei Ihnen vor Ort.",
+  title: "Vor Ort in Partnereinrichtungen",
+  teaserHeadline: "Therapie direkt in der Einrichtung.",
   teaser:
-    "Wenn der Weg in unsere Praxis zu beschwerlich ist, kommen wir zu Ihnen. Bei entsprechender ärztlicher Verordnung führen wir Diagnostik und Therapie flexibel bei Ihnen zu Hause oder direkt in der Senioren- und Pflegeeinrichtung durch.",
+    "Wenn der Weg in unsere Praxis zu beschwerlich ist, kommen wir in unsere Partnereinrichtungen: Bei entsprechender ärztlicher Verordnung führen wir Befunderhebung und Therapie direkt in kooperierenden Senioren- und Pflegeeinrichtungen sowie Einrichtungen der außerklinischen Intensivpflege durch.",
   note: "Für beide Themengebiete",
   icon: "gate" as GeoIconName,
 };

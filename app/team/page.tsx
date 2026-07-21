@@ -95,7 +95,7 @@ export default function TeamPage() {
                 <p>
                   Zugleich steht <strong>Hyo (효)</strong> als gesellschaftliches Prinzip für
                   die Verantwortung, sich fürsorglich um kranke und ältere Menschen zu kümmern.
-                  Beides zusammen beschreibt HYO: fachliche Spezialisierung und echte Fürsorge.
+                  Beides zusammen beschreibt HYO: Dysphagie. Spezialisiert.
                 </p>
               </div>
             </div>

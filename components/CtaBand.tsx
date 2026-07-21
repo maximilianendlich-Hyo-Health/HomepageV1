@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { ButtonLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import { cta } from "@/lib/site";
@@ -7,7 +10,13 @@ import { cta } from "@/lib/site";
  * Wird über das Layout auf allen Seiten oberhalb des Footers eingebunden und
  * ersetzt die beiden Buttons in der Hauptnavigation.
  */
+/** Seiten, auf denen das globale CTA-Band nicht erscheinen soll. */
+const EXCLUDED_PATHS = ["/team"];
+
 export function CtaBand() {
+  const pathname = usePathname();
+  if (EXCLUDED_PATHS.includes(pathname)) return null;
+
   return (
     <Section surface="violet">
       <Eyebrow onViolet>Coming Soon · Berlin-Friedrichshain</Eyebrow>

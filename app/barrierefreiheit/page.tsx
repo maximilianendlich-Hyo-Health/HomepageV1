@@ -69,7 +69,7 @@ export default function BarrierefreiheitPage() {
             <a href="/kontakt" className="font-semibold text-violet-brand underline decoration-2 underline-offset-4">
               Kontaktseite
             </a>
-            . {/* TODO: dedizierte Feedback-Adresse für Barrieren ergänzen */}
+            .
           </p>
         </Lead>
       </Section>

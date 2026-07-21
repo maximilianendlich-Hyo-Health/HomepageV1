@@ -33,13 +33,13 @@ export function ConsentGatedMap() {
         <div className="overflow-hidden rounded-hyo border-2 border-ink/10">
           <iframe
             title="Karte: HYO im MEDICUM Friedrichshain, Matthiasstraße 7, 10249 Berlin"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=13.4560%2C52.5205%2C13.4760%2C52.5305&layer=mapnik&marker=52.5255%2C13.4660"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=13.4329%2C52.5188%2C13.4489%2C52.5268&layer=mapnik&marker=52.52278%2C13.44090"
             className="h-[420px] w-full"
             loading="lazy"
           />
         </div>
         <p className="mt-3 text-sm text-medium-grey">
-          Kartendaten: OpenStreetMap-Mitwirkende. {/* TODO: exakte Koordinaten des Eingangs prüfen */}
+          Kartendaten: OpenStreetMap-Mitwirkende.
         </p>
       </>
     );

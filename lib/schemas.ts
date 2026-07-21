@@ -13,7 +13,7 @@ export const appointmentTopics = [
   "Dysphagie",
   "Trachealkanüle",
   "Versorgung nach Klinikentlassung",
-  "Diagnostik",
+  "Befunderhebung",
   "Sonstiges Anliegen",
 ] as const;
 

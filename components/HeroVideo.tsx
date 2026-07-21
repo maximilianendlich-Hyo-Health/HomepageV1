@@ -5,7 +5,7 @@ import { HeroBackdrop } from "@/components/GeoShapes";
 /**
  * Hintergrundvideo des Hero-Bereichs.
  *
- * TODO: Finale Videodateien bereitstellen:
+ * Optionales Hintergrundvideo (aktuell nicht gesetzt):
  *   /public/video/hero.webm         (Desktop, komprimiert)
  *   /public/video/hero.mp4          (Fallback, komprimiert)
  *   /public/video/hero-mobile.mp4   (mobile optimierte Quelle)
