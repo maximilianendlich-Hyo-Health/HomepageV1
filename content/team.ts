@@ -24,7 +24,7 @@ export const knownTeam: TeamMember[] = [
     linkedIn: "https://www.linkedin.com/in/corinna-schwarz/",
     bio: [
       "Corinna ist Mitgründerin von HYO und verantwortet die fachliche Ausrichtung der spezialisierten Versorgung von Menschen mit Schluckstörungen und Trachealkanülen.",
-      "Als Logopädin verfügt sie über mehr als zehn Jahre klinische Erfahrung in den Bereichen Neurologie, Intensivmedizin und Weaning. Sie ist klinische Expertin für Dysphagie sowie erfahrene Trainerin für FEES und Trachealkanülen-Management.",
+      "Als Klinische Linguistin verfügt sie über mehr als zehn Jahre klinische Erfahrung in den Bereichen Neurologie, Intensivmedizin und Weaning. Sie ist klinische Expertin für Dysphagie sowie erfahrene Trainerin für FEES und Trachealkanülen-Management.",
     ],
   },
   {
@@ -47,8 +47,8 @@ export const knownTeam: TeamMember[] = [
     photoAlt: "Porträt von Peter Bristot",
     linkedIn: "https://www.linkedin.com/in/pbristot/",
     bio: [
-      "Peter ist Mitgründer von HYO. Als Arzt und Unternehmer bringt er jahrelange Erfahrung im Aufbau hochwertiger Therapiekonzepte mit und kennt die Perspektiven zahlreicher Akteure im Gesundheitswesen – von Kliniken und Versicherungen bis zu Medizintechnik und regulatorischen Institutionen, mit internationalem Schwerpunkt auf Europa.",
-      "Bei HYO unterstützt er die strategische Entwicklung und den Aufbau nachhaltiger Geschäftsmodelle. Sein Anspruch: wirtschaftliche Tragfähigkeit mit einer messbaren Verbesserung der Versorgung verbinden.",
+      "Peter ist Mitgründer von HYO. Als Arzt und Unternehmer bringt er jahrelange Erfahrung im Aufbau hochwertiger Therapiekonzepte mit und kennt die Perspektiven zahlreicher Akteure im Gesundheitswesen – von Kliniken und Versicherungen bis zu Medizintechnik.",
+      "Bei HYO unterstützt er die strategische Entwicklung und messbare Qualität.",
     ],
   },
 ];

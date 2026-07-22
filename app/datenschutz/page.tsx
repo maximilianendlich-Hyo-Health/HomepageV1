@@ -194,7 +194,7 @@ export default function DatenschutzPage() {
 
           <Block title="6. Externe Inhalte: Kartendarstellung (OpenStreetMap) und Fahrplanauskunft (VBB-Fahrinfo)">
             <p>
-              Auf der Standortseite binden wir eine Karte des Dienstes OpenStreetMap ein
+              Auf der Standortseite sowie im Wissensbereich (Stroke-Unit-Karte) binden wir Karten des Dienstes OpenStreetMap ein
               (OpenStreetMap Foundation, St John&apos;s Innovation Centre, Cowley Road, Cambridge,
               CB4 0WS, Vereinigtes Königreich). Die Karte wird erst geladen, nachdem Sie über
               den Einwilligungsbanner oder die Schaltfläche „Karte laden“ eingewilligt haben

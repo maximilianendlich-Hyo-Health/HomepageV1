@@ -56,7 +56,7 @@ export const sourceTypeLabels: Record<DashboardStatistic["sourceType"], string> 
 };
 
 const TODO_REVIEW = "Fachlich geprüft: Corinna Schwarz, fachliche Leitung (Juli 2026)";
-const TODO_STAT = "TODO: Epidemiologische Kennzahl nach fachlicher Quellenprüfung ergänzen";
+const TODO_STAT = "Coming Soon – Kennzahl wird ergänzt";
 
 export const statistics: DashboardStatistic[] = [
   {
@@ -132,12 +132,12 @@ export const statistics: DashboardStatistic[] = [
     id: "dysphagie-hoeheres-lebensalter",
     title: "Dysphagie im höheren Lebensalter",
     unit: "%",
-    year: "TODO",
+    year: "Coming Soon",
     population: "Selbstständig lebende ältere Menschen bzw. Bewohnerinnen und Bewohner von Pflegeeinrichtungen",
     geography: "international / Deutschland",
     definition: TODO_STAT,
     sourceTitle: TODO_STAT,
-    sourceOrganization: "TODO",
+    sourceOrganization: "Coming Soon",
     sourceUrl: "",
     sourceType: "estimate",
     evidenceLevel: "limited",
@@ -152,12 +152,12 @@ export const statistics: DashboardStatistic[] = [
     id: "dysphagie-kopf-hals-tumoren",
     title: "Dysphagie bei Kopf-Hals-Tumorerkrankungen",
     unit: "%",
-    year: "TODO",
+    year: "Coming Soon",
     population: "Menschen mit Kopf-Hals-Tumoren, vor, während und nach onkologischer Therapie",
     geography: "international",
     definition: TODO_STAT,
     sourceTitle: TODO_STAT,
-    sourceOrganization: "TODO",
+    sourceOrganization: "Coming Soon",
     sourceUrl: "",
     sourceType: "estimate",
     evidenceLevel: "limited",
@@ -172,11 +172,11 @@ export const statistics: DashboardStatistic[] = [
     id: "krankenhausfaelle-dysphagie-deutschland",
     title: "Krankenhausfälle mit Dysphagie-Diagnose (ICD-10 R13) in Deutschland",
     unit: "Behandlungsfälle pro Jahr",
-    year: "TODO",
+    year: "Coming Soon",
     population: "Vollstationäre Behandlungsfälle in deutschen Krankenhäusern",
     geography: "Deutschland",
     definition: TODO_STAT,
-    sourceTitle: "Krankenhausdiagnosestatistik (TODO: Bezugsjahr und Abfrage über GENESIS-Online ergänzen)",
+    sourceTitle: "Krankenhausdiagnosestatistik (Coming Soon)",
     sourceOrganization: "Statistisches Bundesamt",
     sourceUrl: "https://www-genesis.destatis.de/",
     sourceType: "official-statistics",
@@ -192,11 +192,11 @@ export const statistics: DashboardStatistic[] = [
     id: "tracheotomie-prozeduren-deutschland",
     title: "Tracheotomie- und Tracheostomie-Prozeduren (OPS 5-311/5-312) in Deutschland",
     unit: "Prozeduren pro Jahr",
-    year: "TODO",
+    year: "Coming Soon",
     population: "Vollstationär durchgeführte Prozeduren in deutschen Krankenhäusern",
     geography: "Deutschland",
     definition: TODO_STAT,
-    sourceTitle: "Fallpauschalenbezogene Krankenhausstatistik / OPS-Auswertung (TODO: Bezugsjahr ergänzen)",
+    sourceTitle: "Fallpauschalenbezogene Krankenhausstatistik / OPS-Auswertung (Coming Soon)",
     sourceOrganization: "Statistisches Bundesamt",
     sourceUrl: "https://www-genesis.destatis.de/",
     sourceType: "official-statistics",
@@ -244,27 +244,27 @@ export const riskGroups: RiskGroup[] = [
   {
     condition: "Demenz",
     note: TODO_STAT,
-    sourceHint: "TODO: Quelle nach fachlicher Prüfung ergänzen",
+    sourceHint: "Coming Soon",
   },
   {
     condition: "Multiple Sklerose",
     note: TODO_STAT,
-    sourceHint: "TODO: Quelle nach fachlicher Prüfung ergänzen",
+    sourceHint: "Coming Soon",
   },
   {
     condition: "Amyotrophe Lateralsklerose (ALS)",
     note: "Im Krankheitsverlauf entwickeln die meisten Betroffenen eine Dysphagie; genaue Kennzahl: " + TODO_STAT,
-    sourceHint: "TODO: Quelle nach fachlicher Prüfung ergänzen",
+    sourceHint: "Coming Soon",
   },
   {
     condition: "Kopf-Hals-Tumoren",
     note: TODO_STAT,
-    sourceHint: "TODO: Quelle nach fachlicher Prüfung ergänzen",
+    sourceHint: "Coming Soon",
   },
   {
     condition: "Geriatrische Multimorbidität",
     note: TODO_STAT,
-    sourceHint: "TODO: Quelle nach fachlicher Prüfung ergänzen",
+    sourceHint: "Coming Soon",
   },
 ];
 
@@ -387,42 +387,42 @@ export const myths: { claim: string; verdict: string; explanation: string; sourc
     verdict: "Mythos",
     explanation:
       "Eine Dysphagie kann auch ohne sichtbares Verschlucken bestehen – etwa bei stiller Aspiration, bei der der Hustenreflex ausbleibt. Unauffällige Mahlzeiten schließen eine Schluckstörung nicht aus.",
-    source: "TODO: Quelle nach fachlicher Prüfung ergänzen",
+    source: "Coming Soon",
   },
   {
     claim: "Eine stille Aspiration verursacht immer Husten.",
     verdict: "Mythos",
     explanation:
       "Das Gegenteil kennzeichnet die stille Aspiration: Material gelangt in die Atemwege, ohne dass Husten ausgelöst wird. Genau deshalb ist sie klinisch schwer zu erkennen.",
-    source: "TODO: Quelle nach fachlicher Prüfung ergänzen",
+    source: "Coming Soon",
   },
   {
     claim: "Mit einer Trachealkanüle kann man grundsätzlich nicht sprechen.",
     verdict: "Mythos",
     explanation:
       "Bei geeigneten Voraussetzungen können Entblockung und ein Sprechventil den Ausatemstrom über den Kehlkopf leiten und Stimme ermöglichen. Ob das möglich ist, wird individuell und interdisziplinär geprüft.",
-    source: "TODO: Quelle nach fachlicher Prüfung ergänzen",
+    source: "Coming Soon",
   },
   {
     claim: "Eine Dysphagie betrifft nur ältere Menschen.",
     verdict: "Mythos",
     explanation:
       "Schluckstörungen treten in allen Altersgruppen auf – etwa nach Schlaganfall, Schädel-Hirn-Trauma, bei neurologischen Erkrankungen, nach Intensivbehandlung oder bei Tumorerkrankungen.",
-    source: "TODO: Quelle nach fachlicher Prüfung ergänzen",
+    source: "Coming Soon",
   },
   {
     claim: "Angedickte Flüssigkeiten sind für alle Betroffenen automatisch sicherer.",
     verdict: "Mythos",
     explanation:
       "Andicken kann bei bestimmten Befunden unterstützen, ist aber nicht pauschal die beste Lösung. Die Entscheidung sollte diagnostisch begründet und regelmäßig überprüft werden.",
-    source: "TODO: Quelle nach fachlicher Prüfung ergänzen",
+    source: "Coming Soon",
   },
   {
     claim: "Eine Trachealkanüle bleibt immer dauerhaft.",
     verdict: "Mythos",
     explanation:
       "Wenn die medizinischen und funktionellen Voraussetzungen vorliegen, kann eine Dekanülierung strukturiert geprüft werden. Zugleich gilt: Nicht jede Versorgung hat zwingend die Entfernung der Kanüle zum Ziel.",
-    source: "TODO: Quelle nach fachlicher Prüfung ergänzen",
+    source: "Coming Soon",
   },
 ];
 

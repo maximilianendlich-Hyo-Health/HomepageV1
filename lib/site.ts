@@ -21,6 +21,7 @@ export const site = {
     phone: "+49 151 72887811",
     phoneHref: "tel:+4915172887811",
     primaryContactName: "Corinna Schwarz",
+    primaryContactEmail: "corinna.schwarz@hyo-health.de",
     primaryContactLinkedIn: "https://www.linkedin.com/in/corinna-schwarz/",
   },
   linkedInCompany: "https://de.linkedin.com/company/hyo-health",

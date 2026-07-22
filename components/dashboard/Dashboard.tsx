@@ -214,7 +214,7 @@ function StatCard({ stat }: { stat: DashboardStatistic }) {
         ) : hasValue ? (
           <AnimatedNumber value={stat.value!} />
         ) : (
-          <span className="text-xl leading-snug text-medium-grey">TODO: Kennzahl nach fachlicher Quellenprüfung</span>
+          <span className="text-xl leading-snug text-medium-grey">Coming Soon</span>
         )}
       </p>
       {(hasRange || hasValue) && <p className="mt-1 text-sm text-ink/70">{stat.unit}</p>}
@@ -261,7 +261,7 @@ function RiskBars() {
             <p className="text-sm font-bold text-violet-deep">
               {group.rangeMin !== undefined && group.rangeMax !== undefined
                 ? `${group.rangeMin}–${group.rangeMax} %`
-                : "TODO"}
+                : "Coming Soon"}
             </p>
           </div>
           <div className="mt-1.5 h-4 rounded-hyo bg-white">
@@ -600,8 +600,8 @@ export function Dashboard() {
         <p className="mt-6 rounded-hyo border-l-4 border-violet-brand bg-white p-5 text-[0.95rem] leading-relaxed">
           Zeitverlauf, Alters- und Geschlechterverteilung sowie regionale Auswertungen nach
           Bundesland werden ergänzt, sobald die zugrunde liegenden Abfragen (GENESIS-Online,
-          ICD-10 R13, OPS 5-311/5-312) fachlich geprüft sind. TODO: Epidemiologische Kennzahlen
-          nach fachlicher Quellenprüfung ergänzen.
+          ICD-10 R13, OPS 5-311/5-312) fachlich geprüft sind. Weitere epidemiologische
+          Kennzahlen ergänzen wir laufend (Coming Soon).
         </p>
         <SourcesDisclosure stats={statistics.filter((s) => s.scope === "Deutschland")} />
       </section>

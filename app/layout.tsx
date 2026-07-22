@@ -6,6 +6,7 @@ import { CtaBand } from "@/components/CtaBand";
 import { Footer } from "@/components/Footer";
 import { AccessibilityPanel } from "@/components/AccessibilityPanel";
 import { site } from "@/lib/site";
+import "leaflet/dist/leaflet.css";
 import "./globals.css";
 
 /**

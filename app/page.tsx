@@ -15,7 +15,7 @@ import { cta } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Dysphagie. Spezialisiert." },
   description:
-    "HYO ist eine spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Befunderhebung in Berlin-Friedrichshain. Eröffnung 2026.",
+    "HYO ist eine spezialisierte ambulante Praxis für Dysphagie-Therapie (Schlucktherapie), Trachealkanülen-Management und FEES-gestützte Befunderhebung in Berlin-Friedrichshain. Für Patienten, Angehörige und Versorgungspartner. Eröffnung 2026.",
   alternates: { canonical: "/" },
 };
 
@@ -75,7 +75,7 @@ export default function HomePage() {
             <p>
               Eine Schluckstörung oder Trachealkanüle verändert den Alltag – beim Essen und
               Trinken, beim Sprechen, in der Sicherheit und im Miteinander. Bei HYO finden Sie
-              und Ihre Angehörigen eine spezialisierte Anlaufstelle, die zuhört, sorgfältig
+              und Ihre Angehörigen eine spezialisierte Anlaufstelle für Schlucktherapie, die zuhört, sorgfältig
               untersucht und Sie Schritt für Schritt begleitet.
             </p>
             <p>

@@ -93,8 +93,9 @@ export default function TeamPage() {
                   Arbeit dreht.
                 </p>
                 <p>
-                  Zugleich steht <strong>Hyo (효)</strong> als gesellschaftliches Prinzip für
-                  die Verantwortung, sich fürsorglich um kranke und ältere Menschen zu kümmern.
+                  Zugleich steht <strong>Hyo (효)</strong> – aus dem Koreanischen kommend und
+                  im Konfuzianismus verwurzelt – als gesellschaftliches Prinzip für die
+                  Verantwortung, sich fürsorglich um kranke und ältere Menschen zu kümmern.
                   Beides zusammen beschreibt HYO: Dysphagie. Spezialisiert.
                 </p>
               </div>

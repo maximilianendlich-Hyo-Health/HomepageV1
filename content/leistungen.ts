@@ -28,7 +28,7 @@ export const dysphagieArea: ServiceArea = {
   title: "Dysphagietherapie",
   subline: "Befunderhebung, funktionelles Training und sichere Strategien für den Alltag.",
   intro:
-    "Schluckstörungen können Essen, Trinken, Atmung und Lebensqualität erheblich beeinflussen. Wir untersuchen die individuellen Ursachen und entwickeln eine Therapie, die medizinische Sicherheit und persönliche Ziele miteinander verbindet.",
+    "Schluckstörungen können Essen, Trinken, Atmung und Lebensqualität erheblich beeinflussen. Wir untersuchen die individuellen Ursachen und entwickeln eine Schlucktherapie, die medizinische Sicherheit und persönliche Ziele miteinander verbindet.",
   services: [
     {
       slug: "diagnostik-und-fees",

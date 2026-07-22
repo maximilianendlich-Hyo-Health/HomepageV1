@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FadeIn } from "@/components/FadeIn";
+import { ConsentGatedStrokeUnitMap } from "@/components/ConsentGatedStrokeUnitMap";
 import { KnowledgeExplorer } from "@/components/KnowledgeExplorer";
 import { GeoIcon } from "@/components/GeoShapes";
 import { ButtonLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
+import { parkinsonCenters, strokeUnits } from "@/content/strokeUnits";
 import { articles, categories } from "@/content/wissen";
 
 export const metadata: Metadata = {
@@ -70,6 +72,72 @@ export default function WissenPage() {
 
       {/* Kategorien */}
       {/* Erklärvideo: Der Schluckvorgang */}
+      {/* Dysphagie in Berlin: Daten, Fakten und Stroke-Unit-Karte */}
+      <Section surface="mint-light" id="dysphagie-in-berlin">
+        <FadeIn>
+          <Eyebrow>Daten und Fakten</Eyebrow>
+          <Headline>Dysphagie in Berlin</Headline>
+          <Lead>
+            <p>
+              Der Schlaganfall zählt zu den häufigsten Ursachen einer Dysphagie: In der
+              Akutphase entwickeln 37–78&nbsp;% der Betroffenen eine Schluckstörung
+              (Martino et al. 2005). Auch bei Morbus Parkinson ist Schlucken zentral: Im
+              Krankheitsverlauf sind 35–82&nbsp;% betroffen (Kalf et al. 2012). Für die
+              Akutversorgung verfügt Berlin über <strong>15 zertifizierte Stroke Units</strong>{" "}
+              sowie mehrere <strong>Fachzentren für Parkinson</strong> in Berlin und Umgebung.
+              Nach der Entlassung setzt HYO an: mit spezialisierter ambulanter
+              Weiterversorgung in Berlin-Friedrichshain.
+            </p>
+          </Lead>
+        </FadeIn>
+        <FadeIn className="mt-10">
+          <h3 className="text-xl font-extrabold">Stroke Units und Parkinson-Fachzentren im Überblick</h3>
+          <div className="mt-4">
+            <ConsentGatedStrokeUnitMap />
+          </div>
+        </FadeIn>
+        <FadeIn className="mt-8">
+          <ul className="grid gap-x-10 gap-y-2.5 sm:grid-cols-2 lg:grid-cols-3">
+            {strokeUnits.map((unit) => (
+              <li key={unit.name} className="flex gap-3 text-[0.95rem] leading-relaxed">
+                <span aria-hidden="true" className="mt-2 h-2 w-2 shrink-0 rounded-full bg-violet-brand" />
+                <span>
+                  <strong>{unit.name}</strong>
+                  <br />
+                  <span className="text-ink/70">{unit.address}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+          <h4 className="mt-10 text-lg font-extrabold">Fachzentren für Parkinson</h4>
+          <ul className="mt-4 grid gap-x-10 gap-y-2.5 sm:grid-cols-2">
+            {parkinsonCenters.map((center) => (
+              <li key={center.name} className="flex gap-3 text-[0.95rem] leading-relaxed">
+                <span aria-hidden="true" className="mt-2 h-2 w-2 shrink-0 rounded-full bg-ink" />
+                <span>
+                  <strong>{center.name}</strong>
+                  <br />
+                  <span className="text-ink/70">{center.address}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 max-w-3xl text-sm leading-relaxed text-medium-grey">
+            Stand: Juli 2026, Angaben ohne Gewähr. Stroke Units: Zertifizierung Deutsche
+            Schlaganfall-Gesellschaft (DSG). Parkinson: Einrichtungen mit
+            Parkinson-Komplexbehandlung bzw. Fachklinik-/Zentrums-Status (Auswahl, wird
+            laufend ergänzt); maßgeblich sind die aktuellen Verzeichnisse der
+            Fachgesellschaften.
+            Berlin-spezifische epidemiologische Kennzahlen zur Dysphagie ergänzen wir laufend
+            (Coming Soon) – belegte Spannweiten finden Sie im{" "}
+            <Link href="/wissen/dashboard" className="font-semibold text-violet-brand underline decoration-2 underline-offset-4">
+              Daten-Dashboard
+            </Link>
+            .
+          </p>
+        </FadeIn>
+      </Section>
+
       <Section surface="white">
         <FadeIn>
           <Eyebrow>Einfach erklärt</Eyebrow>

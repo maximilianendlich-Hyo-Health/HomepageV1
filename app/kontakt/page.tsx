@@ -103,21 +103,10 @@ export default function KontaktPage() {
                   <dt className="font-bold">E-Mail</dt>
                   <dd>
                     <a
-                      href={`mailto:${site.contact.email}`}
+                      href={`mailto:${site.contact.primaryContactEmail}`}
                       className="font-semibold text-violet-brand underline decoration-2 underline-offset-4 hover:text-violet-deep"
                     >
-                      {site.contact.email}
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-bold">Telefon</dt>
-                  <dd>
-                    <a
-                      href={site.contact.phoneHref}
-                      className="font-semibold text-violet-brand underline decoration-2 underline-offset-4 hover:text-violet-deep"
-                    >
-                      {site.contact.phone}
+                      {site.contact.primaryContactEmail}
                     </a>
                   </dd>
                 </div>
