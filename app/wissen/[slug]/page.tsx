@@ -98,7 +98,7 @@ export default async function ArtikelPage({ params }: { params: Promise<{ slug: 
               <dd className="inline">{new Date(article.updated).toLocaleDateString("de-DE")}</dd>
             </div>
             <div>
-              <dt className="inline font-semibold">Fachlich geprüft durch: </dt>
+              <dt className="inline font-semibold">Autorin: </dt>
               <dd className="inline">{article.reviewedBy}</dd>
             </div>
           </dl>

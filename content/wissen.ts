@@ -100,7 +100,7 @@ export const categories: { name: string; icon: GeoIconName; topics: string[] }[]
   },
 ];
 
-const REVIEW_TODO = "Fachlich geprüft: Corinna Schwarz, fachliche Leitung (Juli 2026)";
+const REVIEW_TODO = "Corinna Schwarz";
 
 export const articles: Article[] = [
   {

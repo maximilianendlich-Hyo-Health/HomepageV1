@@ -600,7 +600,7 @@ export function Dashboard() {
         <p className="mt-6 rounded-hyo border-l-4 border-violet-brand bg-white p-5 text-[0.95rem] leading-relaxed">
           Zeitverlauf, Alters- und Geschlechterverteilung sowie regionale Auswertungen nach
           Bundesland werden ergänzt, sobald die zugrunde liegenden Abfragen (GENESIS-Online,
-          ICD-10 R13, OPS 5-311/5-312) fachlich geprüft sind. Weitere epidemiologische
+          ICD-10 R13, OPS 5-311/5-312) vorliegen. Weitere epidemiologische
           Kennzahlen ergänzen wir laufend (Coming Soon).
         </p>
         <SourcesDisclosure stats={statistics.filter((s) => s.scope === "Deutschland")} />

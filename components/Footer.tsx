@@ -137,6 +137,8 @@ export function Footer() {
               Registergericht: {site.legal.registerCourt}
               <br />
               Registernummer: {site.legal.registerNumber}
+              <br />
+              Steuernummer: {site.legal.taxNumber}
             </p>
           </div>
         </div>

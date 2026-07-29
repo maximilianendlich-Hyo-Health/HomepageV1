@@ -248,3 +248,70 @@ export function CarePathTiles() {
     </ol>
   );
 }
+
+/** Der Schluckvorgang in vier Phasen als ruhige Kacheln (Wissensbereich) –
+ *  bewusst ohne anatomische Darstellungen, nur geometrische Markenformen. */
+export function SwallowPhaseTiles() {
+  const phases: {
+    title: string;
+    subtitle: string;
+    text: string;
+    icon: GeoIconName;
+    tone: "mint" | "violet";
+  }[] = [
+    {
+      title: "Vorbereiten im Mund",
+      subtitle: "Orale Vorbereitungsphase",
+      text: "Die Nahrung wird gekaut, mit Speichel vermischt und zu einem gleitfähigen Bissen geformt.",
+      icon: "quarter",
+      tone: "violet",
+    },
+    {
+      title: "Transport im Mund",
+      subtitle: "Orale Phase",
+      text: "Die Zunge schiebt den Bissen kontrolliert nach hinten in Richtung Rachen.",
+      icon: "arc-down",
+      tone: "mint",
+    },
+    {
+      title: "Schluckreflex",
+      subtitle: "Pharyngeale Phase",
+      text: "Der Schluckreflex wird ausgelöst: Die Atemwege werden geschützt, der Bissen passiert den Rachen.",
+      icon: "half-split",
+      tone: "violet",
+    },
+    {
+      title: "Weitertransport",
+      subtitle: "Ösophageale Phase",
+      text: "Die Speiseröhre transportiert den Bissen wellenförmig weiter in den Magen.",
+      icon: "wave",
+      tone: "mint",
+    },
+  ];
+  return (
+    <ol aria-label="Die vier Phasen des Schluckvorgangs" className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {phases.map((phase, index) => (
+        <li key={phase.title} className="h-full">
+          <div
+            className={`relative flex h-full min-h-64 flex-col overflow-hidden rounded-hyo p-7 transition-transform duration-300 hover:-translate-y-1.5 motion-reduce:hover:translate-y-0 ${
+              phase.tone === "mint" ? "bg-mint-light" : "bg-violet-light/30"
+            }`}
+          >
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -top-5 right-3 text-[7rem] leading-none font-extrabold text-violet-brand/12 select-none"
+            >
+              {index + 1}
+            </span>
+            <GeoIcon name={phase.icon} className="h-14 w-14" />
+            <p className="mt-auto pt-8 text-sm font-bold tracking-[0.14em] text-violet-brand uppercase">
+              Phase {index + 1} · {phase.subtitle}
+            </p>
+            <p className="mt-1.5 text-lg leading-snug font-extrabold">{phase.title}</p>
+            <p className="mt-2 text-[0.95rem] leading-relaxed text-ink/80">{phase.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+}

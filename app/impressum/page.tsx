@@ -78,6 +78,10 @@ export default function ImpressumPage() {
           </p>
         </Block>
 
+        <Block title="Steuernummer">
+          <p>Steuernummer: {site.legal.taxNumber}</p>
+        </Block>
+
         <Block title="Umsatzsteuer-Identifikationsnummer">
           {/* TODO: USt-IdNr. gemäß § 27a UStG ergänzen, sobald vorhanden */}
           <p>Wird nach Erteilung ergänzt.</p>

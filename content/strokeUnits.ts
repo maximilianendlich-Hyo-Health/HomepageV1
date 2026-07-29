@@ -6,7 +6,7 @@
  * Fachklinik-/Zentrums-Status (u. a. dPV, Parkinsonzentrum Berlin-Brandenburg).
  * Standorte per OpenStreetMap-Geokodierung. Angaben ohne Gewähr – maßgeblich
  * sind die aktuellen Verzeichnisse der Fachgesellschaften.
- * Fachliche Prüfung: Corinna Schwarz.
+ * Autorin: Corinna Schwarz.
  */
 export type StrokeUnit = {
   name: string;

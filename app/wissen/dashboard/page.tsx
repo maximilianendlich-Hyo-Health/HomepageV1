@@ -43,7 +43,7 @@ export default function DashboardPage() {
           <p className="mt-6 max-w-2xl rounded-hyo bg-white/10 p-4 text-[0.95rem] leading-relaxed text-mint-light">
             Das Dashboard ermöglicht keine Diagnose und gibt keine individuellen
             Therapieempfehlungen. Alle Kennzahlen sind mit Quelle, Population und Datenqualität
-            ausgewiesen; Datenlücken werden offen dargestellt. Fachlich geprüft: Corinna Schwarz, fachliche Leitung (Juli 2026).
+            ausgewiesen; Datenlücken werden offen dargestellt. Autorin: Corinna Schwarz.
           </p>
         </div>
       </Section>

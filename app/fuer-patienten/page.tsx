@@ -6,7 +6,7 @@ import { GeoIcon } from "@/components/GeoShapes";
 import { cta } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Für Patienten und Angehörige",
+  title: "Patient:innen und Angehörige",
   description:
     "Was Dysphagie bedeutet, wann spezialisierte Unterstützung sinnvoll ist und wie eine Terminanfrage bei HYO abläuft – verständlich erklärt für Betroffene und Angehörige.",
   alternates: { canonical: "/fuer-patienten" },
@@ -44,7 +44,7 @@ export default function FuerPatientenPage() {
   return (
     <>
       <Section surface="mint">
-        <Eyebrow>Für Patienten und Angehörige</Eyebrow>
+        <Eyebrow>Patient:innen und Angehörige</Eyebrow>
         <Headline as="h1" size="xl">
           Spezialisierte Unterstützung bei Schluckstörungen und Trachealkanülen.
         </Headline>

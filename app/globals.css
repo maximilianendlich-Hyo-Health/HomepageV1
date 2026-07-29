@@ -26,7 +26,7 @@
   --color-warm-white: var(--hyo-warm-white);
   --color-soft-grey: var(--hyo-soft-grey);
   --color-medium-grey: var(--hyo-medium-grey);
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-quicksand), ui-sans-serif, system-ui, sans-serif;
   --radius-hyo: 0.625rem;
 }
 

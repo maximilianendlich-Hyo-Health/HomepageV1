@@ -186,7 +186,7 @@ export default function DatenschutzPage() {
 
           <Block title="5. Schriften">
             <p>
-              Diese Website verwendet die Schriftart Manrope. Die Schriftdateien werden
+              Diese Website verwendet die Schriftart Quicksand. Die Schriftdateien werden
               ausschließlich von unserem eigenen Server ausgeliefert. Es findet keine
               Verbindung zu Servern von Google oder anderen Drittanbietern statt.
             </p>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FadeIn } from "@/components/FadeIn";
 import { ConsentGatedStrokeUnitMap } from "@/components/ConsentGatedStrokeUnitMap";
+import { SwallowPhaseTiles } from "@/components/GeoShapes";
 import { KnowledgeExplorer } from "@/components/KnowledgeExplorer";
 import { GeoIcon } from "@/components/GeoShapes";
 import { ButtonLink } from "@/components/ui/Buttons";
@@ -12,7 +13,7 @@ import { articles, categories } from "@/content/wissen";
 export const metadata: Metadata = {
   title: { absolute: "Wissen zu Dysphagie und Trachealkanülen | HYO Berlin" },
   description:
-    "Fachlich geprüfte Informationen zu Dysphagie, FEES, Trachealkanülen, Therapie und ambulanter Versorgung nach der Klinikentlassung.",
+    "Informationen zu Dysphagie, FEES, Trachealkanülen, Therapie und ambulanter Versorgung nach der Klinikentlassung.",
   alternates: { canonical: "/wissen" },
 };
 
@@ -70,13 +71,30 @@ export default function WissenPage() {
         </FadeIn>
       </Section>
 
-      {/* Kategorien */}
-      {/* Erklärvideo: Der Schluckvorgang */}
-      {/* Dysphagie in Berlin: Daten, Fakten und Stroke-Unit-Karte */}
+      {/* Der Schluckvorgang in vier Phasen – Ablauf-Kacheln, bewusst ohne anatomische Details */}
+      <Section surface="mint-light">
+        <FadeIn>
+          <Eyebrow>Einfach erklärt</Eyebrow>
+          <Headline>Der Schluckvorgang in vier Phasen</Headline>
+          <Lead>
+            <p>
+              Schlucken läuft in vier aufeinanderfolgenden Phasen ab. Ein kurzer Überblick, wie
+              der Ablauf im gesunden Zustand funktioniert – ganz ohne anatomische Details.
+            </p>
+          </Lead>
+        </FadeIn>
+        <SwallowPhaseTiles />
+        <p className="mt-8 max-w-2xl text-sm leading-relaxed text-medium-grey">
+          Vereinfachte Darstellung zur Orientierung. Bei einer Dysphagie kann jede dieser Phasen
+          betroffen sein – das ersetzt keine individuelle Untersuchung oder Beratung.
+        </p>
+      </Section>
+
+      {/* Dysphagie in Berlin: Daten, Fakten und Karte der spezialisierten Zentren */}
       <Section surface="mint-light" id="dysphagie-in-berlin">
         <FadeIn>
           <Eyebrow>Daten und Fakten</Eyebrow>
-          <Headline>Dysphagie in Berlin</Headline>
+          <Headline>Versorgungslandschaft in Berlin</Headline>
           <Lead>
             <p>
               Der Schlaganfall zählt zu den häufigsten Ursachen einer Dysphagie: In der
@@ -89,6 +107,15 @@ export default function WissenPage() {
               Weiterversorgung in Berlin-Friedrichshain.
             </p>
           </Lead>
+        </FadeIn>
+        <FadeIn className="mt-6">
+          <p className="max-w-3xl rounded-hyo border-l-4 border-violet-brand bg-white p-5 text-[0.95rem] leading-relaxed">
+            <strong>Hinweis:</strong> HYO fungiert als Anlaufstelle für Zuweisungen von
+            Patientinnen und Patienten aus diesen und weiteren Einrichtungen, unterhält mit den
+            unten gelisteten Zentren jedoch <strong>keine Kooperation</strong> und keine
+            organisatorische Verbindung. Die Karte dient ausschließlich der allgemeinen
+            Information über die Versorgungslandschaft in Berlin.
+          </p>
         </FadeIn>
         <FadeIn className="mt-10">
           <h3 className="text-xl font-extrabold">Stroke Units und Parkinson-Fachzentren im Überblick</h3>
@@ -127,9 +154,8 @@ export default function WissenPage() {
             Schlaganfall-Gesellschaft (DSG). Parkinson: Einrichtungen mit
             Parkinson-Komplexbehandlung bzw. Fachklinik-/Zentrums-Status (Auswahl, wird
             laufend ergänzt); maßgeblich sind die aktuellen Verzeichnisse der
-            Fachgesellschaften.
-            Berlin-spezifische epidemiologische Kennzahlen zur Dysphagie ergänzen wir laufend
-            (Coming Soon) – belegte Spannweiten finden Sie im{" "}
+            Fachgesellschaften. Berlin-spezifische epidemiologische Kennzahlen zur Dysphagie
+            ergänzen wir laufend (Coming Soon) – belegte Spannweiten finden Sie im{" "}
             <Link href="/wissen/dashboard" className="font-semibold text-violet-brand underline decoration-2 underline-offset-4">
               Daten-Dashboard
             </Link>
@@ -138,37 +164,7 @@ export default function WissenPage() {
         </FadeIn>
       </Section>
 
-      <Section surface="white">
-        <FadeIn>
-          <Eyebrow>Einfach erklärt</Eyebrow>
-          <Headline>Der Schluckvorgang in vier Phasen</Headline>
-          <Lead>
-            <p>
-              Was passiert eigentlich beim Schlucken – und wo kann es haken? Unser kurzes
-              Erklärvideo zeigt die vier Phasen des Schluckvorgangs in gut einer halben Minute.
-            </p>
-          </Lead>
-          <div className="mt-8 max-w-3xl overflow-hidden rounded-hyo border-2 border-ink/10 bg-ink">
-            {/* Nutzergesteuertes Video: kein Autoplay, mit Bedienelementen */}
-            <video
-              controls
-              preload="metadata"
-              playsInline
-              poster="/images/schluckvorgang-poster.jpg"
-              className="aspect-video w-full"
-            >
-              <source src="/video/schluckvorgang.mp4" type="video/mp4" />
-              Ihr Browser kann dieses Video nicht abspielen.
-            </video>
-          </div>
-          <p className="mt-3 max-w-3xl text-sm text-medium-grey">
-            Hinweis: Das Video vermittelt allgemeine Informationen und ersetzt keine
-            individuelle Untersuchung oder Beratung.
-            {/* TODO: Untertitel (VTT) für Barrierefreiheit ergänzen */}
-          </p>
-        </FadeIn>
-      </Section>
-
+      {/* Kategorien */}
       <Section surface="white">
         <FadeIn>
           <Headline>Themengebiete</Headline>

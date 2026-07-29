@@ -45,12 +45,12 @@ export default function DatenUndQuellenPage() {
               <dt className="text-sm font-bold tracking-wide text-violet-brand uppercase">Stand der Daten</dt>
               <dd className="mt-1 font-semibold">
                 {/* automatisch aus jüngstem geprüftem Datensatz */}
-                Noch kein fachlich geprüfter Datensatz vorhanden
+                Noch kein Datensatz vorhanden
               </dd>
             </div>
             <div className="rounded-hyo bg-warm-white p-5">
               <dt className="text-sm font-bold tracking-wide text-violet-brand uppercase">
-                Zuletzt fachlich geprüft
+                Autorin
               </dt>
               <dd className="mt-1 font-semibold">Corinna Schwarz, fachliche Leitung</dd>
             </div>
@@ -138,14 +138,14 @@ export default function DatenUndQuellenPage() {
             <ul className="mt-3 space-y-2 text-[0.95rem] leading-relaxed text-ink/80">
               <li>
                 {new Date().toLocaleDateString("de-DE")}: Struktur, Datenmodell und erste
-                Literatur-Spannweiten angelegt; fachliche Prüfung ausstehend (TODO).
+                Literatur-Spannweiten angelegt; Ergänzung in Vorbereitung (Coming Soon).
               </li>
             </ul>
           </div>
           <div>
             <h2 className="text-xl font-extrabold">Verantwortlichkeit</h2>
             <p className="mt-3 leading-relaxed text-ink/80">
-              Verantwortlich für die fachliche Prüfung der Inhalte: Corinna Schwarz (wird vor Livegang
+              Autorin der Inhalte: Corinna Schwarz (wird vor Livegang
               benannt).
             </p>
           </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Quicksand } from "next/font/google";
 import { Header } from "@/components/Header";
 import { CookieBanner } from "@/components/CookieBanner";
 import { CtaBand } from "@/components/CtaBand";
@@ -10,13 +10,16 @@ import "leaflet/dist/leaflet.css";
 import "./globals.css";
 
 /**
- * Manrope wird über next/font zur Build-Zeit heruntergeladen und
+ * Quicksand wird über next/font zur Build-Zeit heruntergeladen und
  * ausschließlich von der eigenen Domain ausgeliefert (keine Anfragen
  * an Google-Server zur Laufzeit – datenschutzkonforme lokale Einbindung).
+ * Quicksand bietet die Schnitte 300–700; Überschriften mit font-extrabold/
+ * font-black nutzen automatisch den kräftigsten verfügbaren Schnitt (700).
  */
-const manrope = Manrope({
+const quicksand = Quicksand({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-quicksand",
   display: "swap",
 });
 
@@ -79,7 +82,7 @@ for(var k in m){if(s[k]&&s[k]!==d[k]){document.documentElement.setAttribute(m[k]
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="de" className={manrope.variable} suppressHydrationWarning>
+    <html lang="de" className={quicksand.variable} suppressHydrationWarning>
       <body className="font-sans">
         <script dangerouslySetInnerHTML={{ __html: accInitScript }} />
         <a href="#hauptinhalt" className="skip-link">

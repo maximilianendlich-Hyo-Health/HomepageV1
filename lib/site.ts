@@ -36,14 +36,15 @@ export const site = {
     representedBy: "Maximilian Endlich und Corinna Schwarz (Geschäftsführer)",
     registerCourt: "Amtsgericht Berlin-Charlottenburg",
     registerNumber: "HRB 288004 B",
+    taxNumber: "37/356/51536",
   },
 } as const;
 
 export const mainNav = [
   { label: "Start", href: "/" },
   { label: "Leistungen", href: "/leistungen" },
-  { label: "Für Patienten", href: "/fuer-patienten" },
-  { label: "Für Partner", href: "/fuer-partner" },
+  { label: "Patient:innen", href: "/fuer-patienten" },
+  { label: "Partner:innen", href: "/fuer-partner" },
   { label: "Wissen", href: "/wissen" },
   { label: "Team", href: "/team" },
   { label: "Karriere", href: "/karriere" },

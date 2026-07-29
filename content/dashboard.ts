@@ -55,7 +55,7 @@ export const sourceTypeLabels: Record<DashboardStatistic["sourceType"], string> 
   estimate: "Schätzung",
 };
 
-const TODO_REVIEW = "Fachlich geprüft: Corinna Schwarz, fachliche Leitung (Juli 2026)";
+const TODO_REVIEW = "Autorin: Corinna Schwarz";
 const TODO_STAT = "Coming Soon – Kennzahl wird ergänzt";
 
 export const statistics: DashboardStatistic[] = [
