@@ -3,21 +3,22 @@ import Image from "next/image";
 import { FadeIn } from "@/components/FadeIn";
 import { ButtonLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
-import { site } from "@/lib/site";
+import { booking, site } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Kontakt",
+export const metadata: Metadata = pageMetadata({
+  title: "Kontakt und Terminbuchung",
   description:
-    "Kontakt zu HYO: getrennte Kontaktwege für Patientinnen und Patienten, Angehörige, Kliniken, Pflegeeinrichtungen, Kooperationen und Bewerbungen.",
-  alternates: { canonical: "/kontakt" },
-};
+    "Kontakt zu HYO in Berlin: Termin für ein kurzes Telefonat buchen sowie eigene Kontaktwege für Kliniken, Pflegeeinrichtungen, Kooperationen und Bewerbungen.",
+  path: "/kontakt",
+});
 
 const contactPaths = [
   {
     title: "Patientenanfragen und Angehörige",
-    text: "Sie möchten Ihr Interesse an einem Termin hinterlegen oder haben Fragen zur Vormerkung?",
-    href: "/#termin",
-    label: "Termin anfragen",
+    text: "Sie möchten einen Termin für ein kurzes Telefonat buchen? Wir besprechen alles persönlich mit Ihnen.",
+    href: booking.url,
+    label: "Termin buchen",
   },
   {
     title: "Kliniken und Entlassmanagement",
@@ -55,8 +56,8 @@ export default function KontaktPage() {
         </Headline>
         <Lead>
           <p>
-            Sie möchten einen Termin anfragen? Schreiben Sie uns. Für Kliniken, Pflege und
-            Bewerbungen gibt es eigene Kontaktwege – so landet Ihr Anliegen direkt an der
+            Sie möchten einen Termin für ein kurzes Telefonat buchen? Das geht online. Für
+            Kliniken, Pflege und Bewerbungen gibt es eigene Kontaktwege – so landet Ihr Anliegen direkt an der
             richtigen Stelle.
           </p>
         </Lead>

@@ -3,13 +3,14 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { Dashboard } from "@/components/dashboard/Dashboard";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Dysphagie und Tracheostomie in Zahlen",
   description:
-    "Interaktives Wissensdashboard: epidemiologische Daten, Risikogruppen, Befunderhebungs- und Versorgungspfade rund um Dysphagie, Tracheostomie und Trachealkanülen – mit transparenten Quellen.",
-  alternates: { canonical: "/wissen/dashboard" },
-};
+    "Interaktives Wissensdashboard: Daten, Risikogruppen und Versorgungspfade rund um Dysphagie (Schluckstörung), Tracheostomie und Trachealkanülen – mit transparenten Quellen.",
+  path: "/wissen/dashboard",
+});
 
 export default function DashboardPage() {
   return (

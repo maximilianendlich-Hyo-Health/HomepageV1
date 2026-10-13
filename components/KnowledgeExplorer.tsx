@@ -104,7 +104,7 @@ export function KnowledgeExplorer() {
           <p className="font-semibold">Kein Beitrag zu dieser Kombination gefunden.</p>
           <p className="mt-2 leading-relaxed text-ink/75">
             Setzen Sie die Filter zurück oder versuchen Sie einen anderen Suchbegriff. Der
-            Wissensbereich wird bis zur Eröffnung laufend erweitert.
+            Wissensbereich wird laufend erweitert.
           </p>
         </div>
       ) : (

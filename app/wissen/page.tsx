@@ -9,13 +9,14 @@ import { ButtonLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import { parkinsonCenters, strokeUnits } from "@/content/strokeUnits";
 import { articles, categories } from "@/content/wissen";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: { absolute: "Wissen zu Dysphagie und Trachealkanülen | HYO Berlin" },
+export const metadata: Metadata = pageMetadata({
+  title: "Wissen zu Dysphagie und Trachealkanülen | HYO Berlin",
   description:
-    "Informationen zu Dysphagie, FEES, Trachealkanülen, Therapie und ambulanter Versorgung nach der Klinikentlassung.",
-  alternates: { canonical: "/wissen" },
-};
+    "Verständlich erklärt: Dysphagie (Schluckstörung), FEES, Trachealkanülen, Therapie und ambulante Versorgung nach der Klinikentlassung.",
+  path: "/wissen", absolute: true,
+});
 
 export default function WissenPage() {
   return (

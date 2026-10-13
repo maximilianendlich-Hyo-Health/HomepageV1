@@ -5,13 +5,14 @@ import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import { GeoIcon } from "@/components/GeoShapes";
 import { PartnerForm } from "@/components/forms/PartnerForm";
 import { cta } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Für Kliniken und Versorgungspartner",
+export const metadata: Metadata = pageMetadata({
+  title: "Dysphagie-Versorgung für Kliniken und Partner",
   description:
-    "HYO unterstützt Kliniken, Entlassmanagement, Pflegeeinrichtungen und ärztliche Praxen bei der ambulanten Weiterversorgung von Menschen mit Dysphagie und Trachealkanüle.",
-  alternates: { canonical: "/fuer-partner" },
-};
+    "HYO unterstützt Kliniken, Entlassmanagement, Pflegeeinrichtungen und Praxen in Berlin bei der ambulanten Weiterversorgung von Menschen mit Dysphagie und Trachealkanüle.",
+  path: "/fuer-partner",
+});
 
 const targetGroups = [
   "Kliniken und Akutstationen",
@@ -158,7 +159,7 @@ export default function FuerPartnerPage() {
           <Headline>Frühzeitig Kontakt aufnehmen.</Headline>
           <Lead>
             <p>
-              HYO eröffnet 2026 – Kooperationen bereiten wir bereits jetzt vor. Beschreiben
+              HYO nimmt den Betrieb am 01.11.2026 auf – Kooperationen stimmen wir bereits jetzt ab. Beschreiben
               Sie kurz Ihre Einrichtung und Ihr Anliegen, wir melden uns für die weitere
               Abstimmung.
             </p>

@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { CookieSettingsButton } from "@/components/CookieSettingsButton";
-import { cta, site } from "@/lib/site";
+import { booking, cta, site } from "@/lib/site";
 
 const footerNav = [
-  { label: cta.appointment, href: "/#termin" },
+  { label: cta.appointment, href: booking.url },
   { label: cta.cooperation, href: "/fuer-partner#kooperation-anfragen" },
   { label: "Wissen", href: "/wissen" },
   { label: "Team", href: "/team" },
@@ -23,7 +23,7 @@ export function Footer() {
     <footer className="on-violet bg-violet-brand text-white">
       <div className="mx-auto grid w-full max-w-6xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <Logo height={30} onDark />
+          <Logo height={44} onDark />
           <p className="mt-6 max-w-sm text-lg leading-relaxed font-semibold text-mint-light">
             {site.claim}
           </p>
@@ -69,9 +69,20 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5">
             {footerNav.map((item) => (
               <li key={item.label}>
-                <Link href={item.href} className="text-white/90 hover:text-mint-brand hover:underline">
-                  {item.label}
-                </Link>
+                {item.href.startsWith("http") ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/90 hover:text-mint-brand hover:underline"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link href={item.href} className="text-white/90 hover:text-mint-brand hover:underline">
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
 
@@ -145,7 +156,7 @@ export function Footer() {
       </div>
       <div className="border-t border-white/15">
         <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-5 text-sm text-white/80 sm:px-8">
-          <p>Eröffnung 2026 · Berlin-Friedrichshain</p>
+          <p>Start am 01.11.2026 · Berlin-Friedrichshain</p>
           <p>© {new Date().getFullYear()} {site.legal.company}</p>
         </div>
       </div>

@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import { evidenceLabels, sourceTypeLabels, statistics } from "@/content/dashboard";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Daten und Quellen",
   description:
-    "Vollständige Quellenangaben, Definitionen, methodische Hinweise und Einschränkungen aller Kennzahlen des HYO-Wissensdashboards.",
-  alternates: { canonical: "/wissen/daten-und-quellen" },
-};
+    "Quellenangaben, Definitionen und methodische Hinweise zu allen Kennzahlen des HYO-Wissensdashboards zu Dysphagie und Trachealkanülen.",
+  path: "/wissen/daten-und-quellen",
+});
 
 export default function DatenUndQuellenPage() {
   return (
@@ -77,7 +78,7 @@ export default function DatenUndQuellenPage() {
                       ? `${stat.valueMin}–${stat.valueMax} ${stat.unit}`
                       : stat.value !== undefined
                         ? `${stat.value} ${stat.unit}`
-                        : "TODO: nach fachlicher Quellenprüfung ergänzen"}
+                        : "Coming Soon"}
                   </dd>
                 </div>
                 <div>
@@ -129,8 +130,8 @@ export default function DatenUndQuellenPage() {
             <h2 className="text-xl font-extrabold">Verwendete Klassifikationen</h2>
             <p className="mt-3 leading-relaxed text-ink/80">
               Für Deutschland-Auswertungen sind folgende Codes vorgesehen: ICD-10 R13 (Dysphagie)
-              sowie OPS 5-311 und 5-312 (Tracheotomie-Prozeduren). TODO: konkrete Abfragen und
-              Bezugsjahre nach fachlicher Prüfung dokumentieren.
+              sowie OPS 5-311 und 5-312 (Tracheotomie-Prozeduren). Konkrete Abfragen und Bezugsjahre
+              dokumentieren wir in Kürze (Coming Soon).
             </p>
           </div>
           <div>

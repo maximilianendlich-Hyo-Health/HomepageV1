@@ -5,7 +5,7 @@ import { CookieBanner } from "@/components/CookieBanner";
 import { CtaBand } from "@/components/CtaBand";
 import { Footer } from "@/components/Footer";
 import { AccessibilityPanel } from "@/components/AccessibilityPanel";
-import { site } from "@/lib/site";
+import { booking, site } from "@/lib/site";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
 
@@ -26,46 +26,106 @@ const quicksand = Quicksand({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Dysphagie. Spezialisiert.",
+    default: "Schlucktherapie Berlin: Dysphagie & Schluckstörung | HYO",
     template: "%s | HYO Berlin",
   },
   description:
-    "HYO ist eine spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Befunderhebung in Berlin-Friedrichshain. Eröffnung 2026.",
+    "Spezialisierte Logopädie bei Dysphagie und Schluckstörungen in Berlin-Friedrichshain: Schlucktherapie, Trachealkanülenmanagement, FEES. Termin online buchen.",
+  applicationName: "HYO",
+  keywords: [
+    "Dysphagie",
+    "Schluckstörung",
+    "Schlucktherapie",
+    "Dysphagietherapie",
+    "Trachealkanülenmanagement",
+    "Trachealkanüle",
+    "FEES",
+    "Logopädie Berlin",
+    "Logopädie Friedrichshain",
+    "Schluckstörung Berlin",
+  ],
+  authors: [{ name: site.legal.company }],
   openGraph: {
     type: "website",
     locale: "de_DE",
     siteName: "HYO",
-    title: "Dysphagie. Spezialisiert.",
+    title: "Schlucktherapie Berlin: Dysphagie & Schluckstörung | HYO",
     description:
-      "Spezialisierte ambulante Praxis für Dysphagie-Therapie, Trachealkanülen-Management und FEES-gestützte Befunderhebung in Berlin-Friedrichshain. Eröffnung 2026.",
-    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "HYO" }],
+      "Spezialisierte Logopädie bei Dysphagie und Schluckstörungen in Berlin-Friedrichshain: Schlucktherapie, Trachealkanülenmanagement, FEES. Termin online buchen.",
+    url: site.url,
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "HYO – Dysphagie. Spezialisiert." }],
   },
+  twitter: { card: "summary_large_image", images: ["/images/og-image.png"] },
   alternates: { canonical: "/" },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
 };
 
 /**
- * Strukturierte Daten: MedicalBusiness-Markup.
- * Juristische Endprüfung vor Livegang siehe README-Checkliste.
+ * Strukturierte Daten: Organisation, Praxis (MedicalClinic) und Website.
+ * Es werden nur belegte Angaben ausgezeichnet (keine Öffnungszeiten, Preise
+ * oder Bewertungen). Juristische Endprüfung vor Livegang siehe README-Checkliste.
  */
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "MedicalBusiness",
-  name: "HYO",
-  legalName: site.legal.company,
-  telephone: site.contact.phone,
-  email: site.contact.email,
-  sameAs: [site.linkedInCompany],
-  description:
-    "Spezialisierte ambulante Praxis für Dysphagie-Therapie und Trachealkanülen-Management in Berlin.",
-  url: site.url,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: site.address.street,
-    postalCode: site.address.zip,
-    addressLocality: site.address.city,
-    addressCountry: "DE",
-  },
+  "@graph": [
+    {
+      "@type": ["MedicalClinic", "MedicalBusiness"],
+      "@id": `${site.url}/#praxis`,
+      name: "HYO – Praxis für Dysphagie und Trachealkanülenmanagement",
+      alternateName: "HYO",
+      legalName: site.legal.company,
+      url: site.url,
+      logo: `${site.url}/images/hyo-logo-violet-on-mint.png`,
+      image: `${site.url}/images/og-image.png`,
+      telephone: site.contact.phone,
+      email: site.contact.email,
+      sameAs: [site.linkedInCompany, site.instagram],
+      description:
+        "Spezialisierte ambulante Praxis für Dysphagie-Therapie (Schlucktherapie), Trachealkanülenmanagement und FEES-gestützte Befunderhebung in Berlin-Friedrichshain.",
+      slogan: site.claim,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: site.address.street,
+        postalCode: site.address.zip,
+        addressLocality: site.address.city,
+        addressRegion: "Berlin",
+        addressCountry: "DE",
+      },
+      geo: { "@type": "GeoCoordinates", latitude: 52.52278, longitude: 13.4409 },
+      areaServed: { "@type": "City", name: "Berlin" },
+      availableLanguage: ["de", "en"],
+      knowsAbout: [
+        "Dysphagie",
+        "Schluckstörungen",
+        "Schlucktherapie",
+        "Trachealkanülenmanagement",
+        "FEES",
+        "Logopädie",
+      ],
+      availableService: [
+        { "@type": "MedicalTherapy", name: "Dysphagietherapie (Schlucktherapie)" },
+        { "@type": "MedicalTherapy", name: "Trachealkanülenmanagement" },
+        { "@type": "MedicalProcedure", name: "FEES-gestützte Befunderhebung" },
+      ],
+      potentialAction: {
+        "@type": "ReserveAction",
+        name: "Termin buchen",
+        target: booking.url,
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: "HYO",
+      inLanguage: "de",
+      publisher: { "@id": `${site.url}/#praxis` },
+    },
+  ],
 };
 
 /**

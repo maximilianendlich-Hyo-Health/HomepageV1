@@ -36,6 +36,8 @@ export function Arrow() {
   );
 }
 
+const isExternal = (href: string) => /^https?:\/\//.test(href);
+
 export function ButtonLink({
   href,
   variant = "primary",
@@ -47,8 +49,17 @@ export function ButtonLink({
   children: ReactNode;
   arrow?: boolean;
 }) {
+  const className = `group ${base} ${variants[variant]}`;
+  if (isExternal(href)) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+        {children}
+        {arrow && <Arrow />}
+      </a>
+    );
+  }
   return (
-    <Link href={href} className={`group ${base} ${variants[variant]}`}>
+    <Link href={href} className={className}>
       {children}
       {arrow && <Arrow />}
     </Link>
@@ -72,11 +83,18 @@ export function SubmitButton({
 }
 
 export function TextLink({ href, children }: { href: string; children: ReactNode }) {
+  const className =
+    "group inline-flex items-center gap-2 font-semibold text-violet-brand underline decoration-2 underline-offset-4 hover:text-violet-deep";
+  if (isExternal(href)) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
+        {children}
+        <Arrow />
+      </a>
+    );
+  }
   return (
-    <Link
-      href={href}
-      className="group inline-flex items-center gap-2 font-semibold text-violet-brand underline decoration-2 underline-offset-4 hover:text-violet-deep"
-    >
+    <Link href={href} className={className}>
       {children}
       <Arrow />
     </Link>

@@ -52,8 +52,15 @@ export const mainNav = [
   { label: "Kontakt", href: "/kontakt" },
 ] as const;
 
+/** Online-Terminbuchung (tinana.de): Link und Einbettung. */
+export const booking = {
+  url: "https://praxis.tinana.de/book/hyo",
+  embedUrl: "https://praxis.tinana.de/book/hyo/embed",
+} as const;
+
 export const cta = {
-  appointment: "Termin anfragen",
+  appointment: "Termin buchen",
+  appointmentBook: "Termin buchen",
   appointmentReserve: "Für Termin vormerken",
   cooperation: "Kooperation anfragen",
   handover: "Patientenübergabe besprechen",

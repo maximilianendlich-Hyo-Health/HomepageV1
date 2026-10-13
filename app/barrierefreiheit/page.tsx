@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Headline, Lead, Section } from "@/components/ui/Section";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Barrierefreiheit",
   description:
     "Erklärung zur Barrierefreiheit der HYO-Website und Übersicht der individuellen Anpassungsmöglichkeiten.",
-  alternates: { canonical: "/barrierefreiheit" },
-};
+  path: "/barrierefreiheit",
+});
 
 export default function BarrierefreiheitPage() {
   return (

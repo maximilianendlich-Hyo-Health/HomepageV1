@@ -6,13 +6,14 @@ import { GeoIcon } from "@/components/GeoShapes";
 import { ButtonLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import { mapsRouteUrl, site } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Standort",
+export const metadata: Metadata = pageMetadata({
+  title: "Anfahrt: Logopädie in Friedrichshain",
   description:
-    "HYO im MEDICUM Friedrichshain, Matthiasstraße 7, 10249 Berlin: Anreise, öffentliche Verkehrsmittel, Parken und Barrierefreiheit.",
-  alternates: { canonical: "/standort" },
-};
+    "HYO im MEDICUM Friedrichshain, Matthiasstraße 7, 10249 Berlin: Anfahrt mit Tram und Bus, Parken und Barrierefreiheit der Praxis für Schlucktherapie.",
+  path: "/standort",
+});
 
 const travelInfo = [
   {
@@ -23,8 +24,7 @@ const travelInfo = [
   {
     title: "Parkmöglichkeiten",
     icon: "ring" as const,
-    text: "Informationen zu Parkplätzen am MEDICUM Friedrichshain und im umliegenden Straßenraum ergänzen wir zur Eröffnung.",
-    todo: "TODO: Parkinformationen vor Livegang ergänzen",
+    text: "Hinweise zum Parken in der Umgebung geben wir Ihnen gern im persönlichen Gespräch. Wir empfehlen die Anreise mit Tram oder Bus.",
   },
   {
     title: "Barrierefreiheit",
@@ -35,7 +35,6 @@ const travelInfo = [
     title: "MEDICUM Friedrichshain",
     icon: "dot-ring" as const,
     text: "HYO wird Teil des MEDICUM Friedrichshain, eines Standorts mit medizinischen Praxen und Gesundheitsangeboten unter einem Dach.",
-    todo: "TODO: Informationen zum MEDICUM vor Livegang redaktionell prüfen",
   },
 ];
 
@@ -88,9 +87,6 @@ export default function StandortPage() {
                 <GeoIcon name={info.icon} />
                 <h2 className="mt-4 text-xl font-extrabold">{info.title}</h2>
                 <p className="mt-2 leading-relaxed text-ink/80">{info.text}</p>
-                {info.todo && (
-                  <p className="mt-3 text-sm font-semibold text-medium-grey">{info.todo}</p>
-                )}
               </article>
             </FadeIn>
           ))}
@@ -140,8 +136,8 @@ export default function StandortPage() {
           <Headline size="md">Öffnungszeiten</Headline>
           <p className="mt-4 max-w-2xl leading-relaxed text-ink/80">
             {/* TODO: Öffnungszeiten vor Livegang ergänzen oder Abschnitt entfernen */}
-            Die Öffnungszeiten veröffentlichen wir mit dem Start der Terminvergabe. HYO eröffnet
-            2026.
+            HYO nimmt den Betrieb am 01.11.2026 auf. Termine buchen Sie online – Zeiten
+            und Ablauf besprechen wir persönlich mit Ihnen.
           </p>
         </FadeIn>
       </Section>

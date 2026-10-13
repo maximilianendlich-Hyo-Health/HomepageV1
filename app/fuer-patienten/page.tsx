@@ -3,31 +3,32 @@ import { FadeIn } from "@/components/FadeIn";
 import { ButtonLink, TextLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import { GeoIcon } from "@/components/GeoShapes";
-import { cta } from "@/lib/site";
+import { booking, cta } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Patient:innen und Angehörige",
+export const metadata: Metadata = pageMetadata({
+  title: "Schluckstörung: Hilfe für Betroffene",
   description:
-    "Was Dysphagie bedeutet, wann spezialisierte Unterstützung sinnvoll ist und wie eine Terminanfrage bei HYO abläuft – verständlich erklärt für Betroffene und Angehörige.",
-  alternates: { canonical: "/fuer-patienten" },
-};
+    "Schluckstörung (Dysphagie) oder Trachealkanüle? So unterstützt HYO Betroffene und Angehörige in Berlin – Anzeichen, Ablauf und Online-Terminbuchung.",
+  path: "/fuer-patienten",
+});
 
 const steps = [
   {
-    title: "Anfrage senden",
-    text: "Sie hinterlegen Ihr Interesse an einem Termin über unser Formular – für sich selbst oder eine andere Person. Das ist unverbindlich und kostenlos.",
+    title: "Kurzes Telefonat buchen",
+    text: "Sie buchen online einen Termin für ein kurzes Telefonat – für sich selbst oder eine andere Person. Das ist unverbindlich.",
   },
   {
-    title: "Vormerkung",
-    text: "Wir nehmen Ihre Anfrage in unsere Vormerkliste auf. Eine Anfrage stellt noch keine Terminbestätigung dar und begründet keinen Behandlungsvertrag.",
+    title: "Persönlich besprechen",
+    text: "Im Gespräch besprechen wir alles persönlich mit Ihnen und suchen gemeinsam den passenden Therapeuten oder die passende Therapeutin aus.",
   },
   {
-    title: "Rückmeldung",
-    text: "Sobald die Terminvergabe beginnt, informieren wir Sie und klären gemeinsam die nächsten Schritte – etwa die ärztliche Verordnung.",
+    title: "Nächste Schritte klären",
+    text: "Wir klären gemeinsam, wie es weitergeht – etwa mit der ärztlichen Verordnung und den Unterlagen für den ersten Termin.",
   },
   {
     title: "Erster Termin",
-    text: "Nach der Eröffnung 2026 starten wir mit Anamnese und Befunderhebung und entwickeln daraus Ihren individuellen Behandlungsweg.",
+    text: "Wir starten mit Anamnese und Befunderhebung und entwickeln daraus Ihren individuellen Behandlungsweg.",
   },
 ];
 
@@ -56,7 +57,7 @@ export default function FuerPatientenPage() {
           </p>
         </Lead>
         <div className="mt-8">
-          <ButtonLink href="/#termin">{cta.appointment}</ButtonLink>
+          <ButtonLink href={booking.url}>{cta.appointment}</ButtonLink>
         </div>
       </Section>
 
@@ -132,7 +133,7 @@ export default function FuerPatientenPage() {
 
       <Section surface="mint-light">
         <FadeIn>
-          <Headline>So läuft Ihre Terminanfrage ab</Headline>
+          <Headline>So läuft Ihre Terminbuchung ab</Headline>
         </FadeIn>
         <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
@@ -147,8 +148,8 @@ export default function FuerPatientenPage() {
         </ol>
         <FadeIn className="mt-10">
           <p className="max-w-2xl leading-relaxed text-ink/80">
-            HYO eröffnet 2026 im MEDICUM Friedrichshain. Mit Ihrer Vormerkung sichern Sie sich
-            eine frühzeitige Information, sobald die Terminvergabe beginnt.
+            HYO nimmt den Betrieb am 01.11.2026 im MEDICUM Friedrichshain auf. Die
+            Terminbuchung ist ab sofort online möglich.
           </p>
         </FadeIn>
       </Section>
@@ -157,7 +158,7 @@ export default function FuerPatientenPage() {
         <FadeIn>
           <div className="grid gap-10 lg:grid-cols-2">
             <div>
-              <Headline>Welche Unterlagen später hilfreich sind</Headline>
+              <Headline>Welche Unterlagen hilfreich sind</Headline>
               <Lead>
                 <p>
                   Für den ersten Termin müssen Sie nichts vorbereiten. Wenn vorhanden, erleichtern
@@ -181,15 +182,15 @@ export default function FuerPatientenPage() {
 
       <Section surface="mint">
         <FadeIn>
-          <Headline>Interesse an einem Termin bei HYO?</Headline>
+          <Headline>Termin bei HYO buchen</Headline>
           <Lead>
             <p>
-              Hinterlegen Sie Ihr Interesse unverbindlich. Wir informieren Sie, sobald die
-              Terminvergabe beginnt.
+              Buchen Sie online ein kurzes Telefonat – wir besprechen alles persönlich mit
+              Ihnen und suchen den passenden Therapeuten aus.
             </p>
           </Lead>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <ButtonLink href="/#termin">{cta.appointment}</ButtonLink>
+            <ButtonLink href={booking.url}>{cta.appointment}</ButtonLink>
             <TextLink href="/wissen">{cta.knowledge}</TextLink>
           </div>
         </FadeIn>

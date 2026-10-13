@@ -13,6 +13,8 @@ export type ArticleSection = { heading: string; paragraphs: string[]; list?: str
 export type Article = {
   slug: string;
   title: string;
+  /** Optionaler, kürzerer Titel für Suchergebnisse (max. ca. 60 Zeichen inkl. Suffix). */
+  seoTitle?: string;
   summary: string;
   category: string;
   audiences: Audience[];
@@ -259,6 +261,7 @@ export const articles: Article[] = [
   {
     slug: "uebergang-klinik-ambulante-versorgung",
     title: "Wie gelingt der Übergang von der Klinik in die ambulante Versorgung?",
+    seoTitle: "Übergang Klinik – ambulante Versorgung",
     summary:
       "Nach der Entlassung entscheidet sich, ob eine begonnene Dysphagie-Behandlung nahtlos weitergeführt wird. Der Beitrag beschreibt, worauf es bei der Übergabe ankommt.",
     category: "Versorgung nach Entlassung",
@@ -293,7 +296,7 @@ export const articles: Article[] = [
       },
     ],
     professionalNote:
-      "Für Kliniken und Entlassmanagement: HYO nimmt bereits vor der Eröffnung 2026 Kooperationsanfragen entgegen, um Übergabeprozesse frühzeitig abzustimmen.",
+      "Für Kliniken und Entlassmanagement: HYO nimmt bereits jetzt Kooperationsanfragen entgegen, um Übergabeprozesse frühzeitig abzustimmen. Betriebsstart ist der 01.11.2026.",
     sources: [
       {
         label:
@@ -344,6 +347,7 @@ export const articles: Article[] = [
   {
     slug: "strukturierte-uebergabe-bei-dysphagie",
     title: "Strukturierte Übergabe bei Dysphagie: Was Zuweisende beitragen können",
+    seoTitle: "Strukturierte Übergabe bei Dysphagie",
     summary:
       "Welche Informationen eine ambulante Weiterbehandlung wirklich braucht – ein praxisorientierter Überblick für Kliniken, Entlassmanagement und ärztliche Praxen.",
     category: "Für Fachpersonen",

@@ -21,9 +21,9 @@ export const metadata: Metadata = {
  * sowie ggf. Datenschutzbeauftragte:n konkret benennen.
  */
 
-function Block({ title, children }: { title: string; children: React.ReactNode }) {
+function Block({ title, children, id }: { title: string; children: React.ReactNode; id?: string }) {
   return (
-    <section className="mt-10 first:mt-0">
+    <section id={id} className="mt-10 first:mt-0 scroll-mt-24">
       <h2 className="text-xl font-extrabold">{title}</h2>
       <div className="mt-3 max-w-2xl space-y-3 leading-relaxed text-ink/85">{children}</div>
     </section>
@@ -192,7 +192,7 @@ export default function DatenschutzPage() {
             </p>
           </Block>
 
-          <Block title="6. Externe Inhalte: Kartendarstellung (OpenStreetMap) und Fahrplanauskunft (VBB-Fahrinfo)">
+          <Block id="externe-inhalte" title="6. Externe Inhalte (OpenStreetMap, VBB-Fahrinfo) und Online-Terminbuchung (tinana)">
             <p>
               Auf der Standortseite sowie im Wissensbereich (Stroke-Unit-Karte) binden wir Karten des Dienstes OpenStreetMap ein
               (OpenStreetMap Foundation, St John&apos;s Innovation Centre, Cowley Road, Cambridge,
@@ -233,6 +233,30 @@ export default function DatenschutzPage() {
               übermittelt. Rechtsgrundlagen sind Ihre Einwilligung nach Art. 6 Abs. 1 lit. a
               DSGVO und § 25 Abs. 1 TDDDG; der Widerruf ist jederzeit über
               „Cookie-Einstellungen“ möglich.
+            </p>
+            <p>
+              <strong>Online-Terminbuchung (tinana):</strong> Auf der Startseite ist die
+              Online-Terminbuchung unseres Dienstleisters tinana (Domain praxis.tinana.de)
+              direkt eingebunden. Sie wird beim Aufruf der Seite ohne vorherige
+              Einwilligungsabfrage geladen; dabei wird Ihre IP-Adresse an die Server von tinana
+              übermittelt. Die Buchungsseite lädt zudem Schriftarten von Google
+              (fonts.googleapis.com, fonts.gstatic.com), wodurch Ihre IP-Adresse auch an Google
+              übermittelt wird. Wenn Sie über die Buchung einen Termin vereinbaren, verarbeitet
+              tinana die von Ihnen eingegebenen Daten (z.&nbsp;B. Name, Kontaktdaten,
+              gewünschter Termin) in unserem Auftrag, um die Buchung durchzuführen.
+              Rechtsgrundlagen sind Art. 6 Abs. 1 lit. b DSGVO (Terminvereinbarung,
+              vorvertragliche Maßnahmen) und Art. 6 Abs. 1 lit. f DSGVO (unser berechtigtes
+              Interesse an einer einfachen und effizienten Terminvergabe). Beim reinen Laden der
+              Buchungsseite werden keine Cookies gesetzt und keine Daten lokal in Ihrem Browser
+              gespeichert. Sie können die Buchungsseite auch direkt aufrufen:{" "}
+              <a
+                href="https://praxis.tinana.de/book/hyo"
+                rel="noopener noreferrer"
+                className="font-semibold text-violet-brand underline decoration-2 underline-offset-4"
+              >
+                praxis.tinana.de/book/hyo
+              </a>
+              .
             </p>
           </Block>
 
@@ -347,7 +371,7 @@ export default function DatenschutzPage() {
         <Headline size="md">Cookie-Einstellungen</Headline>
         <div className="mt-4 max-w-2xl space-y-3 leading-relaxed text-ink/85">
           <p>
-            Hier können Sie Ihre Einwilligung für externe Inhalte (OpenStreetMap-Karte)
+            Hier können Sie Ihre Einwilligung für externe Inhalte (OpenStreetMap-Karte, VBB-Fahrinfo)
             jederzeit erteilen, ändern oder widerrufen. Analyse-, Tracking- oder
             Marketing-Cookies setzen wir nicht ein. Ihre Barrierefreiheits-Einstellungen
             werden unabhängig davon lokal gespeichert und können über „Ansicht anpassen“

@@ -32,9 +32,14 @@
 
 html {
   scroll-behavior: smooth;
+  /* Kein seitliches Verschieben auf Touch-Geräten (clip statt hidden, damit sticky funktioniert) */
+  overflow-x: clip;
 }
 
 body {
+  overflow-x: clip;
+  /* Lange deutsche Wörter dürfen auf schmalen Displays umbrechen, statt das Layout zu weiten */
+  overflow-wrap: anywhere;
   background: var(--hyo-warm-white);
   color: var(--hyo-ink);
   font-feature-settings: "ss01" on;

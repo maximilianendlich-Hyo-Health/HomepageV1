@@ -6,7 +6,7 @@
  * Kategorien:
  * - necessary: technisch notwendig (Barrierefreiheits-Einstellungen,
  *   Speicherung der Einwilligung selbst) – immer aktiv, § 25 Abs. 2 Nr. 2 TDDDG.
- * - externalMedia: externe Inhalte (OpenStreetMap-Karte auf der Standortseite) –
+ * - externalMedia: externe Inhalte (OpenStreetMap-Karte, VBB-Fahrinfo) –
  *   einwilligungspflichtig, Art. 6 Abs. 1 lit. a DSGVO / § 25 Abs. 1 TDDDG.
  *
  * Analyse-, Tracking- oder Marketing-Cookies werden nicht eingesetzt.
@@ -22,7 +22,8 @@ export type ConsentSettings = {
 };
 
 export const CONSENT_KEY = "hyo-consent";
-export const CONSENT_VERSION = 1;
+/** Erhöhen, wenn sich der Umfang der Einwilligung ändert (Banner wird erneut angezeigt). */
+export const CONSENT_VERSION = 2;
 export const OPEN_CONSENT_EVENT = "hyo:open-consent";
 export const CONSENT_CHANGED_EVENT = "hyo:consent-changed";
 

@@ -28,7 +28,7 @@ export function AppointmentForm() {
         "terminanfrage",
         formData,
         appointmentSchema,
-        "Vielen Dank. Ihre Anfrage ist bei uns eingegangen. Wir informieren Sie, sobald die Terminvergabe bei HYO beginnt.",
+        "Vielen Dank. Ihre Anfrage ist bei uns eingegangen. Wir melden uns bei Ihnen.",
       );
       setState(result);
     });
@@ -108,7 +108,7 @@ export function AppointmentForm() {
       <SubmitButton pending={pending}>Für Termin vormerken</SubmitButton>
 
       <p className="text-sm leading-relaxed text-medium-grey">
-        HYO eröffnet 2026. Das Absenden stellt noch keine Terminbestätigung dar und begründet
+        Das Absenden stellt noch keine Terminbestätigung dar und begründet
         keinen Behandlungsvertrag. Dieses Formular ist nicht für akute medizinische Notfälle
         geeignet – wählen Sie im Notfall die 112.
       </p>

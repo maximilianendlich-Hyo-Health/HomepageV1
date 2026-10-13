@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ui/Buttons";
 import { Section } from "@/components/ui/Section";
 import { articles, getArticle } from "@/content/wissen";
-import { cta, site } from "@/lib/site";
+import { booking, cta, site } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
@@ -18,15 +19,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = getArticle(slug);
   if (!article) return {};
-  return {
-    title: article.title,
+  return pageMetadata({
+    title: article.seoTitle ?? article.title,
     description: article.summary,
-    alternates: { canonical: `/wissen/${article.slug}` },
-  };
+    path: `/wissen/${article.slug}`,
+    type: "article",
+  });
 }
 
 const ctaMap = {
-  termin: { label: cta.appointment, href: "/#termin" },
+  termin: { label: cta.appointment, href: booking.url },
   kooperation: { label: cta.cooperation, href: "/fuer-partner#kooperation-anfragen" },
   kontakt: { label: cta.contact, href: "/kontakt" },
 } as const;
@@ -48,10 +50,17 @@ export default async function ArtikelPage({ params }: { params: Promise<{ slug: 
         "@type": "Article",
         headline: article.title,
         description: article.summary,
+        datePublished: article.updated,
         dateModified: article.updated,
         inLanguage: "de",
-        author: { "@type": "Organization", name: "HYO" },
-        publisher: { "@type": "Organization", name: "HYO" },
+        image: `${site.url}/images/og-image.png`,
+        keywords: article.tags.join(", "),
+        author: { "@type": "Person", name: article.reviewedBy },
+        publisher: {
+          "@type": "Organization",
+          name: "HYO",
+          logo: { "@type": "ImageObject", url: `${site.url}/images/hyo-logo-violet-on-mint.png` },
+        },
         mainEntityOfPage: `${site.url}/wissen/${article.slug}`,
       },
       {

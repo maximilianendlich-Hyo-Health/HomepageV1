@@ -4,13 +4,14 @@ import { ApplicationForm } from "@/components/forms/ApplicationForm";
 import { ButtonLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import type { applicationPositions } from "@/lib/schemas";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Karriere",
+export const metadata: Metadata = pageMetadata({
+  title: "Karriere: Logopäd:in in Berlin",
   description:
-    "Offene Stellen bei HYO in Berlin: Logopäd:in mit Dysphagie-Spezialisierung, Praktikum und Werkstudium – mit Supervision ab Tag 1.",
-  alternates: { canonical: "/karriere" },
-};
+    "Stellenangebote bei HYO in Berlin: Logopäd:in mit Dysphagie-Spezialisierung, Praktikum und Werkstudium – mit Supervision ab Tag 1.",
+  path: "/karriere",
+});
 
 type Stelle = {
   id: string;

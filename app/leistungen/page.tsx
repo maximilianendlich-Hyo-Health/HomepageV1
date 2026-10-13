@@ -4,14 +4,15 @@ import { GeoIcon } from "@/components/GeoShapes";
 import { ButtonLink, TextLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section, type Surface } from "@/components/ui/Section";
 import { serviceAreas, type ServiceDetail } from "@/content/leistungen";
-import { cta } from "@/lib/site";
+import { booking, cta } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Leistungen",
+export const metadata: Metadata = pageMetadata({
+  title: "Schlucktherapie & Trachealkanülenmanagement",
   description:
-    "Dysphagietherapie, Trachealkanülen-Management, FEES-gestützte Befunderhebung und Versorgung nach der Klinikentlassung – das Leistungsspektrum von HYO in Berlin.",
-  alternates: { canonical: "/leistungen" },
-};
+    "Dysphagietherapie, Trachealkanülenmanagement und FEES-gestützte Befunderhebung – spezialisierte Logopädie in Berlin-Friedrichshain. Termin online buchen.",
+  path: "/leistungen",
+});
 
 function ServiceBlock({ service, surface }: { service: ServiceDetail; surface: Surface }) {
   return (
@@ -33,7 +34,7 @@ function ServiceBlock({ service, surface }: { service: ServiceDetail; surface: S
               </p>
             )}
             <div className="mt-8">
-              <ButtonLink href="/#termin">{cta.appointment}</ButtonLink>
+              <ButtonLink href={booking.url}>{cta.appointment}</ButtonLink>
             </div>
           </div>
           <div className="rounded-hyo bg-white/80 p-7">
@@ -80,7 +81,7 @@ export default function LeistungenPage() {
             Dysphagietherapie
           </ButtonLink>
           <ButtonLink href="#trachealkanuelenmanagement" variant="on-violet-outline">
-            Trachealkanülenmanagement
+            Trachealkanülen&shy;management
           </ButtonLink>
         </nav>
       </Section>
@@ -159,12 +160,12 @@ export default function LeistungenPage() {
           <Headline onViolet>Sie möchten klären, welches Angebot zu Ihrer Situation passt?</Headline>
           <Lead onViolet>
             <p>
-              Beschreiben Sie uns kurz Ihr Anliegen. Wir prüfen, ob und wie HYO Sie nach der
-              Eröffnung unterstützen kann.
+              Buchen Sie online ein kurzes Telefonat. Wir besprechen alles persönlich mit Ihnen
+              und prüfen, wie HYO Sie unterstützen kann.
             </p>
           </Lead>
           <div className="on-violet mt-8 flex flex-wrap gap-4">
-            <ButtonLink href="/#termin" variant="on-violet">
+            <ButtonLink href={booking.url} variant="on-violet">
               {cta.appointment}
             </ButtonLink>
             <ButtonLink href="/fuer-partner#kooperation-anfragen" variant="on-violet-outline">
@@ -172,7 +173,7 @@ export default function LeistungenPage() {
             </ButtonLink>
           </div>
           <p className="mt-5 text-sm text-mint-light">
-            HYO eröffnet 2026. Eine Anfrage stellt noch keine Terminbestätigung dar.
+            HYO nimmt den Betrieb am 01.11.2026 auf. Die Terminbuchung ist ab sofort online möglich.
           </p>
         </FadeIn>
       </Section>

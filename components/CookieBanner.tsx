@@ -41,7 +41,14 @@ export function CookieBanner() {
       setVisible(true);
     };
     const onChanged = () => {
-      setExternalMedia(loadConsent().externalMedia);
+      const current = loadConsent();
+      setExternalMedia(current.externalMedia);
+      // Entscheidung wurde getroffen (z. B. über „Buchungstool laden“) –
+      // Banner schließen, damit er den Inhalt nicht überdeckt.
+      if (current.decided) {
+        setVisible(false);
+        setDetails(false);
+      }
     };
     window.addEventListener(OPEN_CONSENT_EVENT, onOpen);
     window.addEventListener(CONSENT_CHANGED_EVENT, onChanged);
@@ -101,7 +108,8 @@ export function CookieBanner() {
               und diese Auswahl) erfolgen ausschließlich lokal in Ihrem Browser. Nur die Kartendarstellung und die
               VBB-Fahrplanauskunft auf der Standortseite laden externe Inhalte (OpenStreetMap
               bzw. VBB-Fahrinfo, letztere verwendet sogenannte Tracker) – dafür bitten wir um
-              Ihre Einwilligung. Details finden Sie in der{" "}
+              Ihre Einwilligung. Die Online-Terminbuchung auf der Startseite wird direkt
+              eingebunden (siehe Datenschutzerklärung, Ziffer 6). Details finden Sie in der{" "}
               <Link
                 href="/datenschutz"
                 className="font-semibold text-violet-brand underline decoration-2 underline-offset-4"

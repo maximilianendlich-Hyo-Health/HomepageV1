@@ -7,110 +7,231 @@ import { CarePathTiles, GeoIcon } from "@/components/GeoShapes";
 import { ButtonLink, TextLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import { AppointmentForm } from "@/components/forms/AppointmentForm";
+import { BookingEmbed } from "@/components/BookingEmbed";
+import { ConsentGatedMap } from "@/components/ConsentGatedMap";
 import { dysphagieArea, homeVisitTile, trachealArea } from "@/content/leistungen";
 import { articles } from "@/content/wissen";
-import { knownTeam } from "@/content/team";
-import { cta } from "@/lib/site";
+import { knownTeam, therapistTeam } from "@/content/team";
+import { booking, cta } from "@/lib/site";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: { absolute: "Dysphagie. Spezialisiert." },
+export const metadata: Metadata = pageMetadata({
+  title: "Schlucktherapie Berlin: Dysphagie & Schluckstörung | HYO",
   description:
-    "HYO ist eine spezialisierte ambulante Praxis für Dysphagie-Therapie (Schlucktherapie), Trachealkanülen-Management und FEES-gestützte Befunderhebung in Berlin-Friedrichshain. Für Patienten, Angehörige und Versorgungspartner. Eröffnung 2026.",
-  alternates: { canonical: "/" },
+    "Spezialisierte Logopädie bei Dysphagie und Schluckstörungen in Berlin-Friedrichshain: Schlucktherapie, Trachealkanülenmanagement, FEES. Termin online buchen.",
+  path: "/", absolute: true,
+});
+
+const signs = [
+  "Husten oder Räuspern beim Essen und Trinken",
+  "das Gefühl, dass Nahrung stecken bleibt",
+  "eine veränderte, feucht klingende Stimme nach dem Schlucken",
+  "verlängerte Mahlzeiten oder Vermeiden bestimmter Speisen",
+  "unbeabsichtigter Gewichtsverlust",
+  "wiederkehrende Atemwegsinfekte ohne klare Ursache",
+];
+
+const steps = [
+  {
+    title: "Kurzes Telefonat buchen",
+    text: "Buchen Sie online einen Termin für ein kurzes, kostenloses Telefonat (15 Minuten) – ganz einfach und unverbindlich.",
+  },
+  {
+    title: "Persönlich besprechen",
+    text: "Im Gespräch besprechen wir alles persönlich mit Ihnen – auch die ärztliche Verordnung – und suchen gemeinsam den passenden Therapeuten oder die passende Therapeutin für Sie aus.",
+  },
+  {
+    title: "Erstuntersuchung",
+    text: "Wir starten mit Anamnese und logopädischem Befund und verschaffen uns ein genaues Bild Ihrer Situation.",
+  },
+  {
+    title: "Behandlung und Begleitung",
+    text: "Daraus entwickeln wir mit Ihnen und Ihren Angehörigen einen individuellen Behandlungsweg und begleiten Sie Schritt für Schritt – in der Praxis und bei ärztlicher Verordnung auch in Partnereinrichtungen.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Was ist eine Schluckstörung (Dysphagie)?",
+    a: "Dysphagie ist der medizinische Begriff für eine Schluckstörung: Essen, Trinken oder das Schlucken von Speichel fällt schwer. Ursachen können unter anderem ein Schlaganfall, neurologische Erkrankungen, Intensivbehandlungen oder Operationen im Kopf-Hals-Bereich sein. Eine gezielte Abklärung und Schlucktherapie durch spezialisierte Logopädinnen und Logopäden schafft Klarheit.",
+  },
+  {
+    q: "Was bedeutet Trachealkanülenmanagement?",
+    a: "Trachealkanülenmanagement ist die strukturierte Begleitung von Menschen mit Trachealkanüle – von der sicheren Versorgung im Alltag über Cuff-Management und Entblockungsphasen bis zur möglichen Dekanülierung, wo dies medizinisch möglich ist.",
+  },
+  {
+    q: "Wann startet HYO und wie komme ich zu einem Termin?",
+    a: "HYO nimmt den Betrieb am 01.11.2026 auf. Sie können ab sofort online einen Termin für ein kurzes Telefonat buchen – direkt oben auf dieser Seite. In diesem Gespräch besprechen wir alles persönlich mit Ihnen und suchen den passenden Therapeuten oder die passende Therapeutin aus. Am 18.11.2026 findet unser Tag der offenen Praxis statt.",
+  },
+  {
+    q: "Wer kann zu HYO kommen?",
+    a: "Wir behandeln gesetzlich und privat Versicherte sowie Selbstzahler. Wir sprechen Deutsch und Englisch.",
+  },
+  {
+    q: "Brauche ich eine ärztliche Verordnung?",
+    a: "Für die Behandlung ist in der Regel eine ärztliche Verordnung erforderlich. Wie Sie dabei vorgehen und welche Unterlagen hilfreich sind, klären wir gemeinsam mit Ihnen.",
+  },
+  {
+    q: "Werden Angehörige einbezogen?",
+    a: "Ja. Wir beziehen Angehörige und Pflegepersonen aktiv in die Therapie ein – sprechen Sie uns gerne darauf an.",
+  },
+  {
+    q: "Behandelt HYO auch in Pflegeeinrichtungen?",
+    a: "Bei ärztlicher Verordnung behandeln wir auch direkt in unseren Partnereinrichtungen – etwa Senioren- und Pflegeeinrichtungen. Hausbesuche bieten wir nicht an.",
+  },
+  {
+    q: "Wo finde ich HYO in Berlin?",
+    a: "HYO befindet sich im MEDICUM Friedrichshain, Matthiasstraße 7, 10249 Berlin-Friedrichshain. Die Anfahrt, die nahegelegene Tram-Haltestelle und Hinweise zur Barrierefreiheit finden Sie auf der Standortseite.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
 };
+
+const landingTeam = [knownTeam[0], ...therapistTeam, knownTeam[1], knownTeam[2]];
 
 const featuredArticles = articles.filter((article) => article.featured).slice(0, 2);
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative flex min-h-[86svh] items-center overflow-hidden text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      {/* Hero mit Buchungstool rechts (Desktop); auf Mobilgeräten folgt das Tool unter dem Text */}
+      <section className="relative overflow-hidden px-5 text-white sm:px-8">
         <HeroVideo />
-        <div className="relative mx-auto w-full max-w-6xl px-5 py-24 sm:px-8">
-          <p className="mb-5 text-sm font-bold tracking-[0.16em] text-mint-brand uppercase">
-            Coming Soon · Berlin-Friedrichshain
-          </p>
-          <h1 className="max-w-3xl text-4xl leading-[1.08] font-extrabold tracking-tight text-balance sm:text-5xl lg:text-[3.6rem]">
-            Dysphagie. Spezialisiert.
-          </h1>
-          <p className="mt-6 max-w-2xl text-xl font-semibold text-mint-light">
-            Spezialisierte ambulante Therapie bei Schluckstörungen und Trachealkanülen – für
-            Patientinnen, Patienten und ihre Angehörigen in Berlin.
-          </p>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/90">
-            HYO eröffnet 2026 im MEDICUM Friedrichshain. Bereits jetzt können Sie Ihr Interesse
-            an einem Termin hinterlegen.
-          </p>
-          <p className="mt-7 text-sm font-semibold tracking-wide text-mint-light/85">
-            Gesetzlich und privat Versicherte · Selbstzahler ·{" "}
-            <span aria-hidden="true">🇩🇪</span> DE · <span aria-hidden="true">🇬🇧</span> EN
-          </p>
-          <div className="on-violet mt-4 flex flex-wrap items-center gap-4">
-            <ButtonLink href="#termin" variant="on-violet">
-              {cta.appointment}
-            </ButtonLink>
-            <ButtonLink href="/fuer-partner#kooperation-anfragen" variant="on-violet-outline">
-              {cta.cooperation}
-            </ButtonLink>
+        <div className="relative mx-auto grid w-full max-w-6xl items-center gap-10 py-16 md:py-20 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_460px]">
+          <div className="min-w-0">
+            <p className="mb-5 text-sm font-bold tracking-[0.16em] text-mint-brand uppercase">
+              Berlin-Friedrichshain · Start am 01.11.2026
+            </p>
+            <h1 className="text-4xl leading-[1.08] font-extrabold tracking-tight text-balance sm:text-5xl lg:text-[3.2rem] xl:text-[3.6rem]">
+              Dysphagie. Spezialisiert.
+            </h1>
+            <p className="mt-6 max-w-2xl text-xl font-semibold text-mint-light">
+              Spezialisierte ambulante Logopädie bei Schluckstörungen (Dysphagie) und
+              Trachealkanülen – für Patientinnen, Patienten und ihre Angehörigen in Berlin.
+            </p>
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/90">
+              HYO nimmt den Betrieb am 01.11.2026 im MEDICUM Friedrichshain auf. Buchen Sie
+              ab sofort online ein kurzes Telefonat – wir besprechen alles persönlich mit
+              Ihnen.
+            </p>
+            <p className="mt-5 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-hyo bg-white/15 px-4 py-2 text-base font-semibold">
+              <span className="rounded-full bg-mint-brand px-3 py-0.5 text-sm font-bold text-ink">
+                18.11.2026
+              </span>
+              Tag der offenen Praxis
+            </p>
+            <p className="mt-6 text-sm font-semibold tracking-wide text-mint-light/85">
+              Gesetzlich und privat Versicherte · Selbstzahler ·{" "}
+              <span aria-hidden="true">🇩🇪</span> DE · <span aria-hidden="true">🇬🇧</span> EN
+            </p>
+            <div className="on-violet mt-4 flex flex-wrap items-center gap-4">
+              <ButtonLink href={booking.url} variant="on-violet">
+                {cta.appointmentBook}
+              </ButtonLink>
+              <ButtonLink href="/fuer-partner#kooperation-anfragen" variant="on-violet-outline">
+                {cta.cooperation}
+              </ButtonLink>
+            </div>
+          </div>
+          <div id="termin" className="scroll-mt-24 min-w-0">
+            <BookingEmbed />
           </div>
         </div>
-        <a
-          href="#fuer-patienten"
-          aria-label="Nach unten scrollen"
-          className="scroll-hint absolute bottom-6 left-1/2 -translate-x-1/2 text-mint-light"
-        >
-          <svg viewBox="0 0 24 24" className="h-8 w-8" aria-hidden="true">
-            <path d="M6 10l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </a>
       </section>
 
-      {/* Für Patientinnen, Patienten und Angehörige */}
-      <Section id="fuer-patienten" surface="mint">
+      {/* Anzeichen: Wann sollten Sie sich melden? */}
+      <Section surface="white" id="anzeichen">
         <FadeIn>
-          <Eyebrow>Für Patientinnen, Patienten und Angehörige</Eyebrow>
-          <Headline size="xl">Schlucken ist Leben.</Headline>
+          <Eyebrow>Wann Sie sich melden sollten</Eyebrow>
+          <Headline>Schluckprobleme ernst nehmen.</Headline>
           <Lead>
             <p>
-              Eine Schluckstörung oder Trachealkanüle verändert den Alltag – beim Essen und
-              Trinken, beim Sprechen, in der Sicherheit und im Miteinander. Bei HYO finden Sie
-              und Ihre Angehörigen eine spezialisierte Anlaufstelle für Schlucktherapie, die zuhört, sorgfältig
-              untersucht und Sie Schritt für Schritt begleitet.
-            </p>
-            <p>
-              Wir erklären verständlich, was hinter den Beschwerden steckt, beziehen Angehörige
-              und Pflege aktiv ein und behandeln bei ärztlicher Verordnung auch direkt in
-              unseren Partnereinrichtungen – etwa Senioren- und Pflegeeinrichtungen.
+              Eine Schluckstörung zeigt sich nicht immer durch sichtbares Verschlucken.
+              Häufig berichtete Anzeichen sind unter anderem:
             </p>
           </Lead>
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <ButtonLink href="#termin">{cta.appointment}</ButtonLink>
-            <TextLink href="/fuer-patienten">Mehr für Patienten und Angehörige</TextLink>
-            <TextLink href="/wissen">Wissen verständlich erklärt</TextLink>
+          <ul className="mt-8 grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {signs.map((item) => (
+              <li key={item} className="flex items-start gap-3 rounded-hyo bg-soft-grey p-5">
+                <svg viewBox="0 0 20 20" aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-violet-brand">
+                  <path d="M3 10a7 7 0 0 1 14 0Z" fill="currentColor" />
+                </svg>
+                <span className="leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 max-w-3xl leading-relaxed text-ink/85">
+            Wenn Sie eines oder mehrere dieser Anzeichen bei sich oder einer angehörigen Person
+            beobachten, sprechen Sie Ihre behandelnde Ärztin oder Ihren behandelnden Arzt darauf
+            an. Eine gezielte Abklärung schafft Klarheit.
+          </p>
+          <div className="mt-7 flex flex-wrap items-center gap-5">
+            <ButtonLink href={booking.url}>{cta.appointmentBook}</ButtonLink>
+            <TextLink href="/wissen/was-ist-dysphagie">Was ist Dysphagie?</TextLink>
           </div>
         </FadeIn>
       </Section>
 
-      {/* Positionierung */}
-      <Section id="positionierung" surface="white">
+      {/* Ablauf für Patientinnen und Patienten */}
+      <Section surface="mint-light" id="ablauf">
         <FadeIn>
-          <Eyebrow>Positionierung</Eyebrow>
-          <Headline>Versorgung darf nicht an der Kliniktür enden.</Headline>
-          <Lead>
-            <p>
-              HYO ist eine spezialisierte ambulante Praxis für Dysphagie-Therapie und
-              Trachealkanülen-Management mit Standort in Berlin. Wir verstehen uns nicht als
-              klassische logopädische Praxis, sondern als aktiver Stakeholder im Versorgungssystem.
-            </p>
-            <p>
-              In enger Kooperation mit Kliniken, Entlassmanagement, Pflegeeinrichtungen und
-              behandelnden Ärztinnen und Ärzten schließen wir die Lücke zwischen stationärer
-              Behandlung und ambulanter Weiterversorgung.
-            </p>
-          </Lead>
-          <CarePathTiles />
+          <Eyebrow>So läuft es ab</Eyebrow>
+          <Headline>In vier Schritten zur Schlucktherapie in Berlin.</Headline>
         </FadeIn>
+        <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map((step, index) => (
+            <li key={step.title}>
+              <FadeIn className="h-full">
+                <div className="h-full rounded-hyo bg-white p-6">
+                  <p className="text-3xl font-extrabold text-violet-brand">{index + 1}</p>
+                  <h3 className="mt-3 text-lg font-extrabold">{step.title}</h3>
+                  <p className="mt-2 leading-relaxed text-ink/80">{step.text}</p>
+                </div>
+              </FadeIn>
+            </li>
+          ))}
+        </ol>
+        <FadeIn className="mt-10">
+          <TextLink href="/fuer-patienten">Alle Informationen für Patient:innen und Angehörige</TextLink>
+        </FadeIn>
+
+        {/* Wo Sie uns finden */}
+        <div id="standort" className="mt-20 scroll-mt-24 border-t border-ink/10 pt-16">
+          <div className="grid items-start gap-10 lg:grid-cols-[2fr_3fr]">
+            <FadeIn>
+              <Eyebrow>Standort</Eyebrow>
+              <h2 className="text-3xl leading-[1.12] font-extrabold sm:text-4xl">So finden Sie uns in Berlin-Friedrichshain.</h2>
+              <address className="mt-5 text-lg leading-relaxed text-ink/90 not-italic">
+                <strong>HYO im MEDICUM Friedrichshain</strong>
+                <br />
+                Matthiasstraße 7
+                <br />
+                10249 Berlin
+              </address>
+              <p className="mt-4 leading-relaxed text-ink/80">
+                Mit der Tram: Die Haltestelle „Klinikum im Friedrichshain“ wird von den Linien
+                M5, M6 und M8 bedient.
+              </p>
+              <div className="mt-7">
+                <ButtonLink href="/standort" variant="secondary">
+                  Anfahrt und Erreichbarkeit
+                </ButtonLink>
+              </div>
+            </FadeIn>
+            <FadeIn>
+              <ConsentGatedMap />
+            </FadeIn>
+          </div>
+        </div>
       </Section>
 
       {/* Leistungsspektrum: zwei Themenbereiche */}
@@ -129,14 +250,14 @@ export default function HomePage() {
           </Lead>
         </FadeIn>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
           {/* Themenbereich Dysphagietherapie */}
-          <FadeIn className="h-full">
+          <FadeIn className="h-full min-w-0">
             <div className="relative flex h-full flex-col overflow-hidden rounded-hyo bg-mint-brand p-8 sm:p-10">
               <svg viewBox="0 0 200 100" aria-hidden="true" className="absolute -top-1 right-0 h-28 w-56 opacity-60">
                 <path d="M200 100a100 100 0 0 0-200 0Z" fill="var(--hyo-light-mint)" transform="rotate(180 100 50)" />
               </svg>
-              <h3 className="relative text-2xl font-extrabold sm:text-3xl">Dysphagietherapie</h3>
+              <h3 className="relative text-2xl font-extrabold break-words hyphens-auto sm:text-3xl">Dysphagietherapie</h3>
               <p className="relative mt-3 font-semibold text-violet-deep">{dysphagieArea.subline}</p>
               <p className="relative mt-4 grow leading-relaxed text-ink/85">{dysphagieArea.intro}</p>
               <div className="relative mt-8">
@@ -146,13 +267,13 @@ export default function HomePage() {
           </FadeIn>
 
           {/* Themenbereich Tracheostoma */}
-          <FadeIn className="h-full">
+          <FadeIn className="h-full min-w-0">
             <div className="on-violet relative flex h-full flex-col overflow-hidden rounded-hyo bg-violet-brand p-8 text-white sm:p-10">
               <svg viewBox="0 0 160 160" aria-hidden="true" className="absolute -top-8 -right-8 h-40 w-40 opacity-50">
                 <circle cx="80" cy="80" r="72" fill="none" stroke="var(--hyo-mint)" strokeWidth="18" />
               </svg>
-              <h3 className="relative text-2xl font-extrabold sm:text-3xl">
-                Tracheostoma und Trachealkanülenmanagement
+              <h3 className="relative text-2xl font-extrabold break-words hyphens-auto sm:text-3xl">
+                Tracheostoma und Trachealkanülen&shy;management
               </h3>
               <p className="relative mt-3 font-semibold text-mint-brand">{trachealArea.subline}</p>
               <p className="relative mt-4 grow leading-relaxed text-mint-light">{trachealArea.homeIntro ?? trachealArea.intro}</p>
@@ -210,87 +331,66 @@ export default function HomePage() {
           ))}
         </div>
 
-        {/* Vor Ort in Partnereinrichtungen – gilt für beide Themengebiete */}
-        <FadeIn className="mt-8">
-          <div className="relative overflow-hidden rounded-hyo bg-mint-light p-8 sm:p-10">
-            <svg viewBox="0 0 200 100" aria-hidden="true" className="absolute right-0 bottom-0 h-24 w-48 opacity-60">
-              <path d="M200 100a100 100 0 0 0-200 0Z" fill="var(--hyo-mint)" />
-            </svg>
-            <p className="relative text-sm font-bold tracking-[0.14em] text-violet-brand uppercase">
-              {homeVisitTile.note}
-            </p>
-            <div className="relative mt-4 flex items-center gap-4">
-              <GeoIcon name={homeVisitTile.icon} className="h-10 w-10 shrink-0" />
-              <h4 className="text-xl font-extrabold sm:text-2xl">{homeVisitTile.title}</h4>
-            </div>
-            <p className="relative mt-4 font-bold text-violet-deep">{homeVisitTile.teaserHeadline}</p>
-            <p className="relative mt-1.5 max-w-3xl leading-relaxed text-ink/85">{homeVisitTile.teaser}</p>
-            <div className="relative mt-7 flex flex-wrap items-center gap-5">
-              <ButtonLink href="/fuer-partner#kooperation-anfragen">Kooperation anfragen</ButtonLink>
-              <TextLink href="/kontakt">Voraussetzungen besprechen</TextLink>
-            </div>
-          </div>
+      </Section>
+
+      {/* Team */}
+      <Section surface="mint-light" id="team">
+        <FadeIn>
+          <Eyebrow>Team</Eyebrow>
+          <Headline>Das Team, das Sie begleitet.</Headline>
+        </FadeIn>
+        <ul className="mt-10 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
+          {landingTeam.map((member) => (
+            <li key={member.name}>
+              <FadeIn>
+                <div className="text-center">
+                  <div className="relative mx-auto h-28 w-28 overflow-hidden rounded-full bg-white ring-4 ring-white">
+                    <Image
+                      src={member.photoBust}
+                      alt={member.photoAlt}
+                      fill
+                      sizes="112px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3 className="mt-4 font-extrabold">{member.name}</h3>
+                  <p className="mt-1 text-sm leading-snug text-ink/75">{member.role}</p>
+                </div>
+              </FadeIn>
+            </li>
+          ))}
+        </ul>
+        <FadeIn className="mt-10">
+          <ButtonLink href="/team" variant="secondary">
+            Team kennenlernen
+          </ButtonLink>
         </FadeIn>
       </Section>
 
-      {/* Abschnitt 5: Für Kliniken und Partner */}
-      <Section surface="white">
+      {/* Häufige Fragen */}
+      <Section surface="white" id="faq">
         <FadeIn>
-          <Eyebrow>Für Kliniken und Partner</Eyebrow>
-          <Headline>Ein verlässlicher Partner nach der Entlassung</Headline>
-          <Lead>
-            <p>
-              HYO unterstützt Kliniken, Entlassmanagement, Pflegeeinrichtungen und behandelnde
-              Ärztinnen und Ärzte bei der ambulanten Weiterversorgung – mit strukturierter
-              Übergabe, verlässlicher Kommunikation und spezialisierter Weiterbehandlung.
-            </p>
-          </Lead>
-          <ul className="mt-8 grid max-w-3xl gap-x-10 gap-y-2.5 sm:grid-cols-2">
-            {[
-              "Übernahme nach stationärer Behandlung",
-              "Strukturierte Übergabe relevanter Befunde",
-              "FEES-gestützte Befunderhebung",
-              "Rückmeldung zum Versorgungsverlauf",
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <svg viewBox="0 0 20 20" aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-violet-brand">
-                  <path d="M3 10a7 7 0 0 1 14 0Z" fill="currentColor" />
-                </svg>
-                <span className="leading-relaxed">{item}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8">
-            <ButtonLink href="/fuer-partner#kooperation-anfragen">{cta.cooperation}</ButtonLink>
-          </div>
+          <Eyebrow>Häufige Fragen</Eyebrow>
+          <Headline>Fragen zu Schlucktherapie und Terminbuchung.</Headline>
         </FadeIn>
-      </Section>
-
-      {/* Abschnitt 6: Eröffnung */}
-      <Section surface="violet">
-        <FadeIn>
-          <Eyebrow onViolet>Eröffnung</Eyebrow>
-          <Headline onViolet>HYO startet 2026 in Berlin.</Headline>
-          <Lead onViolet>
-            <p>
-              Aktuell entstehen die räumlichen, organisatorischen und medizinischen Strukturen für
-              unsere spezialisierte ambulante Versorgung. Bis zur Eröffnung informieren wir hier
-              über den weiteren Aufbau, die Terminvergabe und neue Kooperationsmöglichkeiten.
-            </p>
-          </Lead>
-          <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              "Aufbau der Praxis und Versorgungsstrukturen",
-              "Aufbau des spezialisierten Teams",
-              "Start der Terminvergabe und Patientenaufnahme",
-              "Eröffnung 2026",
-            ].map((step, index) => (
-              <li key={step} className="rounded-hyo bg-white/10 p-6">
-                <p className="text-3xl font-extrabold text-mint-brand">{index + 1}</p>
-                <p className="mt-3 font-semibold leading-snug text-white">{step}</p>
-              </li>
+        <FadeIn className="mt-10 max-w-3xl">
+          <div className="space-y-3">
+            {faqs.map((item) => (
+              <details key={item.q} className="group rounded-hyo bg-soft-grey p-5">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-extrabold">
+                  {item.q}
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 16 16"
+                    className="h-4 w-4 shrink-0 text-violet-brand transition-transform duration-200 group-open:rotate-180 motion-reduce:transition-none"
+                  >
+                    <path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </summary>
+                <p className="mt-3 leading-relaxed text-ink/85">{item.a}</p>
+              </details>
             ))}
-          </ol>
+          </div>
         </FadeIn>
       </Section>
 
@@ -327,55 +427,68 @@ export default function HomePage() {
         </FadeIn>
       </Section>
 
-      {/* Abschnitt 8: Team-Teaser */}
-      <Section surface="white">
+      {/* Für Kliniken und Partner (nachgeordnet) */}
+      <Section id="positionierung" surface="grey">
         <FadeIn>
-          <Eyebrow>Team</Eyebrow>
-          <Headline>Das Team hinter HYO</Headline>
+          <Eyebrow>Für Kliniken und Partner</Eyebrow>
+          <Headline>Versorgung darf nicht an der Kliniktür enden.</Headline>
+          <Lead>
+            <p>
+              In enger Kooperation mit Kliniken, Entlassmanagement, Pflegeeinrichtungen und
+              behandelnden Ärztinnen und Ärzten schließen wir die Lücke zwischen stationärer
+              Behandlung und ambulanter Weiterversorgung – mit strukturierter Übergabe,
+              verlässlicher Kommunikation und spezialisierter Weiterbehandlung.
+            </p>
+          </Lead>
+          <CarePathTiles />
+          <ul className="mt-10 grid max-w-3xl gap-x-10 gap-y-2.5 sm:grid-cols-2">
+            {[
+              "Übernahme nach stationärer Behandlung",
+              "Strukturierte Übergabe relevanter Befunde",
+              "FEES-gestützte Befunderhebung",
+              "Rückmeldung zum Versorgungsverlauf",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <svg viewBox="0 0 20 20" aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-violet-brand">
+                  <path d="M3 10a7 7 0 0 1 14 0Z" fill="currentColor" />
+                </svg>
+                <span className="leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
         </FadeIn>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {knownTeam.map((member) => (
-            <FadeIn key={member.name}>
-              <div className="h-full overflow-hidden rounded-hyo bg-soft-grey">
-                <div className="relative aspect-[4/5] overflow-hidden bg-mint-light">
-                  <Image
-                    src={member.photo}
-                    alt={member.photoAlt}
-                    fill
-                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-5">
-                  <h3 className="font-extrabold">{member.name}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-ink/75">{member.role}</p>
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-          <FadeIn>
-            <div className="flex h-full flex-col justify-between rounded-hyo bg-violet-light p-6">
-              <p className="text-lg font-extrabold">Weitere Expertise für das HYO-Team.</p>
-              <p className="mt-2 text-ink/80">Wird in Kürze bekannt gegeben.</p>
-            </div>
-          </FadeIn>
-        </div>
+        {/* Vor Ort in Partnereinrichtungen – gilt für beide Themengebiete */}
         <FadeIn className="mt-10">
-          <ButtonLink href="/team" variant="secondary">
-            Team kennenlernen
-          </ButtonLink>
+          <div className="relative overflow-hidden rounded-hyo bg-mint-light p-8 sm:p-10">
+            <svg viewBox="0 0 200 100" aria-hidden="true" className="absolute right-0 bottom-0 h-24 w-48 opacity-60">
+              <path d="M200 100a100 100 0 0 0-200 0Z" fill="var(--hyo-mint)" />
+            </svg>
+            <p className="relative text-sm font-bold tracking-[0.14em] text-violet-brand uppercase">
+              {homeVisitTile.note}
+            </p>
+            <div className="relative mt-4 flex items-center gap-4">
+              <GeoIcon name={homeVisitTile.icon} className="h-10 w-10 shrink-0" />
+              <h4 className="text-xl font-extrabold sm:text-2xl">{homeVisitTile.title}</h4>
+            </div>
+            <p className="relative mt-4 font-bold text-violet-deep">{homeVisitTile.teaserHeadline}</p>
+            <p className="relative mt-1.5 max-w-3xl leading-relaxed text-ink/85">{homeVisitTile.teaser}</p>
+            <div className="relative mt-7 flex flex-wrap items-center gap-5">
+              <ButtonLink href="/fuer-partner#kooperation-anfragen">Kooperation anfragen</ButtonLink>
+              <TextLink href="/kontakt">Voraussetzungen besprechen</TextLink>
+            </div>
+          </div>
         </FadeIn>
       </Section>
 
-      {/* Abschnitt 9: Terminanfrage */}
-      <Section surface="mint" id="termin">
+      {/* Abschnitt 9: persönliche Anfrage (Terminbuchung steht oben im Hero-Bereich) */}
+      <Section surface="mint" id="anfrage">
         <FadeIn>
-          <Eyebrow>Terminanfrage</Eyebrow>
-          <Headline>Interesse an einem Termin bei HYO?</Headline>
+          <Eyebrow>Anfrage</Eyebrow>
+          <Headline>Lieber persönlich anfragen?</Headline>
           <Lead>
             <p>
-              HYO eröffnet 2026. Bereits jetzt können Sie Ihr Interesse an einem Termin
-              unverbindlich hinterlegen. Wir informieren Sie, sobald die Terminvergabe beginnt.
+              Termine buchen Sie direkt online (siehe oben). Wenn Sie lieber eine Anfrage
+              hinterlegen möchten, nutzen Sie das Formular – wir melden uns bei Ihnen.
             </p>
           </Lead>
         </FadeIn>

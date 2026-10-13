@@ -53,10 +53,39 @@ export const knownTeam: TeamMember[] = [
   },
 ];
 
-/** Vier gleichwertige Platzhalterkarten – keine erfundenen Personen. */
-export const teamPlaceholders: TeamPlaceholder[] = [
-  { placeholder: true },
-  { placeholder: true },
-  { placeholder: true },
-  { placeholder: true },
+/** Therapeutisches Team (Reihenfolge wie auf der Team-Seite). */
+export const therapistTeam: TeamMember[] = [
+  {
+    name: "Maike Hawighorst",
+    role: "Logopädin",
+    photo: "/images/team/maike-hawighorst.jpg",
+    photoBust: "/images/team/maike-hawighorst-bust.jpg",
+    photoAlt: "Porträt von Maike Hawighorst",
+    bio: [
+      "Maike ist Logopädin und bringt mehr als sechs Jahre klinische Erfahrung mit.",
+      "Ihre Schwerpunkte sind Parkinson und Forschung.",
+    ],
+  },
+  {
+    name: "Christoph Voigt",
+    role: "Logopäde",
+    photo: "/images/team/christoph-voigt.jpg",
+    photoBust: "/images/team/christoph-voigt-bust.jpg",
+    photoAlt: "Porträt von Christoph Voigt",
+    bio: [
+      "Christoph ist Logopäde mit mehr als zehn Jahren Erfahrung in Klinik und ambulanter Praxis.",
+      "Seine Schwerpunkte liegen bei neurologischen und HNO-spezifischen Störungsbildern, der manuellen Schlucktherapie und kindlichen Schluckstörungen sowie der Dysphagietherapie.",
+    ],
+  },
+  {
+    name: "Evelyn Köppe",
+    role: "Logopädin",
+    photo: "/images/team/evelyn-koeppe.jpg",
+    photoBust: "/images/team/evelyn-koeppe-bust.jpg",
+    photoAlt: "Porträt von Evelyn Köppe",
+    bio: [
+      "Evelyn ist Logopädin mit rund 20 Jahren Berufserfahrung im klinischen und ambulanten Bereich.",
+      "Ihre Schwerpunkte liegen auf Neurologie und Geriatrie, insbesondere auf Fazialisparesen, sowie auf der manuellen Schlucktherapie.",
+    ],
+  },
 ];
