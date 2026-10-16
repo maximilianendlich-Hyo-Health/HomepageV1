@@ -52,10 +52,9 @@ export const mainNav = [
   { label: "Kontakt", href: "/kontakt" },
 ] as const;
 
-/** Online-Terminbuchung (tinana.de): Link und Einbettung. */
+/** Online-Terminbuchung über Doctolib (reiner Link, keine Einbettung). */
 export const booking = {
-  url: "https://praxis.tinana.de/book/hyo",
-  embedUrl: "https://praxis.tinana.de/book/hyo/embed",
+  url: "https://www.doctolib.de/praxis/berlin/hyo-health",
 } as const;
 
 export const cta = {

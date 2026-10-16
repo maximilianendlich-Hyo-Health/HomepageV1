@@ -108,8 +108,9 @@ export function CookieBanner() {
               und diese Auswahl) erfolgen ausschließlich lokal in Ihrem Browser. Nur die Kartendarstellung und die
               VBB-Fahrplanauskunft auf der Standortseite laden externe Inhalte (OpenStreetMap
               bzw. VBB-Fahrinfo, letztere verwendet sogenannte Tracker) – dafür bitten wir um
-              Ihre Einwilligung. Die Online-Terminbuchung auf der Startseite wird direkt
-              eingebunden (siehe Datenschutzerklärung, Ziffer 6). Details finden Sie in der{" "}
+              Ihre Einwilligung. Die Online-Terminbuchung ist ein reiner Link zu Doctolib und
+              wird erst nach Ihrem Klick geöffnet (siehe Datenschutzerklärung, Ziffer 6). Details
+              finden Sie in der{" "}
               <Link
                 href="/datenschutz"
                 className="font-semibold text-violet-brand underline decoration-2 underline-offset-4"

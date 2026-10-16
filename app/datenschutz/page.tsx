@@ -192,7 +192,7 @@ export default function DatenschutzPage() {
             </p>
           </Block>
 
-          <Block id="externe-inhalte" title="6. Externe Inhalte (OpenStreetMap, VBB-Fahrinfo) und Online-Terminbuchung (tinana)">
+          <Block id="externe-inhalte" title="6. Externe Inhalte (OpenStreetMap, VBB-Fahrinfo) und Online-Terminbuchung (Doctolib)">
             <p>
               Auf der Standortseite sowie im Wissensbereich (Stroke-Unit-Karte) binden wir Karten des Dienstes OpenStreetMap ein
               (OpenStreetMap Foundation, St John&apos;s Innovation Centre, Cowley Road, Cambridge,
@@ -235,26 +235,24 @@ export default function DatenschutzPage() {
               „Cookie-Einstellungen“ möglich.
             </p>
             <p>
-              <strong>Online-Terminbuchung (tinana):</strong> Auf der Startseite ist die
-              Online-Terminbuchung unseres Dienstleisters tinana (Domain praxis.tinana.de)
-              direkt eingebunden. Sie wird beim Aufruf der Seite ohne vorherige
-              Einwilligungsabfrage geladen; dabei wird Ihre IP-Adresse an die Server von tinana
-              übermittelt. Die Buchungsseite lädt zudem Schriftarten von Google
-              (fonts.googleapis.com, fonts.gstatic.com), wodurch Ihre IP-Adresse auch an Google
-              übermittelt wird. Wenn Sie über die Buchung einen Termin vereinbaren, verarbeitet
-              tinana die von Ihnen eingegebenen Daten (z.&nbsp;B. Name, Kontaktdaten,
-              gewünschter Termin) in unserem Auftrag, um die Buchung durchzuführen.
-              Rechtsgrundlagen sind Art. 6 Abs. 1 lit. b DSGVO (Terminvereinbarung,
-              vorvertragliche Maßnahmen) und Art. 6 Abs. 1 lit. f DSGVO (unser berechtigtes
-              Interesse an einer einfachen und effizienten Terminvergabe). Beim reinen Laden der
-              Buchungsseite werden keine Cookies gesetzt und keine Daten lokal in Ihrem Browser
-              gespeichert. Sie können die Buchungsseite auch direkt aufrufen:{" "}
+              <strong>Online-Terminbuchung (Doctolib):</strong> Die Buchung von Terminen ist über
+              die Plattform Doctolib (Doctolib GmbH, Berlin) möglich. Auf unserer Website ist die
+              Terminbuchung nicht eingebunden, sondern nur verlinkt: Es werden beim Aufruf
+              unserer Seiten keine Inhalte von Doctolib geladen und keine Daten an Doctolib
+              übermittelt. Erst wenn Sie auf eine Schaltfläche „Termin buchen“ klicken, verlassen
+              Sie unsere Website und werden zur Buchungsseite von Doctolib weitergeleitet (neues
+              Fenster). Für die dortige Datenverarbeitung gelten die Datenschutzhinweise von
+              Doctolib. Wenn Sie über Doctolib einen Termin vereinbaren, werden die von Ihnen
+              eingegebenen Daten (z.&nbsp;B. Name, Kontaktdaten, gewünschter Termin) zur
+              Durchführung der Buchung verarbeitet; Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO
+              (Terminvereinbarung, vorvertragliche Maßnahmen). Die Buchungsseite erreichen Sie
+              auch direkt:{" "}
               <a
-                href="https://praxis.tinana.de/book/hyo"
+                href="https://www.doctolib.de/praxis/berlin/hyo-health"
                 rel="noopener noreferrer"
                 className="font-semibold text-violet-brand underline decoration-2 underline-offset-4"
               >
-                praxis.tinana.de/book/hyo
+                doctolib.de/praxis/berlin/hyo-health
               </a>
               .
             </p>

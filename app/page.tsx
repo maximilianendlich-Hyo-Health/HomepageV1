@@ -7,7 +7,7 @@ import { CarePathTiles, GeoIcon } from "@/components/GeoShapes";
 import { ButtonLink, TextLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import { AppointmentForm } from "@/components/forms/AppointmentForm";
-import { BookingEmbed } from "@/components/BookingEmbed";
+import { BookingCard } from "@/components/BookingCard";
 import { ConsentGatedMap } from "@/components/ConsentGatedMap";
 import { dysphagieArea, homeVisitTile, trachealArea } from "@/content/leistungen";
 import { articles } from "@/content/wissen";
@@ -34,7 +34,7 @@ const signs = [
 const steps = [
   {
     title: "Kurzes Telefonat buchen",
-    text: "Buchen Sie online einen Termin für ein kurzes, kostenloses Telefonat (15 Minuten) – ganz einfach und unverbindlich.",
+    text: "Buchen Sie online einen Termin für ein kurzes Telefonat – ganz einfach und unverbindlich.",
   },
   {
     title: "Persönlich besprechen",
@@ -61,7 +61,7 @@ const faqs = [
   },
   {
     q: "Wann startet HYO und wie komme ich zu einem Termin?",
-    a: "HYO nimmt den Betrieb am 01.11.2026 auf. Sie können ab sofort online einen Termin für ein kurzes Telefonat buchen – direkt oben auf dieser Seite. In diesem Gespräch besprechen wir alles persönlich mit Ihnen und suchen den passenden Therapeuten oder die passende Therapeutin aus. Am 18.11.2026 findet unser Tag der offenen Praxis statt.",
+    a: "HYO nimmt den Betrieb am 01.11.2026 auf. Sie können ab sofort online über unsere Terminbuchung einen Termin für ein kurzes Telefonat buchen. In diesem Gespräch besprechen wir alles persönlich mit Ihnen und suchen den passenden Therapeuten oder die passende Therapeutin aus. Am 18.11.2026 findet unser Tag der offenen Praxis statt.",
   },
   {
     q: "Wer kann zu HYO kommen?",
@@ -103,8 +103,8 @@ export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      {/* Hero mit Buchungstool rechts (Desktop); auf Mobilgeräten folgt das Tool unter dem Text */}
-      <section className="relative overflow-hidden px-5 text-white sm:px-8">
+      {/* Hero */}
+      <section className="relative flex min-h-[520px] items-center overflow-hidden px-5 text-white sm:px-8 lg:min-h-[600px]">
         <HeroVideo />
         <div className="relative mx-auto grid w-full max-w-6xl items-center gap-10 py-16 md:py-20 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_460px]">
           <div className="min-w-0">
@@ -134,17 +134,12 @@ export default function HomePage() {
               <span aria-hidden="true">🇩🇪</span> DE · <span aria-hidden="true">🇬🇧</span> EN
             </p>
             <div className="on-violet mt-4 flex flex-wrap items-center gap-4">
-              <ButtonLink href={booking.url} variant="on-violet">
-                {cta.appointmentBook}
-              </ButtonLink>
               <ButtonLink href="/fuer-partner#kooperation-anfragen" variant="on-violet-outline">
                 {cta.cooperation}
               </ButtonLink>
             </div>
           </div>
-          <div id="termin" className="scroll-mt-24 min-w-0">
-            <BookingEmbed />
-          </div>
+          <BookingCard />
         </div>
       </section>
 
