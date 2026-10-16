@@ -3,19 +3,20 @@
 **HYO. Eine neue Ebene in der Versorgung von Menschen mit Schluckstörungen.**
 
 Website der spezialisierten ambulanten Praxis für Dysphagie-Therapie und
-Trachealkanülen-Management in Berlin-Friedrichshain. Eröffnung 2026.
+Trachealkanülen-Management in Berlin-Friedrichshain (MEDICUM Friedrichshain,
+Matthiasstraße 7). Live unter https://hyo-health.de, Betriebsstart am 01.11.2026.
 
-Die Seite funktioniert zunächst als professionelle Coming-Soon-Präsenz und enthält
-bereits die vollständige spätere Informationsarchitektur: Leistungen, Bereiche für
-Patienten und Partner, Wissensbereich mit Dashboard, Team, Karriere, Standort,
-Kontakt sowie Termin-, Kooperations- und Bewerbungsformulare.
+Die Seite besteht aus einer patientenorientierten Startseite (Landingpage mit
+Terminbuchung) sowie Leistungen, Bereichen für Patienten und Partner,
+Wissensbereich mit Dashboard, Team, Karriere, Standort, Kontakt und Kooperations-
+und Bewerbungsformularen.
 
 ## Technischer Stack
 
 - Next.js (App Router) + TypeScript
 - Tailwind CSS 4 mit zentralen HYO-Design-Tokens (`app/globals.css`)
 - Netlify Forms für die Formularverarbeitung, Zod für die Validierung
-- Manrope über `next/font` (wird zur Build-Zeit geladen und ausschließlich von der
+- Quicksand über `next/font` (wird zur Build-Zeit geladen und ausschließlich von der
   eigenen Domain ausgeliefert – keine Anfragen an Google zur Laufzeit)
 - ESLint, GitHub Actions CI
 
@@ -39,9 +40,9 @@ components/ui/        Buttons, Section-/Typografie-Bausteine
 components/forms/     Termin-, Kooperations- und Bewerbungsformular
 components/dashboard/ Wissensdashboard (Client-Komponente)
 content/              Inhalte: Leistungen, Wissen, Team, Dashboard-Daten
-lib/                  Site-Konstanten, Zod-Schemas, Server Actions, Formularadapter
+lib/                  Site-Konstanten, SEO-Helfer, Consent, Zod-Schemas, Formularadapter
 public/images/        Logo-Varianten, Teamfotos, OG-Bild, Hero-Poster
-public/video/         Erklärvideo Schluckvorgang (Hero-Video optional)
+public/video/         Erklärvideo Schluckvorgang (Hero-Video optional, bei Bedarf anlegen)
 ```
 
 ## Umgebungsvariablen
@@ -72,6 +73,35 @@ Hinweis: Lokal (ohne Netlify) werden POSTs an `/__forms.html` nicht
 angenommen – der Versand funktioniert erst im Netlify-Deploy bzw. mit
 `netlify dev`. Im kostenlosen Netlify-Tarif sind Submissions limitiert.
 
+## Terminbuchung
+
+Die Online-Terminbuchung läuft über **Doctolib**
+(`https://www.doctolib.de/praxis/berlin/hyo-health`). Sie ist nur verlinkt, nicht
+eingebunden: Alle „Termin buchen“-Buttons öffnen die Doctolib-Seite in einem neuen
+Fenster, auf der Website werden keine Inhalte von Doctolib geladen. Die URL steht
+zentral in `lib/site.ts` (`booking.url`); die Buchungs-Kachel im Hero ist
+`components/BookingCard.tsx`. Die Datenschutzerklärung (Ziffer 6) beschreibt die
+Verlinkung.
+
+## Datenschutz und Consent
+
+- Keine Analyse-, Tracking- oder Marketing-Cookies.
+- Externe Inhalte (OpenStreetMap-Karte, VBB-Fahrplanauskunft) werden erst nach
+  Einwilligung geladen (Cookie-Banner bzw. Zwei-Klick-Lösung,
+  `lib/consent.ts`, `components/CookieBanner.tsx`, `components/ConsentGated*.tsx`).
+  Ändert sich der Umfang der Einwilligung, `CONSENT_VERSION` in `lib/consent.ts`
+  erhöhen.
+- Rechtstexte: `app/impressum/page.tsx`, `app/datenschutz/page.tsx`.
+
+## SEO
+
+Seiten-Metadaten (Titel, Beschreibung, Canonical, Open Graph, Twitter-Card) werden
+über `pageMetadata()` in `lib/seo.ts` gesetzt. Strukturierte Daten
+(MedicalClinic, WebSite) liegen im Root-Layout, FAQ-Markup auf der Startseite,
+Artikel- und Breadcrumb-Markup auf den Wissensartikeln. Sitemap und `robots.txt`
+werden aus `app/sitemap.ts` und `app/robots.ts` erzeugt; neue Seiten dort in
+`staticRoutes` ergänzen.
+
 ## Barrierefreiheit
 
 - Orientierung an WCAG 2.2 AA, sichtbare Fokuszustände, Skip-Link,
@@ -86,27 +116,21 @@ Artikel liegen als typisierte Inhalte in `content/wissen.ts` und können später
 ohne Umbau aus einem CMS (Sanity, Payload, Contentful) oder MDX geladen werden.
 Das Dashboard (`content/dashboard.ts`) trennt Daten strikt von der UI und folgt
 den Daten- und Quellenregeln des Briefings: keine erfundenen Zahlen, Spannweiten
-statt Scheingenauigkeit, Evidenzkennzeichnung, Limitationen und `TODO`-Markierung
-für alle fachlich noch nicht geprüften Kennzahlen.
+statt Scheingenauigkeit, Evidenzkennzeichnung und Limitationen.
 
 ## Medien austauschen
 
 - **Logo:** `public/images/hyo-logo-violet-on-mint.png` (Original) und daraus
-  freigestellt `hyo-logo-violet-transparent.png`. TODO: mintfarbene Variante für
-  violette Flächen ergänzen und in `components/Logo.tsx` einbinden.
+  abgeleitet `hyo-logo-violet-transparent.png` (Header, helle Flächen) sowie
+  `hyo-logo-mint-transparent.png` (Footer, violette Flächen). Die Auswahl erfolgt
+  in `components/Logo.tsx`.
 - **Teamfotos:** `public/images/team/*.jpg` (4:5, 720×900). Beim Austausch gleiche
   Dateinamen verwenden oder Pfade in `content/team.ts` anpassen.
 - **Hero-Video:** Dateien nach `public/video/` legen:
   `hero.webm`, `hero.mp4`, `hero-mobile.mp4`; Posterbild
   `public/images/hero-poster.jpg` ersetzen. Bis dahin zeigt der Hero die
   geometrische Markenfläche.
-- **Kontaktdaten:** zentral in `lib/site.ts` (`TODO`-Markierungen).
-
-Alle offenen Punkte sind im Code einheitlich mit `TODO` markiert:
-
-```bash
-grep -rn "TODO" app components content lib
-```
+- **Kontaktdaten, Adresse, Buchungs-Link:** zentral in `lib/site.ts`.
 
 ## GitHub-Workflow
 
@@ -144,7 +168,7 @@ Next.js-Runtime von Netlify inkl. SSR, Server Actions und Bild-Optimierung).
    nutzen
 6. HTTPS-Zertifikat (Let's Encrypt) wird von Netlify automatisch ausgestellt
 7. `NEXT_PUBLIC_SITE_URL` auf die finale Domain setzen und neu deployen
-8. Abschließende Funktionsprüfung (siehe Checkliste)
+8. Abschließende Funktionsprüfung der zentralen Seiten und Formulare
 
 Deploy Previews: Netlify baut automatisch für jeden Pull Request eine
 Vorschau-Umgebung; ein Merge in `main` veröffentlicht die Production-Version.
@@ -152,48 +176,6 @@ Vorschau-Umgebung; ein Merge in `main` veröffentlicht die Production-Version.
 Die Architektur bleibt portabel: Es werden keine anbieterspezifischen APIs
 genutzt.
 
-## Livegang-Checkliste
-
-### Inhalte
-- [ ] Finale Teamrollen und Berufsbezeichnungen geprüft und ergänzt
-- [ ] Teamtexte freigegeben
-- [ ] E-Mail-Adresse und Telefonnummer ergänzt (`lib/site.ts`, Kontaktseite)
-- [ ] Öffnungszeiten ergänzt oder Abschnitt entfernt (Standortseite)
-- [ ] Rechtliche Firmierung geprüft (Footer, Impressum)
-- [ ] Leistungen fachlich geprüft
-- [ ] Eröffnungsdatum geprüft
-- [ ] Alle `TODO`-Platzhalter identifiziert und ersetzt
-
-### Medien
-- [ ] Finale Logo-Varianten eingebunden (inkl. Mint-Variante für violette Flächen)
-- [ ] Hero-Video komprimiert bereitgestellt, Posterbild ersetzt
-- [ ] Teamfotos freigegeben, Bildrechte dokumentiert
-- [ ] Alt-Texte geprüft
-
-### Recht und Datenschutz
-- [ ] Impressum vollständig und geprüft
-- [ ] Datenschutzerklärung erstellt und geprüft
-- [ ] Cookie-/Consent-Lösung geprüft (aktuell keine Tracking-Cookies)
-- [ ] Formulare datenschutzrechtlich geprüft, AV-Verträge geschlossen
-- [ ] Kartendienst-Einbettung (OpenStreetMap-iframe) datenschutzrechtlich geprüft
-- [ ] Medizinischer Informationshinweis vorhanden (Wissensbereich)
-
-### Technik
-- [ ] `npm run build` ohne TypeScript-/ESLint-Fehler
-- [ ] Keine defekten Links, 404-Seite vorhanden
-- [ ] Formulare im Netlify-Deploy getestet, Submissions sichtbar, Benachrichtigung an corinna.schwarz@hyo-health.de aktiv
-- [ ] Mobile Darstellung und Tastaturnavigation getestet
-- [ ] Kontraste geprüft (WCAG 2.2 AA)
-- [ ] Sitemap (`/sitemap.xml`) und `robots.txt` erreichbar
-- [ ] Favicon und OG-Bild geprüft
-- [ ] Domain verbunden, HTTPS aktiv
-
-### Veröffentlichung
-- [ ] Finales Preview abgenommen
-- [ ] Merge in `main`, Production-Deployment kontrolliert
-- [ ] Zentrale Seiten manuell geprüft
-- [ ] Monitoring nach Livegang
-
 ## Lizenz
 
-TODO: Lizenz festlegen. Bis dahin: alle Rechte vorbehalten.
+Alle Rechte vorbehalten, HYO Health GmbH.
