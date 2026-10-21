@@ -90,27 +90,21 @@ export function CookieBanner() {
       aria-labelledby="consent-heading"
       className="fixed inset-x-0 bottom-0 z-[80] border-t-4 border-violet-brand bg-white shadow-[0_-8px_30px_rgba(32,32,42,0.15)]"
     >
-      <div className="mx-auto w-full max-w-6xl px-5 py-6 sm:px-8">
+      <div className="mx-auto w-full max-w-6xl px-5 py-4 sm:px-8 sm:py-6">
         <h2
           id="consent-heading"
           ref={headingRef}
           tabIndex={-1}
-          className="text-lg font-extrabold outline-none"
+          className="text-base font-extrabold outline-none sm:text-lg"
         >
           Datenschutz-Einstellungen
         </h2>
 
         {!details ? (
           <>
-            <p className="mt-2 max-w-3xl text-[0.95rem] leading-relaxed text-ink/85">
-              Diese Website verwendet keine Analyse-, Tracking- oder Marketing-Cookies.
-              Technisch notwendige Speicherungen (z.&nbsp;B. Ihre Barrierefreiheits-Einstellungen
-              und diese Auswahl) erfolgen ausschließlich lokal in Ihrem Browser. Nur die Kartendarstellung und die
-              VBB-Fahrplanauskunft auf der Standortseite laden externe Inhalte (OpenStreetMap
-              bzw. VBB-Fahrinfo, letztere verwendet sogenannte Tracker) – dafür bitten wir um
-              Ihre Einwilligung. Die Online-Terminbuchung ist ein reiner Link zu Doctolib und
-              wird erst nach Ihrem Klick geöffnet (siehe Datenschutzerklärung, Ziffer 6). Details
-              finden Sie in der{" "}
+            <p className="mt-1 max-w-3xl text-sm leading-relaxed text-ink/85">
+              Wir setzen keine Analyse-, Tracking- oder Marketing-Cookies ein. Externe Inhalte
+              (OpenStreetMap, VBB-Fahrinfo) laden wir nur mit Ihrer Einwilligung. Mehr in der{" "}
               <Link
                 href="/datenschutz"
                 className="font-semibold text-violet-brand underline decoration-2 underline-offset-4"
@@ -126,7 +120,7 @@ export function CookieBanner() {
               </Link>
               .
             </p>
-            <div className="mt-5 flex flex-wrap items-center gap-3">
+            <div className="mt-3 flex flex-wrap items-center gap-2 sm:gap-3">
               <button
                 type="button"
                 onClick={acceptAll}
