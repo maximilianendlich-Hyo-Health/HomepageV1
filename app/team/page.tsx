@@ -4,7 +4,7 @@ import { FadeIn } from "@/components/FadeIn";
 import { HyoidGraphic } from "@/components/GeoShapes";
 import { ButtonLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
-import { knownTeam, therapistTeam } from "@/content/team";
+import { knownTeam, therapistTeam, type TeamMember } from "@/content/team";
 import { cta } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
@@ -14,6 +14,47 @@ export const metadata: Metadata = pageMetadata({
     "Das Team von HYO: Logopädinnen und Logopäden sowie Gründerteam, spezialisiert auf Dysphagie und Trachealkanülenmanagement in Berlin-Friedrichshain.",
   path: "/team",
 });
+
+/** Corinna Schwarz (fachliche Leitung) führt das therapeutische Team an und gehört zum Gründungsteam. */
+const leadTherapist = knownTeam.filter((member) => member.name === "Corinna Schwarz");
+const founders = knownTeam; // Corinna erscheint bewusst in beiden Bereichen
+const therapeuticTeam: TeamMember[] = [...leadTherapist, ...therapistTeam];
+
+function MemberCard({
+  member,
+  tone,
+}: {
+  member: TeamMember;
+  tone: "white" | "grey";
+}) {
+  return (
+    <article
+      className={`flex h-full flex-col rounded-hyo p-6 pt-8 ${tone === "white" ? "bg-white" : "bg-soft-grey"}`}
+    >
+      <div className="relative mx-auto h-44 w-44 overflow-hidden rounded-full bg-mint-light ring-4 ring-mint-brand">
+        <Image src={member.photoBust} alt={member.photoAlt} fill sizes="176px" className="object-cover" />
+      </div>
+      <div className="mt-6 flex grow flex-col text-center">
+        <h3 className="text-xl font-extrabold">{member.name}</h3>
+        <p className="mt-1 text-sm font-bold text-violet-brand">{member.role}</p>
+        <div className="mt-4 grow space-y-3 text-left text-[0.95rem] leading-relaxed text-ink/80">
+          {member.bio.map((paragraph) => (
+            <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+          ))}
+        </div>
+        {member.linkedIn && (
+          <a
+            href={member.linkedIn}
+            rel="noopener noreferrer"
+            className="mx-auto mt-5 font-semibold text-violet-brand underline decoration-2 underline-offset-4 hover:text-violet-deep"
+          >
+            LinkedIn-Profil
+          </a>
+        )}
+      </div>
+    </article>
+  );
+}
 
 export default function TeamPage() {
   return (
@@ -31,46 +72,39 @@ export default function TeamPage() {
         </Lead>
       </Section>
 
+      {/* Therapeutisches Team inkl. fachlicher Leitung */}
       <Section surface="white">
         <FadeIn>
-          <Eyebrow>Gründungsteam</Eyebrow>
-          <Headline>Die Gründerinnen und Gründer von HYO</Headline>
+          <Eyebrow>Therapie</Eyebrow>
+          <Headline>Therapeutisches Team</Headline>
+          <Lead>
+            <p>
+              Spezialisierte Dysphagie-Therapie und Trachealkanülen-Management – von der
+              fachlichen Leitung bis zu den behandelnden Logopädinnen und Logopäden.
+            </p>
+          </Lead>
         </FadeIn>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {knownTeam.map((member) => (
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {therapeuticTeam.map((member) => (
             <FadeIn key={member.name}>
-              <article className="flex h-full flex-col rounded-hyo bg-soft-grey p-6 pt-8">
-                <div className="relative mx-auto h-44 w-44 overflow-hidden rounded-full bg-mint-light ring-4 ring-mint-brand">
-                  <Image
-                    src={member.photoBust}
-                    alt={member.photoAlt}
-                    fill
-                    sizes="176px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="mt-6 flex grow flex-col text-center">
-                  <h2 className="text-xl font-extrabold">{member.name}</h2>
-                  <p className="mt-1 text-sm font-bold text-violet-brand">{member.role}</p>
-                  <div className="mt-4 grow space-y-3 text-left text-[0.95rem] leading-relaxed text-ink/80">
-                    {member.bio.map((paragraph) => (
-                      <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-                    ))}
-                  </div>
-                  {member.linkedIn && (
-                    <a
-                      href={member.linkedIn}
-                      rel="noopener noreferrer"
-                      className="mx-auto mt-5 font-semibold text-violet-brand underline decoration-2 underline-offset-4 hover:text-violet-deep"
-                    >
-                      LinkedIn-Profil
-                    </a>
-                  )}
-                </div>
-              </article>
+              <MemberCard member={member} tone="grey" />
             </FadeIn>
           ))}
+        </div>
+      </Section>
 
+      {/* Gründung und Geschäftsführung */}
+      <Section surface="mint-light">
+        <FadeIn>
+          <Eyebrow>Gründungsteam</Eyebrow>
+          <Headline>Aufbau und Geschäftsführung</Headline>
+        </FadeIn>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {founders.map((member) => (
+            <FadeIn key={member.name}>
+              <MemberCard member={member} tone="white" />
+            </FadeIn>
+          ))}
         </div>
       </Section>
 
@@ -103,46 +137,6 @@ export default function TeamPage() {
             </div>
           </div>
         </FadeIn>
-      </Section>
-
-      {/* Therapeutisches Team */}
-      <Section surface="mint-light">
-        <FadeIn>
-          <Eyebrow>Therapie</Eyebrow>
-          <Headline>Therapeutisches Team</Headline>
-          <Lead>
-            <p>
-              Das therapeutische Team von HYO steht für spezialisierte Dysphagie-Therapie und
-              Trachealkanülen-Management.
-            </p>
-          </Lead>
-        </FadeIn>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {therapistTeam.map((member) => (
-            <FadeIn key={member.name}>
-              <article className="flex h-full flex-col rounded-hyo bg-white p-6 pt-8">
-                <div className="relative mx-auto h-44 w-44 overflow-hidden rounded-full bg-mint-light ring-4 ring-violet-light">
-                  <Image
-                    src={member.photoBust}
-                    alt={member.photoAlt}
-                    fill
-                    sizes="176px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="mt-6 flex grow flex-col text-center">
-                  <h3 className="text-xl font-extrabold">{member.name}</h3>
-                  <p className="mt-1 text-sm font-bold text-violet-brand">{member.role}</p>
-                  <div className="mt-4 grow space-y-3 text-left text-[0.95rem] leading-relaxed text-ink/80">
-                    {member.bio.map((paragraph) => (
-                      <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            </FadeIn>
-          ))}
-        </div>
       </Section>
 
       <Section surface="violet">
