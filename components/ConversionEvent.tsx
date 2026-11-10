@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { googleAdsConversionLabel, googleAdsEnabled, googleAdsId } from "@/lib/ads";
+import { googleAdsConversionLabel, googleAdsEnabled, googleAdsId, googleTagManagerId } from "@/lib/ads";
 import { CONSENT_CHANGED_EVENT, loadConsent } from "@/lib/consent";
 
 const SENT_KEY = "hyo-conversion-sent";
@@ -19,16 +19,27 @@ export function ConversionEvent() {
     if (!googleAdsEnabled) return;
 
     const fire = () => {
-      if (!loadConsent().marketing || !window.gtag) return;
+      if (!loadConsent().marketing) return;
+      // GTM-Modus: ausdrückliches dataLayer-Ereignis (Trigger „Benutzerdefiniertes Ereignis generate_lead“)
+      if (googleTagManagerId) {
+        if (!window.dataLayer) return;
+      } else if (!window.gtag) {
+        return;
+      }
       try {
         if (window.sessionStorage.getItem(SENT_KEY)) return;
         window.sessionStorage.setItem(SENT_KEY, "1");
       } catch {
         /* Sitzungsspeicher nicht verfügbar – Ereignis trotzdem senden */
       }
-      window.gtag("event", "generate_lead", { form_name: "rueckruf" });
+      if (googleTagManagerId) {
+        // Die Conversion selbst löst das Tag im Container aus (Label dort hinterlegt)
+        window.dataLayer.push({ event: "generate_lead", form_name: "rueckruf" });
+        return;
+      }
+      window.gtag!("event", "generate_lead", { form_name: "rueckruf" });
       if (googleAdsId && googleAdsConversionLabel) {
-        window.gtag("event", "conversion", { send_to: `${googleAdsId}/${googleAdsConversionLabel}` });
+        window.gtag!("event", "conversion", { send_to: `${googleAdsId}/${googleAdsConversionLabel}` });
       }
     };
 
