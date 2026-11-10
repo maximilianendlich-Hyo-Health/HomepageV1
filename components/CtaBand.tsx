@@ -1,10 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ButtonLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import { isLandingPath } from "@/lib/landing";
-import { booking, cta } from "@/lib/site";
+import { booking, callbackHref, cta } from "@/lib/site";
 
 /**
  * Globale Call-to-Action-Sektion.
@@ -12,7 +13,7 @@ import { booking, cta } from "@/lib/site";
  * ersetzt die beiden Buttons in der Hauptnavigation.
  */
 /** Seiten, auf denen das globale CTA-Band nicht erscheinen soll. */
-const EXCLUDED_PATHS = ["/team"];
+const EXCLUDED_PATHS = ["/", "/team"];
 
 export function CtaBand() {
   const pathname = usePathname();
@@ -20,24 +21,31 @@ export function CtaBand() {
 
   return (
     <Section surface="violet">
-      <Eyebrow onViolet>Berlin-Friedrichshain · Start am 01.11.2026</Eyebrow>
+      <Eyebrow onViolet>Wir haben eröffnet · Berlin-Friedrichshain</Eyebrow>
       <Headline onViolet>Bereit für den nächsten Schritt?</Headline>
       <Lead onViolet>
         <p>
-          Buchen Sie Ihren Termin online – ab sofort möglich. Kliniken und Versorgungspartner
-          können Übergabeprozesse bereits jetzt mit uns abstimmen.
+          Wir nehmen neue Patientinnen und Patienten auf. Wählen Sie über Doctolib Ihren
+          Rückruftermin oder fordern Sie einen Rückruf an. Kliniken und Versorgungspartner
+          stimmen Übergabeprozesse gern mit uns ab.
         </p>
       </Lead>
       <div className="on-violet mt-9 flex flex-wrap items-center gap-4">
         <ButtonLink href={booking.url} variant="on-violet">
           {cta.appointmentBook}
         </ButtonLink>
-        <ButtonLink href="/fuer-partner#kooperation-anfragen" variant="on-violet-outline">
-          {cta.cooperation}
+        <ButtonLink href={callbackHref} variant="on-violet-outline">
+          {cta.callback}
         </ButtonLink>
       </div>
       <p className="mt-6 text-sm text-mint-light/90">
-        HYO nimmt den Betrieb am 01.11.2026 auf.
+        Für Kliniken und Pflege:{" "}
+        <Link
+          href="/fuer-partner#kooperation-anfragen"
+          className="font-semibold text-white underline decoration-2 underline-offset-4"
+        >
+          {cta.cooperation}
+        </Link>
       </p>
     </Section>
   );

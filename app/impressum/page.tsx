@@ -37,7 +37,7 @@ export default function ImpressumPage() {
             {site.legal.country}
           </p>
           <p>
-            <strong>Praxisstandort (Betriebsstart 01.11.2026):</strong>
+            <strong>Praxisstandort:</strong>
             <br />
             {site.address.building}
             <br />
@@ -93,11 +93,10 @@ export default function ImpressumPage() {
               verleihender Staat, zuständige Aufsichtsbehörde sowie
               einschlägige berufsrechtliche Regelungen. */}
           <p>
-            HYO befindet sich im Aufbau; der Praxisbetrieb ist noch nicht aufgenommen. Die
-            berufsrechtlichen Angaben zu den therapeutisch tätigen Personen (gesetzliche
-            Berufsbezeichnung, verleihender Staat, zuständige Aufsichtsbehörde und
-            berufsrechtliche Regelungen) werden vor Aufnahme des Praxisbetriebs an dieser
-            Stelle veröffentlicht.
+            Gesetzliche Berufsbezeichnung der therapeutisch tätigen Personen: Logopädin bzw.
+            Logopäde, verliehen in der Bundesrepublik Deutschland. Angaben zur zuständigen
+            Aufsichtsbehörde und zu den berufsrechtlichen Regelungen teilen wir auf Anfrage
+            mit; die Kontaktdaten finden Sie oben.
           </p>
         </Block>
 

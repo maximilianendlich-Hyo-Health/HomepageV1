@@ -4,10 +4,10 @@
 
 Website der spezialisierten ambulanten Praxis für Dysphagie-Therapie und
 Trachealkanülen-Management in Berlin-Friedrichshain (MEDICUM Friedrichshain,
-Matthiasstraße 7). Live unter https://hyo-health.de, Betriebsstart am 01.11.2026.
+Matthiasstraße 7). Live unter https://hyo-health.de, Praxis eröffnet (Betriebsstart 01.11.2026).
 
-Die Seite besteht aus einer patientenorientierten Startseite (Landingpage mit
-Terminbuchung) sowie Leistungen, Bereichen für Patienten und Partner,
+Die Seite besteht aus einer patientenorientierten Startseite (Rückruftermin über
+Doctolib oder Rückruf-Formular) sowie Leistungen, Bereichen für Patienten und Partner,
 Wissensbereich mit Dashboard, Team, Karriere, Standort, Kontakt und Kooperations-
 und Bewerbungsformularen.
 
@@ -52,10 +52,12 @@ Siehe `.env.example`:
 | Variable | Zweck |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Öffentliche Basis-URL (Canonical, Sitemap, OG) |
+| `NEXT_PUBLIC_GOOGLE_ADS_ID` | Google-Tag-ID (`AW-…`), schaltet Tag, Marketing-Banner und Datenschutztext ein |
+| `NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL` | Conversion-Label für `/rueckruf/danke` |
 
 ## Formulare
 
-Alle vier Formulare (Terminanfrage, Kooperationsanfrage, Bewerbung/Personal, Rückruf)
+Alle drei Formulare (Rückruf, Kooperationsanfrage, Bewerbung/Personal)
 laufen über **Netlify Forms**: Die statische Definitionsdatei
 `public/__forms.html` registriert die Formulare beim Deploy, die
 React-Formulare senden ihre Daten URL-codiert (inkl. `form-name`) an diesen
@@ -75,9 +77,9 @@ angenommen – der Versand funktioniert erst im Netlify-Deploy bzw. mit
 
 ## Terminbuchung
 
-Die Online-Terminbuchung läuft über **Doctolib**
+Die Buchung eines Rückruftermins (Wunschtag und Uhrzeit) läuft über **Doctolib**
 (`https://www.doctolib.de/praxis/berlin/hyo-health`). Sie ist nur verlinkt, nicht
-eingebunden: Alle „Termin buchen“-Buttons öffnen die Doctolib-Seite in einem neuen
+eingebunden: Alle „Rückruftermin buchen“-Buttons öffnen die Doctolib-Seite in einem neuen
 Fenster, auf der Website werden keine Inhalte von Doctolib geladen. Die URL steht
 zentral in `lib/site.ts` (`booking.url`); die Buchungs-Kachel im Hero ist
 `components/BookingCard.tsx`. Die Datenschutzerklärung (Ziffer 6) beschreibt die
@@ -95,6 +97,18 @@ an die Netlify-Submission gehängt. Der Cookie-Banner ist dort ausgeblendet, wei
 Seite keine externen Inhalte lädt; sobald Tracking hinzukommt, muss er wieder
 erscheinen (`lib/landing.ts`, `components/CookieBanner.tsx`). In Netlify für das
 Formular „rueckruf“ eine E-Mail-Benachrichtigung einrichten.
+
+## Google-Ads-Tag
+
+Das Tag ist eingebaut, aber nur aktiv, wenn `NEXT_PUBLIC_GOOGLE_ADS_ID` gesetzt ist
+(Netlify: Site configuration → Environment variables, danach neu deployen, weil die
+Werte beim Build eingebettet werden). Es lädt erst nach Einwilligung in die Kategorie
+„Marketing“ (`components/GoogleTag.tsx`, Consent Mode v2 mit „denied“ als Standard).
+`components/ConversionEvent.tsx` meldet auf `/rueckruf/danke` einmal pro Sitzung die
+Conversion an `AW-…/Label`. Bei aktivem Tag erscheinen Banner-Kategorie,
+Footer-Link „Cookie-Einstellungen“ auf der Landingpage und Datenschutz-Ziffer 8a
+automatisch. Das Tag nicht zusätzlich per Netlify-Snippet-Injection einbinden, das
+würde die Einwilligung umgehen.
 
 ## Datenschutz und Consent
 

@@ -9,27 +9,6 @@ const consent = z
 const email = z.string().trim().email("Bitte geben Sie eine gültige E-Mail-Adresse an.");
 const optionalPhone = z.string().trim().max(40).optional().or(z.literal(""));
 
-export const appointmentTopics = [
-  "Dysphagie",
-  "Trachealkanüle",
-  "Versorgung nach Klinikentlassung",
-  "Befunderhebung",
-  "Sonstiges Anliegen",
-] as const;
-
-export const appointmentSchema = z.object({
-  firstName: z.string().trim().min(1, "Bitte geben Sie Ihren Vornamen an."),
-  lastName: z.string().trim().min(1, "Bitte geben Sie Ihren Nachnamen an."),
-  email,
-  phone: optionalPhone,
-  requestFor: z.enum(["für mich selbst", "für eine andere Person"], {
-    message: "Bitte wählen Sie aus, für wen Sie anfragen.",
-  }),
-  topic: z.enum(appointmentTopics, { message: "Bitte wählen Sie Ihr Anliegen." }),
-  message: z.string().trim().max(1500, "Bitte kürzen Sie Ihre Nachricht.").optional().or(z.literal("")),
-  consentPrivacy: consent,
-});
-
 export const callbackSlots = [
   "so bald wie möglich",
   "vormittags (8–12 Uhr)",

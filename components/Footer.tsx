@@ -156,7 +156,7 @@ export function Footer() {
       </div>
       <div className="border-t border-white/15">
         <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-5 text-sm text-white/80 sm:px-8">
-          <p>Start am 01.11.2026 · Berlin-Friedrichshain</p>
+          <p>Neu eröffnet · Berlin-Friedrichshain</p>
           <p>© {new Date().getFullYear()} {site.legal.company}</p>
         </div>
       </div>

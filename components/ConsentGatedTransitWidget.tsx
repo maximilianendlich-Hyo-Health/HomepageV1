@@ -98,7 +98,7 @@ export function ConsentGatedTransitWidget() {
       </p>
       <button
         type="button"
-        onClick={() => saveConsent(true)}
+        onClick={() => saveConsent({ externalMedia: true })}
         className="rounded-hyo bg-violet-brand px-6 py-3 font-semibold text-white transition-colors hover:bg-violet-deep"
       >
         Fahrplanauskunft laden

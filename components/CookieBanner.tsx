@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { googleAdsEnabled } from "@/lib/ads";
 import { isLandingPath } from "@/lib/landing";
 import {
   CONSENT_CHANGED_EVENT,
@@ -26,6 +27,7 @@ export function CookieBanner() {
   const [visible, setVisible] = useState(false);
   const [details, setDetails] = useState(false);
   const [externalMedia, setExternalMedia] = useState(false);
+  const [marketing, setMarketing] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -34,18 +36,21 @@ export function CookieBanner() {
     const frame = requestAnimationFrame(() => {
       const consent = loadConsent();
       setExternalMedia(consent.externalMedia);
+      setMarketing(consent.marketing);
       if (!consent.decided) setVisible(true);
     });
 
     const onOpen = () => {
       const current = loadConsent();
       setExternalMedia(current.externalMedia);
+      setMarketing(current.marketing);
       setDetails(true);
       setVisible(true);
     };
     const onChanged = () => {
       const current = loadConsent();
       setExternalMedia(current.externalMedia);
+      setMarketing(current.marketing);
       // Entscheidung wurde getroffen (z. B. über „Buchungstool laden“) –
       // Banner schließen, damit er den Inhalt nicht überdeckt.
       if (current.decided) {
@@ -66,8 +71,9 @@ export function CookieBanner() {
     if (visible) headingRef.current?.focus();
   }, [visible, details]);
 
-  // Werbe-Landingpages laden keine externen Inhalte und setzen keine Cookies: keine Abfrage nötig.
-  if (!visible || isLandingPath(pathname)) return null;
+  // Werbe-Landingpages laden keine externen Inhalte; ohne aktives Google-Ads-Tag
+  // setzen sie auch keine Cookies: dann ist keine Abfrage nötig.
+  if (!visible || (isLandingPath(pathname) && !googleAdsEnabled)) return null;
 
   const close = () => {
     setVisible(false);
@@ -75,15 +81,15 @@ export function CookieBanner() {
   };
 
   const acceptAll = () => {
-    saveConsent(true);
+    saveConsent({ externalMedia: true, marketing: true });
     close();
   };
   const acceptNecessary = () => {
-    saveConsent(false);
+    saveConsent({ externalMedia: false, marketing: false });
     close();
   };
   const saveSelection = () => {
-    saveConsent(externalMedia);
+    saveConsent({ externalMedia, marketing });
     close();
   };
 
@@ -107,8 +113,9 @@ export function CookieBanner() {
         {!details ? (
           <>
             <p className="mt-1 max-w-3xl text-sm leading-relaxed text-ink/85">
-              Wir setzen keine Analyse-, Tracking- oder Marketing-Cookies ein. Externe Inhalte
-              (OpenStreetMap, VBB-Fahrinfo) laden wir nur mit Ihrer Einwilligung. Mehr in der{" "}
+              {googleAdsEnabled
+                ? "Wir messen mit Ihrer Einwilligung, ob unsere Google-Anzeigen zu Anfragen führen (Marketing). Externe Inhalte (OpenStreetMap, VBB-Fahrinfo) laden wir ebenfalls nur mit Ihrer Einwilligung. Mehr in der"
+                : "Wir setzen keine Analyse-, Tracking- oder Marketing-Cookies ein. Externe Inhalte (OpenStreetMap, VBB-Fahrinfo) laden wir nur mit Ihrer Einwilligung. Mehr in der"}{" "}
               <Link
                 href="/datenschutz"
                 className="font-semibold text-violet-brand underline decoration-2 underline-offset-4"
@@ -204,6 +211,42 @@ export function CookieBanner() {
                   Ohne Einwilligung zeigen wir Vorschauen ohne externe Verbindung.
                 </p>
               </section>
+              {googleAdsEnabled && (
+                <section className="rounded-hyo bg-soft-grey p-5 md:col-span-2">
+                  <div className="flex items-start justify-between gap-4">
+                    <h3 className="font-extrabold">
+                      <label htmlFor="consent-marketing" className="cursor-pointer">
+                        Marketing (Google Ads Conversion-Messung)
+                      </label>
+                    </h3>
+                    <button
+                      id="consent-marketing"
+                      type="button"
+                      role="switch"
+                      aria-checked={marketing}
+                      onClick={() => setMarketing((value) => !value)}
+                      className={`relative h-7 w-12 shrink-0 rounded-full border-2 transition-colors ${
+                        marketing ? "border-violet-brand bg-violet-brand" : "border-medium-grey bg-white"
+                      }`}
+                    >
+                      <span className="sr-only">Marketing {marketing ? "deaktivieren" : "aktivieren"}</span>
+                      <span
+                        aria-hidden="true"
+                        className={`absolute top-0.5 h-5 w-5 rounded-full shadow transition-[left] ${
+                          marketing ? "left-[1.45rem] bg-white" : "left-0.5 bg-medium-grey"
+                        }`}
+                      />
+                    </button>
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/80">
+                    Lädt das Google-Ads-Tag der Google Ireland Limited und setzt Cookies, um zu
+                    messen, ob eine Anzeige zu einer Rückrufanfrage geführt hat. Dabei werden
+                    Daten, u.&nbsp;a. Ihre IP-Adresse, an Google übermittelt, möglicherweise auch
+                    in die USA (Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO, §&nbsp;25 Abs.&nbsp;1
+                    TDDDG). Ohne Einwilligung wird nichts geladen.
+                  </p>
+                </section>
+              )}
             </div>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <button

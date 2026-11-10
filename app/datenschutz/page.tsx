@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { googleAdsEnabled } from "@/lib/ads";
 import { CookieSettingsButton } from "@/components/CookieSettingsButton";
 import { Headline, Section } from "@/components/ui/Section";
 import { site } from "@/lib/site";
@@ -87,8 +88,9 @@ export default function DatenschutzPage() {
             <p>
               Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer
               funktionsfähigen Website sowie zur Bearbeitung Ihrer Anfragen erforderlich ist.
-              Diese Website verwendet keine Analyse-, Tracking- oder Marketing-Cookies und
-              bindet keine Werbedienste ein.
+              {googleAdsEnabled
+                ? "Diese Website verwendet keine Analyse- oder Tracking-Cookies. Zur Erfolgsmessung unserer Google-Anzeigen setzen wir nur mit Ihrer Einwilligung ein Marketing-Tag von Google ein (Ziffer 8)."
+                : "Diese Website verwendet keine Analyse-, Tracking- oder Marketing-Cookies und bindet keine Werbedienste ein."}
             </p>
             <p>
               Rechtsgrundlagen der Verarbeitung sind insbesondere Art. 6 Abs. 1 lit. a DSGVO
@@ -126,23 +128,13 @@ export default function DatenschutzPage() {
 
           <Block title="4. Formulare">
             <p>
-              Auf dieser Website können Sie vier Formulare nutzen. Die Übermittlung erfolgt
+              Auf dieser Website können Sie drei Formulare nutzen. Die Übermittlung erfolgt
               jeweils verschlüsselt (TLS). Wir erheben nur die Angaben, die zur Bearbeitung
               Ihres Anliegens erforderlich sind; optionale Felder sind als solche
               gekennzeichnet. Bitte übermitteln Sie in Freitextfeldern keine unnötigen
               medizinischen Details oder Dokumente.
             </p>
-            <Sub title="a) Terminanfrage / Vormerkung">
-              <p>
-                Verarbeitete Daten: Vor- und Nachname, E-Mail-Adresse, optional Telefonnummer,
-                Angabe, für wen die Anfrage erfolgt, Ihr Anliegen sowie optional eine kurze
-                Nachricht. Zweck: Vormerkung für die Terminvergabe und Kontaktaufnahme nach
-                Beginn der Terminvergabe. Rechtsgrundlagen: Art. 6 Abs. 1 lit. b DSGVO
-                (vorvertragliche Maßnahmen) sowie Ihre Einwilligung nach Art. 6 Abs. 1 lit. a
-                und – für freiwillig mitgeteilte Gesundheitsdaten – Art. 9 Abs. 2 lit. a DSGVO.
-              </p>
-            </Sub>
-            <Sub title="b) Kooperationsanfrage">
+            <Sub title="a) Kooperationsanfrage">
               <p>
                 Verarbeitete Daten: Einrichtung, Einrichtungsart, Ansprechperson,
                 E-Mail-Adresse, optional Telefonnummer, Anliegen und Nachricht. Zweck:
@@ -150,7 +142,7 @@ export default function DatenschutzPage() {
                 Abs. 1 lit. b DSGVO.
               </p>
             </Sub>
-            <Sub title="c) Bewerbung">
+            <Sub title="b) Bewerbung">
               <p>
                 Verarbeitete Daten: Name, E-Mail-Adresse, optional Telefonnummer, gewünschte
                 Position, möglicher Startzeitpunkt, Motivation, optional LinkedIn-Profil und
@@ -161,7 +153,7 @@ export default function DatenschutzPage() {
                 Speicherung eingewilligt haben.
               </p>
             </Sub>
-            <Sub title="d) Rückruf-Formular (Landingpage)">
+            <Sub title="c) Rückruf-Formular">
               <p>
                 Verarbeitete Daten: Name, Telefonnummer, gewünschter Rückrufzeitraum. Wenn Sie über eine Anzeige oder einen Link mit
                 Kampagnenangaben (z.&nbsp;B. Kampagne, Suchbegriff, Klick-Kennung) zu uns
@@ -253,7 +245,7 @@ export default function DatenschutzPage() {
               die Plattform Doctolib (Doctolib GmbH, Berlin) möglich. Auf unserer Website ist die
               Terminbuchung nicht eingebunden, sondern nur verlinkt: Es werden beim Aufruf
               unserer Seiten keine Inhalte von Doctolib geladen und keine Daten an Doctolib
-              übermittelt. Erst wenn Sie auf eine Schaltfläche „Termin buchen“ klicken, verlassen
+              übermittelt. Erst wenn Sie auf eine Schaltfläche „Rückruftermin buchen“ klicken, verlassen
               Sie unsere Website und werden zur Buchungsseite von Doctolib weitergeleitet (neues
               Fenster). Für die dortige Datenverarbeitung gelten die Datenschutzhinweise von
               Doctolib. Wenn Sie über Doctolib einen Termin vereinbaren, werden die von Ihnen
@@ -286,9 +278,11 @@ export default function DatenschutzPage() {
 
           <Block title="8. Cookies und Einwilligungsverwaltung">
             <p>
-              Diese Website setzt keine Analyse-, Tracking- oder Marketing-Cookies ein. Beim
-              ersten Besuch informiert ein Einwilligungsbanner über die eingesetzten
-              Speicherungen und Dienste. Es bestehen zwei Kategorien:
+              {googleAdsEnabled
+                ? "Diese Website setzt keine Analyse- oder Tracking-Cookies ein. Marketing-Cookies setzen wir nur nach Ihrer Einwilligung. "
+                : "Diese Website setzt keine Analyse-, Tracking- oder Marketing-Cookies ein. "}
+              Beim ersten Besuch informiert ein Einwilligungsbanner über die eingesetzten
+              Speicherungen und Dienste. Es bestehen {googleAdsEnabled ? "drei" : "zwei"} Kategorien:
             </p>
             <ul className="list-disc space-y-1 pl-5">
               <li>
@@ -303,6 +297,13 @@ export default function DatenschutzPage() {
                 Standortseite (Ziffer 6; VBB-Fahrinfo verwendet sogenannte Tracker),
                 Rechtsgrundlagen Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG.
               </li>
+              {googleAdsEnabled && (
+                <li>
+                  <strong>Marketing (einwilligungspflichtig):</strong> das Google-Ads-Tag
+                  (Conversion-Messung, Ziffer 8a), Rechtsgrundlagen Art. 6 Abs. 1 lit. a DSGVO
+                  und § 25 Abs. 1 TDDDG.
+                </li>
+              )}
             </ul>
             <p>
               Ihre Auswahl wird ausschließlich lokal in Ihrem Browser gespeichert
@@ -314,6 +315,28 @@ export default function DatenschutzPage() {
                   (z. B. Analyse) Kategorien im Banner ergänzen. */}
             </p>
           </Block>
+
+          {googleAdsEnabled && (
+            <Block title="8a. Google Ads (Conversion-Messung)">
+              <p>
+                Wenn Sie im Einwilligungsbanner „Marketing“ zustimmen, laden wir das
+                Google-Ads-Tag der Google Ireland Limited, Gordon House, Barrow Street,
+                Dublin 4, Irland („Google“). Wir messen damit, ob eine Anzeige zu einer
+                Rückrufanfrage geführt hat. Dazu setzt Google Cookies (z.&nbsp;B. „_gcl_*“) und
+                verarbeitet Daten wie Ihre IP-Adresse, die aufgerufene Seite, die Klick-Kennung
+                der Anzeige und Angaben zu Ihrem Gerät. Die Daten können auch an Google LLC
+                in den USA übermittelt werden; Grundlage ist der Angemessenheitsbeschluss zum
+                EU-US Data Privacy Framework, soweit Google zertifiziert ist.
+              </p>
+              <p>
+                Rechtsgrundlagen sind Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und
+                § 25 Abs. 1 TDDDG. Ohne Einwilligung wird das Tag nicht geladen und es werden
+                keine Daten an Google übertragen. Sie können Ihre Einwilligung jederzeit mit
+                Wirkung für die Zukunft über „Cookie-Einstellungen“ widerrufen. Mehr zum
+                Umgang mit Daten durch Google finden Sie unter policies.google.com/privacy.
+              </p>
+            </Block>
+          )}
 
           <Block title="9. Verlinkung auf LinkedIn">
             <p>
@@ -384,8 +407,11 @@ export default function DatenschutzPage() {
         <div className="mt-4 max-w-2xl space-y-3 leading-relaxed text-ink/85">
           <p>
             Hier können Sie Ihre Einwilligung für externe Inhalte (OpenStreetMap-Karte, VBB-Fahrinfo)
-            jederzeit erteilen, ändern oder widerrufen. Analyse-, Tracking- oder
-            Marketing-Cookies setzen wir nicht ein. Ihre Barrierefreiheits-Einstellungen
+            jederzeit erteilen, ändern oder widerrufen.{" "}
+            {googleAdsEnabled
+              ? "Marketing-Cookies (Google Ads) setzen wir nur mit Ihrer Einwilligung, Analyse- oder Tracking-Cookies nicht."
+              : "Analyse-, Tracking- oder Marketing-Cookies setzen wir nicht ein."}{" "}
+            Ihre Barrierefreiheits-Einstellungen
             werden unabhängig davon lokal gespeichert und können über „Ansicht anpassen“
             zurückgesetzt werden.
           </p>

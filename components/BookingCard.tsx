@@ -1,7 +1,8 @@
-import { booking, cta } from "@/lib/site";
+import Link from "next/link";
+import { booking, callbackHref, cta } from "@/lib/site";
 
 /**
- * Buchungs-Kachel im Hero: reiner Link zur Online-Terminbuchung bei Doctolib.
+ * Buchungs-Kachel im Hero: reiner Link zur Rückruf-Terminbuchung bei Doctolib.
  * Es wird nichts von Doctolib eingebunden oder geladen (siehe Datenschutz, Ziffer 6).
  * Das Kalender-Symbol ist eine eigene, neutrale Grafik und kein Doctolib-Logo.
  * Wenn ein offizielles Doctolib-Siegel/Logo vorliegt, kann es hier eingesetzt werden.
@@ -23,10 +24,11 @@ export function BookingCard() {
           strokeLinejoin="round"
         />
       </svg>
-      <h2 className="mt-6 text-2xl font-extrabold">Termin online buchen</h2>
+      <h2 className="mt-6 text-2xl font-extrabold">Jetzt Rückruf vereinbaren</h2>
       <p className="mt-3 leading-relaxed text-ink/80">
-        Buchen Sie ab sofort bequem online über Doctolib – für ein kurzes Telefonat, in dem
-        wir alles persönlich mit Ihnen besprechen.
+        Wir haben eröffnet und nehmen neue Patientinnen und Patienten auf. Wählen Sie über
+        Doctolib Tag und Uhrzeit für Ihren Rückruf oder lassen Sie sich ohne Terminwahl
+        zurückrufen.
       </p>
       <a
         href={booking.url}
@@ -50,9 +52,17 @@ export function BookingCard() {
           />
         </svg>
       </a>
-      <p className="mt-4 text-center text-sm text-ink/65">
-        Sie werden zur Terminbuchung bei Doctolib weitergeleitet (neues Fenster).
+      <p className="mt-3 text-center text-sm text-ink/65">
+        Sie werden zu Doctolib weitergeleitet (neues Fenster).
       </p>
+      <p className="mt-6 text-center text-sm font-bold tracking-wide text-ink/60 uppercase">oder</p>
+      <Link
+        href={callbackHref}
+        className="mt-3 flex w-full items-center justify-center rounded-hyo border-2 border-violet-deep px-6 py-4 text-lg font-extrabold text-violet-deep transition-colors duration-200 hover:bg-violet-deep hover:text-white"
+      >
+        {cta.callback}
+      </Link>
+      <p className="mt-3 text-center text-sm text-ink/65">Ohne Terminwahl: Name und Nummer genügen, wir rufen Sie zurück.</p>
     </div>
   );
 }

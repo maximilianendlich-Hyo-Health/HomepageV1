@@ -135,9 +135,8 @@ export default function StandortPage() {
         <FadeIn>
           <Headline size="md">Öffnungszeiten</Headline>
           <p className="mt-4 max-w-2xl leading-relaxed text-ink/80">
-            {/* TODO: Öffnungszeiten vor Livegang ergänzen oder Abschnitt entfernen */}
-            HYO nimmt den Betrieb am 01.11.2026 auf. Termine buchen Sie online – Zeiten
-            und Ablauf besprechen wir persönlich mit Ihnen.
+            Montag bis Freitag, 8 bis 18 Uhr. Einen Rückruftermin buchen Sie online über Doctolib,
+            oder Sie hinterlassen Ihre Nummer und wir rufen Sie zurück.
           </p>
         </FadeIn>
       </Section>

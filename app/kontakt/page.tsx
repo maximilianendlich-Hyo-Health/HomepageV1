@@ -3,26 +3,32 @@ import Image from "next/image";
 import { FadeIn } from "@/components/FadeIn";
 import { ButtonLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
-import { booking, site } from "@/lib/site";
+import { booking, callbackHref, site } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Kontakt und Terminbuchung",
+  title: "Kontakt und Rückruf",
   description:
-    "Kontakt zu HYO in Berlin: Termin für ein kurzes Telefonat buchen sowie eigene Kontaktwege für Kliniken, Pflegeeinrichtungen, Kooperationen und Bewerbungen.",
+    "Kontakt zu HYO in Berlin: Rückruftermin über Doctolib buchen oder Rückruf anfordern sowie eigene Kontaktwege für Kliniken, Pflegeeinrichtungen, Kooperationen und Bewerbungen.",
   path: "/kontakt",
 });
 
 const contactPaths = [
   {
     title: "Patientenanfragen und Angehörige",
-    text: "Sie möchten einen Termin für ein kurzes Telefonat buchen? Wir besprechen alles persönlich mit Ihnen.",
+    text: "Wir haben eröffnet und nehmen neue Patientinnen und Patienten auf. Wählen Sie über Doctolib Tag und Uhrzeit, zu der wir Sie anrufen.",
     href: booking.url,
-    label: "Termin buchen",
+    label: "Rückruftermin buchen",
+  },
+  {
+    title: "Rückruf ohne Terminwahl",
+    text: "Name und Telefonnummer genügen, wir rufen Sie im gewünschten Zeitraum zurück.",
+    href: callbackHref,
+    label: "Rückruf anfordern",
   },
   {
     title: "Kliniken und Entlassmanagement",
-    text: "Sie möchten eine Patientenübergabe besprechen oder Übergabeprozesse frühzeitig abstimmen?",
+    text: "Sie möchten eine Patientenübergabe besprechen oder Übergabeprozesse abstimmen?",
     href: "/fuer-partner#kooperation-anfragen",
     label: "Patientenübergabe besprechen",
   },
@@ -56,7 +62,7 @@ export default function KontaktPage() {
         </Headline>
         <Lead>
           <p>
-            Sie möchten einen Termin für ein kurzes Telefonat buchen? Das geht online. Für
+            Sie möchten zurückgerufen werden? Wählen Sie online einen festen Rückruftermin oder hinterlassen Sie Ihre Nummer. Für
             Kliniken, Pflege und Bewerbungen gibt es eigene Kontaktwege – so landet Ihr Anliegen direkt an der
             richtigen Stelle.
           </p>

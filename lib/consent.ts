@@ -1,5 +1,7 @@
 "use client";
 
+import { googleAdsEnabled } from "@/lib/ads";
+
 /**
  * Einwilligungsverwaltung (Consent) der HYO-Website.
  *
@@ -9,13 +11,15 @@
  * - externalMedia: externe Inhalte (OpenStreetMap-Karte, VBB-Fahrinfo) –
  *   einwilligungspflichtig, Art. 6 Abs. 1 lit. a DSGVO / § 25 Abs. 1 TDDDG.
  *
- * Analyse-, Tracking- oder Marketing-Cookies werden nicht eingesetzt.
+ * - marketing: Google-Ads-Conversion-Messung – nur wenn das Tag über Umgebungs-
+ *   variablen aktiviert ist (lib/ads.ts); sonst werden keine Marketing-Cookies gesetzt.
  * Die Auswahl wird ausschließlich lokal im Browser gespeichert (localStorage).
  */
 
 export type ConsentSettings = {
   necessary: true;
   externalMedia: boolean;
+  marketing: boolean;
   decided: boolean;
   timestamp: string;
   version: number;
@@ -23,13 +27,14 @@ export type ConsentSettings = {
 
 export const CONSENT_KEY = "hyo-consent";
 /** Erhöhen, wenn sich der Umfang der Einwilligung ändert (Banner wird erneut angezeigt). */
-export const CONSENT_VERSION = 2;
+export const CONSENT_VERSION = googleAdsEnabled ? 3 : 2;
 export const OPEN_CONSENT_EVENT = "hyo:open-consent";
 export const CONSENT_CHANGED_EVENT = "hyo:consent-changed";
 
 export const defaultConsent: ConsentSettings = {
   necessary: true,
   externalMedia: false,
+  marketing: false,
   decided: false,
   timestamp: "",
   version: CONSENT_VERSION,
@@ -47,10 +52,13 @@ export function loadConsent(): ConsentSettings {
   }
 }
 
-export function saveConsent(externalMedia: boolean): ConsentSettings {
+/** Speichert die Auswahl; nicht genannte Kategorien behalten ihren bisherigen Wert. */
+export function saveConsent(choice: { externalMedia?: boolean; marketing?: boolean }): ConsentSettings {
+  const current = loadConsent();
   const next: ConsentSettings = {
     necessary: true,
-    externalMedia,
+    externalMedia: choice.externalMedia ?? current.externalMedia,
+    marketing: googleAdsEnabled ? (choice.marketing ?? current.marketing) : false,
     decided: true,
     timestamp: new Date().toISOString(),
     version: CONSENT_VERSION,

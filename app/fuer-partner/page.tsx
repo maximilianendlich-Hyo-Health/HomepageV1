@@ -156,12 +156,12 @@ export default function FuerPartnerPage() {
       <Section surface="mint" id="kooperation-anfragen">
         <FadeIn>
           <Eyebrow>Kooperation</Eyebrow>
-          <Headline>Frühzeitig Kontakt aufnehmen.</Headline>
+          <Headline>Kontakt aufnehmen.</Headline>
           <Lead>
             <p>
-              HYO nimmt den Betrieb am 01.11.2026 auf – Kooperationen stimmen wir bereits jetzt ab. Beschreiben
-              Sie kurz Ihre Einrichtung und Ihr Anliegen, wir melden uns für die weitere
-              Abstimmung.
+              HYO hat eröffnet und nimmt Patientinnen und Patienten auf. Kooperationen und
+              Patientenübergaben stimmen wir gern mit Ihnen ab. Beschreiben Sie kurz Ihre
+              Einrichtung und Ihr Anliegen, wir melden uns für die weitere Abstimmung.
             </p>
           </Lead>
         </FadeIn>

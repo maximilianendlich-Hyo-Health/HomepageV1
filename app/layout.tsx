@@ -8,6 +8,7 @@ import { AccessibilityPanel } from "@/components/AccessibilityPanel";
 import { booking, site } from "@/lib/site";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
+import { GoogleTag } from "@/components/GoogleTag";
 import { HideOnLanding } from "@/components/HideOnLanding";
 
 /**
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s | HYO Berlin",
   },
   description:
-    "Spezialisierte Logopädie bei Dysphagie und Schluckstörungen in Berlin-Friedrichshain: Schlucktherapie, Trachealkanülenmanagement, FEES. Termin online buchen.",
+    "Logopädie in Berlin-Friedrichshain: Dysphagie, Trachealkanülen, Sprache und Stimme. Jetzt eröffnet: Rückruftermin über Doctolib buchen oder Rückruf anfordern.",
   applicationName: "HYO",
   keywords: [
     "Dysphagie",
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
     siteName: "HYO",
     title: "Schlucktherapie Berlin: Dysphagie & Schluckstörung | HYO",
     description:
-      "Spezialisierte Logopädie bei Dysphagie und Schluckstörungen in Berlin-Friedrichshain: Schlucktherapie, Trachealkanülenmanagement, FEES. Termin online buchen.",
+      "Logopädie in Berlin-Friedrichshain: Dysphagie, Trachealkanülen, Sprache und Stimme. Jetzt eröffnet: Rückruftermin über Doctolib buchen oder Rückruf anfordern.",
     url: site.url,
     images: [{ url: "/images/og-image.png", width: 1200, height: 630, alt: "HYO – Dysphagie. Spezialisiert." }],
   },
@@ -114,7 +115,7 @@ const jsonLd = {
       ],
       potentialAction: {
         "@type": "ReserveAction",
-        name: "Termin buchen",
+        name: "Rückruftermin buchen",
         target: booking.url,
       },
     },
@@ -156,6 +157,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <AccessibilityPanel />
         <CookieBanner />
+        <GoogleTag />
         <HideOnLanding>
           <Footer />
         </HideOnLanding>

@@ -4,13 +4,13 @@ import { GeoIcon } from "@/components/GeoShapes";
 import { ButtonLink, TextLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section, type Surface } from "@/components/ui/Section";
 import { serviceAreas, type ServiceDetail } from "@/content/leistungen";
-import { booking, cta } from "@/lib/site";
+import { booking, callbackHref, cta } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Schlucktherapie & Trachealkanülenmanagement",
   description:
-    "Dysphagietherapie, Trachealkanülenmanagement und FEES-gestützte Befunderhebung – spezialisierte Logopädie in Berlin-Friedrichshain. Termin online buchen.",
+    "Dysphagietherapie, Trachealkanülenmanagement und FEES-gestützte Befunderhebung – spezialisierte Logopädie in Berlin-Friedrichshain. Rückruftermin online buchen.",
   path: "/leistungen",
 });
 
@@ -160,20 +160,23 @@ export default function LeistungenPage() {
           <Headline onViolet>Sie möchten klären, welches Angebot zu Ihrer Situation passt?</Headline>
           <Lead onViolet>
             <p>
-              Buchen Sie online ein kurzes Telefonat. Wir besprechen alles persönlich mit Ihnen
-              und prüfen, wie HYO Sie unterstützen kann.
+              Wählen Sie online einen Rückruftermin oder fordern Sie einen Rückruf an. Wir besprechen
+              alles persönlich mit Ihnen und prüfen, wie HYO Sie unterstützen kann.
             </p>
           </Lead>
           <div className="on-violet mt-8 flex flex-wrap gap-4">
             <ButtonLink href={booking.url} variant="on-violet">
               {cta.appointment}
             </ButtonLink>
+            <ButtonLink href={callbackHref} variant="on-violet-outline">
+              {cta.callback}
+            </ButtonLink>
             <ButtonLink href="/fuer-partner#kooperation-anfragen" variant="on-violet-outline">
               {cta.cooperation}
             </ButtonLink>
           </div>
           <p className="mt-5 text-sm text-mint-light">
-            HYO nimmt den Betrieb am 01.11.2026 auf. Die Terminbuchung ist ab sofort online möglich.
+            Wir haben eröffnet und nehmen neue Patientinnen und Patienten auf.
           </p>
         </FadeIn>
       </Section>

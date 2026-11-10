@@ -33,7 +33,7 @@ const stellen: Stelle[] = [
     id: "stelle-logopaedie",
     title: "Logopäd:in (m/w/d)",
     subtitle: "Einstieg & Spezialisierung Dysphagie",
-    meta: "Vollzeit oder Teilzeit · flexible Arbeitszeiten · Berlin-Friedrichshain · Start Okt/Nov 2026",
+    meta: "Vollzeit oder Teilzeit · flexible Arbeitszeiten · Berlin-Friedrichshain · Start nach Absprache",
     intro:
       "Lerne alles rund um Dysphagie von Grund auf – mit Supervision durch erfahrene Kolleg:innen, klaren Strukturen und einem Team, das fachlich füreinander da ist. Du bist von Anfang an dabei und gestaltest mit.",
     tasks: [
@@ -64,7 +64,7 @@ const stellen: Stelle[] = [
     id: "stelle-praktikum",
     title: "Praktikant:in (m/w/d)",
     subtitle: "Hospitationen & Supervisionen im Bereich Dysphagie",
-    meta: "Praktikum · Berlin-Friedrichshain · Start Okt/Nov 2026",
+    meta: "Praktikum · Berlin-Friedrichshain · Start nach Absprache",
     intro:
       "Du willst erste therapeutische Erfahrung und Einblicke in die Arbeit mit Patient:innen mit Schluckstörungen gewinnen? Im Praktikum bei HYO bekommst du direkten Zugang zu Hospitationen und Supervision im Bereich Dysphagie, Trachealkanülen und FEES.",
     tasks: [
@@ -92,7 +92,7 @@ const stellen: Stelle[] = [
     id: "stelle-werkstudium",
     title: "Werkstudent:in (m/w/d)",
     subtitle: "Praktische Erfahrung in Dysphagietherapie & FEES",
-    meta: "Flexibel neben dem Studium · Berlin-Friedrichshain · Start Okt/Nov 2026",
+    meta: "Flexibel neben dem Studium · Berlin-Friedrichshain · Start nach Absprache",
     intro:
       "Du studierst Logopädie oder Sprachtherapie und willst neben dem Studium echte klinische Erfahrung sammeln? Bei uns bekommst du von Anfang an praktischen Einblick in die Dysphagietherapie – supervidiert und mit direktem Bezug zu FEES und Trachealkanülenmanagement.",
     tasks: [
@@ -144,7 +144,7 @@ export default function KarrierePage() {
         </Headline>
         <Lead onViolet>
           <p>
-            HYO befindet sich im Aufbau. Wir suchen Menschen, die nicht nur bestehende Abläufe
+            HYO ist neu eröffnet und im Aufbau. Wir suchen Menschen, die nicht nur bestehende Abläufe
             übernehmen, sondern gemeinsam mit uns eine spezialisierte ambulante Versorgung
             entwickeln möchten.
           </p>

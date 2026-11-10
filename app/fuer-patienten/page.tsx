@@ -3,20 +3,20 @@ import { FadeIn } from "@/components/FadeIn";
 import { ButtonLink, TextLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
 import { GeoIcon } from "@/components/GeoShapes";
-import { booking, cta } from "@/lib/site";
+import { booking, callbackHref, cta } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Schluckstörung: Hilfe für Betroffene",
   description:
-    "Schluckstörung (Dysphagie) oder Trachealkanüle? So unterstützt HYO Betroffene und Angehörige in Berlin – Anzeichen, Ablauf und Online-Terminbuchung.",
+    "Schluckstörung (Dysphagie) oder Trachealkanüle? So unterstützt HYO Betroffene und Angehörige in Berlin – Anzeichen, Ablauf und Rückruf-Terminbuchung.",
   path: "/fuer-patienten",
 });
 
 const steps = [
   {
-    title: "Kurzes Telefonat buchen",
-    text: "Sie buchen online einen Termin für ein kurzes Telefonat – für sich selbst oder eine andere Person. Das ist unverbindlich.",
+    title: "Rückruf wählen",
+    text: "Sie wählen über Doctolib Tag und Uhrzeit für Ihren Rückruf oder hinterlassen Ihre Nummer – für sich selbst oder eine andere Person. Das ist unverbindlich.",
   },
   {
     title: "Persönlich besprechen",
@@ -56,8 +56,11 @@ export default function FuerPatientenPage() {
             Seite erklären wir, was das bedeutet – und wie HYO Sie unterstützen kann.
           </p>
         </Lead>
-        <div className="mt-8">
+        <div className="mt-8 flex flex-wrap items-center gap-4">
           <ButtonLink href={booking.url}>{cta.appointment}</ButtonLink>
+          <ButtonLink href={callbackHref} variant="secondary">
+            {cta.callback}
+          </ButtonLink>
         </div>
       </Section>
 
@@ -133,7 +136,7 @@ export default function FuerPatientenPage() {
 
       <Section surface="mint-light">
         <FadeIn>
-          <Headline>So läuft Ihre Terminbuchung ab</Headline>
+          <Headline>So läuft der Weg zum Termin ab</Headline>
         </FadeIn>
         <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
@@ -148,8 +151,9 @@ export default function FuerPatientenPage() {
         </ol>
         <FadeIn className="mt-10">
           <p className="max-w-2xl leading-relaxed text-ink/80">
-            HYO nimmt den Betrieb am 01.11.2026 im MEDICUM Friedrichshain auf. Die
-            Terminbuchung ist ab sofort online möglich.
+            Wir haben im MEDICUM Friedrichshain eröffnet und nehmen neue Patientinnen und
+            Patienten auf. Einen Rückruftermin buchen Sie online, alternativ fordern Sie
+            einen Rückruf an.
           </p>
         </FadeIn>
       </Section>
@@ -185,12 +189,15 @@ export default function FuerPatientenPage() {
           <Headline>Termin bei HYO buchen</Headline>
           <Lead>
             <p>
-              Buchen Sie online ein kurzes Telefonat – wir besprechen alles persönlich mit
-              Ihnen und suchen den passenden Therapeuten aus.
+              Wählen Sie online einen Rückruftermin oder fordern Sie einen Rückruf an – wir besprechen
+              alles persönlich mit Ihnen und suchen den passenden Therapeuten aus.
             </p>
           </Lead>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <ButtonLink href={booking.url}>{cta.appointment}</ButtonLink>
+            <ButtonLink href={callbackHref} variant="secondary">
+              {cta.callback}
+            </ButtonLink>
             <TextLink href="/wissen">{cta.knowledge}</TextLink>
           </div>
         </FadeIn>

@@ -6,19 +6,20 @@ import { HeroVideo } from "@/components/HeroVideo";
 import { CarePathTiles, GeoIcon } from "@/components/GeoShapes";
 import { ButtonLink, TextLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
-import { AppointmentForm } from "@/components/forms/AppointmentForm";
+import { CallbackForm } from "@/components/forms/CallbackForm";
+import { IndikationenGrid } from "@/components/IndikationenGrid";
 import { BookingCard } from "@/components/BookingCard";
 import { ConsentGatedMap } from "@/components/ConsentGatedMap";
 import { dysphagieArea, homeVisitTile, trachealArea } from "@/content/leistungen";
 import { articles } from "@/content/wissen";
 import { knownTeam, therapistTeam } from "@/content/team";
-import { booking, cta } from "@/lib/site";
+import { booking, callbackHref, cta } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Schlucktherapie Berlin: Dysphagie & Schluckstörung | HYO",
   description:
-    "Spezialisierte Logopädie bei Dysphagie und Schluckstörungen in Berlin-Friedrichshain: Schlucktherapie, Trachealkanülenmanagement, FEES. Termin online buchen.",
+    "Logopädie in Berlin-Friedrichshain: Dysphagie, Trachealkanülen, Sprache und Stimme. Jetzt eröffnet: Rückruftermin über Doctolib buchen oder Rückruf anfordern.",
   path: "/", absolute: true,
 });
 
@@ -33,8 +34,8 @@ const signs = [
 
 const steps = [
   {
-    title: "Kurzes Telefonat buchen",
-    text: "Buchen Sie online einen Termin für ein kurzes Telefonat – ganz einfach und unverbindlich.",
+    title: "Rückruf wählen",
+    text: "Wählen Sie über Doctolib Tag und Uhrzeit für Ihren Rückruf oder hinterlassen Sie uns Ihre Nummer. Ganz einfach und unverbindlich.",
   },
   {
     title: "Persönlich besprechen",
@@ -60,8 +61,8 @@ const faqs = [
     a: "Trachealkanülenmanagement ist die strukturierte Begleitung von Menschen mit Trachealkanüle – von der sicheren Versorgung im Alltag über Cuff-Management und Entblockungsphasen bis zur möglichen Dekanülierung, wo dies medizinisch möglich ist.",
   },
   {
-    q: "Wann startet HYO und wie komme ich zu einem Termin?",
-    a: "HYO nimmt den Betrieb am 01.11.2026 auf. Sie können ab sofort online über unsere Terminbuchung einen Termin für ein kurzes Telefonat buchen. In diesem Gespräch besprechen wir alles persönlich mit Ihnen und suchen den passenden Therapeuten oder die passende Therapeutin aus. Am 18.11.2026 findet unser Tag der offenen Praxis statt.",
+    q: "Wie komme ich zu einem Termin bei HYO?",
+    a: "Wir haben eröffnet und nehmen neue Patientinnen und Patienten auf. Sie haben zwei einfache Wege: Wählen Sie über Doctolib einen Rückruftermin mit Wunschtag und Uhrzeit, oder fordern Sie einen Rückruf an. Dann genügen Name und Telefonnummer, und wir melden uns im gewünschten Zeitraum. Alles Weitere, auch die ärztliche Verordnung, besprechen wir persönlich mit Ihnen und suchen den passenden Therapeuten oder die passende Therapeutin aus. Am 18.11.2026 findet außerdem unser Tag der offenen Praxis statt.",
   },
   {
     q: "Wer kann zu HYO kommen?",
@@ -109,19 +110,28 @@ export default function HomePage() {
         <div className="relative mx-auto grid w-full max-w-6xl items-center gap-10 py-16 md:py-20 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_460px]">
           <div className="min-w-0">
             <p className="mb-5 text-sm font-bold tracking-[0.16em] text-mint-brand uppercase">
-              Berlin-Friedrichshain · Start am 01.11.2026
+              Wir haben eröffnet · Berlin-Friedrichshain
             </p>
             <h1 className="text-4xl leading-[1.08] font-extrabold tracking-tight text-balance sm:text-5xl lg:text-[3.2rem] xl:text-[3.6rem]">
               Dysphagie. Spezialisiert.
             </h1>
             <p className="mt-6 max-w-2xl text-xl font-semibold text-mint-light">
               Spezialisierte ambulante Logopädie bei Schluckstörungen (Dysphagie) und
-              Trachealkanülen – für Patientinnen, Patienten und ihre Angehörigen in Berlin.
+              Trachealkanülen sowie bei Sprach-, Sprech- und Stimmstörungen – für Patientinnen,
+              Patienten und ihre Angehörigen in Berlin.
             </p>
+            <div className="on-violet mt-5 flex flex-wrap items-center gap-4 lg:hidden">
+              <ButtonLink href={booking.url} variant="on-violet">
+                {cta.appointmentBook}
+              </ButtonLink>
+              <ButtonLink href={callbackHref} variant="on-violet-outline">
+                {cta.callback}
+              </ButtonLink>
+            </div>
             <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/90">
-              HYO nimmt den Betrieb am 01.11.2026 im MEDICUM Friedrichshain auf. Buchen Sie
-              ab sofort online ein kurzes Telefonat – wir besprechen alles persönlich mit
-              Ihnen.
+              Wir nehmen neue Patientinnen und Patienten im MEDICUM Friedrichshain auf. Wählen
+              Sie einfach über Doctolib Tag und Uhrzeit für Ihren Rückruf oder lassen Sie sich
+              zurückrufen.
             </p>
             <p className="mt-5 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-hyo bg-white/15 px-4 py-2 text-base font-semibold">
               <span className="rounded-full bg-mint-brand px-3 py-0.5 text-sm font-bold text-ink">
@@ -171,6 +181,9 @@ export default function HomePage() {
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-5">
             <ButtonLink href={booking.url}>{cta.appointmentBook}</ButtonLink>
+            <ButtonLink href={callbackHref} variant="secondary">
+              {cta.callback}
+            </ButtonLink>
             <TextLink href="/wissen/was-ist-dysphagie">Was ist Dysphagie?</TextLink>
           </div>
         </FadeIn>
@@ -328,6 +341,30 @@ export default function HomePage() {
 
       </Section>
 
+      {/* Indikationen: Wen wir behandeln (Alltagssprache, Verordnungs-Kürzel) */}
+      <Section surface="grey" id="indikationen">
+        <FadeIn>
+          <Eyebrow>Wir nehmen Patient:innen auf</Eyebrow>
+          <Headline>Bei diesen Beschwerden behandeln wir Sie.</Headline>
+          <Lead>
+            <p>
+              Neben Schlucken und Trachealkanülen behandeln wir Sprache, Sprechen und Stimme. Die
+              Kürzel (z.&nbsp;B. SC oder ST1) stehen auf Ihrer Heilmittelverordnung. Sie müssen sie
+              aber nicht kennen: Wir klären alles gemeinsam mit Ihnen.
+            </p>
+          </Lead>
+        </FadeIn>
+        <div className="mt-10">
+          <IndikationenGrid />
+        </div>
+        <div className="on-violet mt-10 flex flex-wrap items-center gap-4">
+          <ButtonLink href={booking.url}>{cta.appointmentBook}</ButtonLink>
+          <ButtonLink href={callbackHref} variant="secondary">
+            {cta.callback}
+          </ButtonLink>
+        </div>
+      </Section>
+
       {/* Team */}
       <Section surface="mint-light" id="team">
         <FadeIn>
@@ -366,7 +403,7 @@ export default function HomePage() {
       <Section surface="white" id="faq">
         <FadeIn>
           <Eyebrow>Häufige Fragen</Eyebrow>
-          <Headline>Fragen zu Schlucktherapie und Terminbuchung.</Headline>
+          <Headline>Fragen zu Schlucktherapie und Ablauf.</Headline>
         </FadeIn>
         <FadeIn className="mt-10 max-w-3xl">
           <div className="space-y-3">
@@ -475,21 +512,27 @@ export default function HomePage() {
         </FadeIn>
       </Section>
 
-      {/* Abschnitt 9: persönliche Anfrage (Terminbuchung steht oben im Hero-Bereich) */}
-      <Section surface="mint" id="anfrage">
-        <FadeIn>
-          <Eyebrow>Anfrage</Eyebrow>
-          <Headline>Lieber persönlich anfragen?</Headline>
-          <Lead>
-            <p>
-              Termine buchen Sie direkt online (siehe oben). Wenn Sie lieber eine Anfrage
-              hinterlegen möchten, nutzen Sie das Formular – wir melden uns bei Ihnen.
-            </p>
-          </Lead>
-        </FadeIn>
-        <FadeIn className="mt-10 max-w-3xl">
-          <AppointmentForm />
-        </FadeIn>
+      {/* Rückruf-Formular (Rückruftermin über Doctolib steht oben im Hero-Bereich) */}
+      <Section surface="mint" id="rueckruf">
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_480px] lg:gap-14">
+          <FadeIn>
+            <Eyebrow>Rückruf</Eyebrow>
+            <Headline>Lieber zurückgerufen werden?</Headline>
+            <Lead>
+              <p>
+                Name und Telefonnummer genügen. Wir rufen Sie im gewünschten Zeitraum zurück und
+                klären alles Weitere am Telefon, auch die ärztliche Verordnung.
+              </p>
+              <p>Sie möchten lieber selbst Tag und Uhrzeit wählen? Dann buchen Sie Ihren Rückruftermin online.</p>
+            </Lead>
+            <div className="mt-7">
+              <ButtonLink href={booking.url}>{cta.appointmentBook}</ButtonLink>
+            </div>
+          </FadeIn>
+          <FadeIn>
+            <CallbackForm />
+          </FadeIn>
+        </div>
       </Section>
 
     </>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ConversionEvent } from "@/components/ConversionEvent";
 import { Logo } from "@/components/Logo";
 import { ButtonLink } from "@/components/ui/Buttons";
 import { site } from "@/lib/site";
@@ -21,6 +22,7 @@ export const metadata: Metadata = {
 export default function RueckrufDankePage() {
   return (
     <div data-lp className="flex min-h-screen flex-col bg-mint-light">
+      <ConversionEvent />
       <div className="bg-warm-white px-5 py-3 sm:px-8">
         <div className="mx-auto max-w-6xl">
           <Logo height={34} />

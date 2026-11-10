@@ -12,7 +12,7 @@ import type { FormState } from "@/lib/schemas";
  * Formulardefinitionen für die Erkennung liegen in public/__forms.html.
  */
 export async function submitToNetlifyForm<T>(
-  formName: "terminanfrage" | "kooperationsanfrage" | "bewerbung" | "rueckruf",
+  formName: "kooperationsanfrage" | "bewerbung" | "rueckruf",
   formData: FormData,
   schema: ZodType<T>,
   successMessage: string,

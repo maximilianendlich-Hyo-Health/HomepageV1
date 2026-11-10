@@ -8,7 +8,7 @@ export const site = {
   name: "HYO",
   claim: "Dysphagie. Spezialisiert.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hyo-health.de",
-  openingNote: "HYO eröffnet 2026 in Berlin.",
+  openingNote: "HYO hat eröffnet und nimmt neue Patientinnen und Patienten auf.",
   address: {
     building: "HYO im MEDICUM Friedrichshain",
     street: "Matthiasstraße 7",
@@ -52,15 +52,18 @@ export const mainNav = [
   { label: "Kontakt", href: "/kontakt" },
 ] as const;
 
-/** Online-Terminbuchung über Doctolib (reiner Link, keine Einbettung). */
+/** Online-Buchung eines Rückruftermins über Doctolib (reiner Link, keine Einbettung). */
 export const booking = {
   url: "https://www.doctolib.de/praxis/berlin/hyo-health",
 } as const;
 
+/** Rückruf-Formular auf der Startseite (Abschnitt „Rückruf“). */
+export const callbackHref = "/#rueckruf";
+
 export const cta = {
-  appointment: "Termin buchen",
-  appointmentBook: "Termin buchen",
-  appointmentReserve: "Für Termin vormerken",
+  appointment: "Rückruftermin buchen",
+  appointmentBook: "Rückruftermin buchen",
+  callback: "Rückruf anfordern",
   cooperation: "Kooperation anfragen",
   handover: "Patientenübergabe besprechen",
   professionalContact: "Fachlichen Kontakt aufnehmen",

@@ -296,7 +296,7 @@ export const articles: Article[] = [
       },
     ],
     professionalNote:
-      "Für Kliniken und Entlassmanagement: HYO nimmt bereits jetzt Kooperationsanfragen entgegen, um Übergabeprozesse frühzeitig abzustimmen. Betriebsstart ist der 01.11.2026.",
+      "Für Kliniken und Entlassmanagement: HYO hat eröffnet und stimmt Übergabeprozesse gern mit Kliniken und Entlassmanagement ab. Kooperationsanfragen nehmen wir jederzeit entgegen.",
     sources: [
       {
         label:
