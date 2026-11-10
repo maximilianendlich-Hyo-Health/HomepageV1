@@ -5,7 +5,7 @@
   Netlify scannt beim Deploy statische HTML-Dateien nach Formularen mit
   data-netlify="true" und registriert sie. Da die sichtbaren Formulare in
   React/Next.js gerendert werden, definiert diese (nicht verlinkte) Datei die
-  drei Formulare mit allen Feldnamen. Die React-Formulare senden ihre Daten
+  vier Formulare mit allen Feldnamen. Die React-Formulare senden ihre Daten
   per POST (application/x-www-form-urlencoded, inkl. "form-name") an diesen
   Pfad; Netlify fängt die Anfrage ab und speichert die Submission.
 
@@ -24,6 +24,19 @@
       <input type="text" name="requestFor" />
       <input type="text" name="topic" />
       <textarea name="message"></textarea>
+      <input type="text" name="consentPrivacy" />
+    </form>
+
+    <form name="rueckruf" data-netlify="true" netlify-honeypot="website" hidden>
+      <input type="text" name="website" />
+      <input type="text" name="name" />
+      <input type="tel" name="phone" />
+      <input type="text" name="timeSlot" />
+      <input type="text" name="utmSource" />
+      <input type="text" name="utmCampaign" />
+      <input type="text" name="utmTerm" />
+      <input type="text" name="gclid" />
+      <input type="text" name="seite" />
       <input type="text" name="consentPrivacy" />
     </form>
 

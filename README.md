@@ -55,7 +55,7 @@ Siehe `.env.example`:
 
 ## Formulare
 
-Alle drei Formulare (Terminanfrage, Kooperationsanfrage, Bewerbung/Personal)
+Alle vier Formulare (Terminanfrage, Kooperationsanfrage, Bewerbung/Personal, Rückruf)
 laufen über **Netlify Forms**: Die statische Definitionsdatei
 `public/__forms.html` registriert die Formulare beim Deploy, die
 React-Formulare senden ihre Daten URL-codiert (inkl. `form-name`) an diesen
@@ -82,6 +82,19 @@ Fenster, auf der Website werden keine Inhalte von Doctolib geladen. Die URL steh
 zentral in `lib/site.ts` (`booking.url`); die Buchungs-Kachel im Hero ist
 `components/BookingCard.tsx`. Die Datenschutzerklärung (Ziffer 6) beschreibt die
 Verlinkung.
+
+## Werbe-Landingpage (Google Ads)
+
+`/rueckruf` ist eine auf Conversion getrimmte Seite für Anzeigen: ohne Navigation,
+Footer und globales CTA-Band, Rückruf-Formular (Name, Telefon, Wunschzeitraum) direkt
+im Hero, Team, drei Schritte, FAQ und feste Anruf-/Rückruf-Leiste auf dem Smartphone.
+Nach dem Absenden folgt `/rueckruf/danke` (dort später den Google-Ads-Conversion-Tag
+auslösen). Beide Seiten sind `noindex` und nicht in der Sitemap. Kampagnenangaben
+(`utm_source`, `utm_campaign`, `utm_term`, `gclid`) werden beim Absenden aus der URL
+an die Netlify-Submission gehängt. Der Cookie-Banner ist dort ausgeblendet, weil die
+Seite keine externen Inhalte lädt; sobald Tracking hinzukommt, muss er wieder
+erscheinen (`lib/landing.ts`, `components/CookieBanner.tsx`). In Netlify für das
+Formular „rueckruf“ eine E-Mail-Benachrichtigung einrichten.
 
 ## Datenschutz und Consent
 

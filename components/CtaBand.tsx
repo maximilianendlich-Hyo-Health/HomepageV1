@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { ButtonLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
+import { isLandingPath } from "@/lib/landing";
 import { booking, cta } from "@/lib/site";
 
 /**
@@ -15,7 +16,7 @@ const EXCLUDED_PATHS = ["/team"];
 
 export function CtaBand() {
   const pathname = usePathname();
-  if (EXCLUDED_PATHS.includes(pathname)) return null;
+  if (EXCLUDED_PATHS.includes(pathname) || isLandingPath(pathname)) return null;
 
   return (
     <Section surface="violet">

@@ -3,7 +3,7 @@ import { z } from "zod";
 /** Serverseitige Validierung aller Formulare (bewusst kurze Formulare). */
 
 const consent = z
-  .string()
+  .string({ message: "Bitte stimmen Sie der Datenschutzerklärung zu." })
   .refine((v) => v === "on", "Bitte stimmen Sie der Datenschutzerklärung zu.");
 
 const email = z.string().trim().email("Bitte geben Sie eine gültige E-Mail-Adresse an.");
@@ -27,6 +27,37 @@ export const appointmentSchema = z.object({
   }),
   topic: z.enum(appointmentTopics, { message: "Bitte wählen Sie Ihr Anliegen." }),
   message: z.string().trim().max(1500, "Bitte kürzen Sie Ihre Nachricht.").optional().or(z.literal("")),
+  consentPrivacy: consent,
+});
+
+export const callbackSlots = [
+  "so bald wie möglich",
+  "vormittags (8–12 Uhr)",
+  "mittags (12–15 Uhr)",
+  "nachmittags (15–18 Uhr)",
+] as const;
+
+const optionalShort = z.string().trim().max(200).optional().or(z.literal(""));
+
+/** Rückruf-Formular der Landingpage: bewusst nur Name, Telefon und Wunschzeitraum Pflicht. */
+export const callbackSchema = z.object({
+  name: z.string().trim().min(1, "Bitte geben Sie Ihren Namen an.").max(120),
+  phone: z
+    .string()
+    .trim()
+    .min(1, "Bitte geben Sie Ihre Telefonnummer an.")
+    .max(40)
+    .refine(
+      (v) => /^[+\d][\d\s()/.-]*$/.test(v) && v.replace(/\D/g, "").length >= 6,
+      "Bitte geben Sie eine gültige Telefonnummer an.",
+    ),
+  timeSlot: z.enum(callbackSlots, { message: "Bitte wählen Sie einen Zeitraum." }),
+  // Kampagnenangaben aus der Adresszeile (nur zur Zuordnung der Anfrage)
+  utmSource: optionalShort,
+  utmCampaign: optionalShort,
+  utmTerm: optionalShort,
+  gclid: optionalShort,
+  seite: optionalShort,
   consentPrivacy: consent,
 });
 

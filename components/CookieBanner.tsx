@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { isLandingPath } from "@/lib/landing";
 import {
   CONSENT_CHANGED_EVENT,
   OPEN_CONSENT_EVENT,
@@ -20,6 +22,7 @@ import {
  * - Auswahl wird ausschließlich lokal gespeichert (siehe lib/consent.ts)
  */
 export function CookieBanner() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
   const [details, setDetails] = useState(false);
   const [externalMedia, setExternalMedia] = useState(false);
@@ -63,7 +66,8 @@ export function CookieBanner() {
     if (visible) headingRef.current?.focus();
   }, [visible, details]);
 
-  if (!visible) return null;
+  // Werbe-Landingpages laden keine externen Inhalte und setzen keine Cookies: keine Abfrage nötig.
+  if (!visible || isLandingPath(pathname)) return null;
 
   const close = () => {
     setVisible(false);

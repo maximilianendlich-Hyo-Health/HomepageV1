@@ -220,3 +220,10 @@ html[data-acc-motion="reduziert"] *::after {
   }
 }
 
+
+/* Auf Werbe-Landingpages sitzt unten eine feste CTA-Leiste (nur mobil): Barrierefreiheits-Button darüber anheben. */
+@media (max-width: 1023px) {
+  body:has([data-lp]) [data-acc-trigger] {
+    bottom: 5.5rem;
+  }
+}

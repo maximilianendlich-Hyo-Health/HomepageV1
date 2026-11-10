@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/Logo";
+import { isLandingPath } from "@/lib/landing";
 import { mainNav } from "@/lib/site";
 
 export function Header() {
@@ -25,6 +26,8 @@ export function Header() {
       document.documentElement.style.overflow = "";
     };
   }, [open]);
+
+  if (isLandingPath(pathname)) return null;
 
   return (
     <header className="sticky top-0 z-50 border-b border-ink/8 bg-warm-white/95 backdrop-blur">

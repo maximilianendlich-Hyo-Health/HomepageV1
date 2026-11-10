@@ -8,6 +8,7 @@ import { AccessibilityPanel } from "@/components/AccessibilityPanel";
 import { booking, site } from "@/lib/site";
 import "leaflet/dist/leaflet.css";
 import "./globals.css";
+import { HideOnLanding } from "@/components/HideOnLanding";
 
 /**
  * Quicksand wird über next/font zur Build-Zeit heruntergeladen und
@@ -155,7 +156,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <AccessibilityPanel />
         <CookieBanner />
-        <Footer />
+        <HideOnLanding>
+          <Footer />
+        </HideOnLanding>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

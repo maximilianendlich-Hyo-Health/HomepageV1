@@ -126,7 +126,7 @@ export default function DatenschutzPage() {
 
           <Block title="4. Formulare">
             <p>
-              Auf dieser Website können Sie drei Formulare nutzen. Die Übermittlung erfolgt
+              Auf dieser Website können Sie vier Formulare nutzen. Die Übermittlung erfolgt
               jeweils verschlüsselt (TLS). Wir erheben nur die Angaben, die zur Bearbeitung
               Ihres Anliegens erforderlich sind; optionale Felder sind als solche
               gekennzeichnet. Bitte übermitteln Sie in Freitextfeldern keine unnötigen
@@ -159,6 +159,20 @@ export default function DatenschutzPage() {
                 Abschluss des Verfahrens gelöscht, spätestens nach sechs Monaten, sofern keine
                 gesetzlichen Aufbewahrungspflichten bestehen oder Sie in eine längere
                 Speicherung eingewilligt haben.
+              </p>
+            </Sub>
+            <Sub title="d) Rückruf-Formular (Landingpage)">
+              <p>
+                Verarbeitete Daten: Name, Telefonnummer, gewünschter Rückrufzeitraum. Wenn Sie über eine Anzeige oder einen Link mit
+                Kampagnenangaben (z.&nbsp;B. Kampagne, Suchbegriff, Klick-Kennung) zu uns
+                gelangt sind, werden diese technischen Angaben aus der Adresszeile mit Ihrer
+                Anfrage gespeichert. Sie dienen allein dazu, Anfragen den Werbemaßnahmen
+                zuzuordnen; es werden dafür keine Cookies gesetzt. Zweck: Rückruf und
+                Terminabstimmung. Rechtsgrundlagen: Art. 6 Abs. 1 lit. b DSGVO
+                (vorvertragliche Maßnahmen), Ihre Einwilligung nach Art. 6 Abs. 1 lit. a
+                DSGVO und für die Kampagnenzuordnung unser berechtigtes Interesse nach Art. 6
+                Abs. 1 lit. f DSGVO an der Erfolgsmessung unserer Werbung. Wir rufen Sie nur
+                im Zusammenhang mit Ihrer Anfrage an.
               </p>
             </Sub>
             <Sub title="Verarbeitung der Formulardaten">

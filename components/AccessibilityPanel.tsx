@@ -164,6 +164,7 @@ export function AccessibilityPanel() {
       <button
         type="button"
         onClick={() => dialogRef.current?.showModal()}
+        data-acc-trigger
         className="fixed right-4 bottom-4 z-50 inline-flex items-center gap-2 rounded-hyo bg-violet-brand px-4 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-violet-deep sm:right-6 sm:bottom-6"
         aria-haspopup="dialog"
       >
