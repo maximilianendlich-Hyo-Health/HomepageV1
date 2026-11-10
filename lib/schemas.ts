@@ -9,6 +9,22 @@ const consent = z
 const email = z.string().trim().email("Bitte geben Sie eine gültige E-Mail-Adresse an.");
 const optionalPhone = z.string().trim().max(40).optional().or(z.literal(""));
 
+/**
+ * @deprecated Das Terminanfrage-Formular gibt es nicht mehr (Ersatz: callbackSchema).
+ * Nur noch erhalten, damit Altdateien im Repo (z. B. lib/actions.ts), die diesen Export
+ * noch importieren, den Build nicht abbrechen. Kann zusammen mit diesen Dateien entfallen.
+ */
+export const appointmentSchema = z.object({
+  firstName: z.string().trim().min(1).max(100),
+  lastName: z.string().trim().min(1).max(100),
+  email,
+  phone: optionalPhone,
+  requestFor: z.string().max(60),
+  topic: z.string().max(120),
+  message: z.string().trim().max(2000).optional().or(z.literal("")),
+  consentPrivacy: consent,
+});
+
 export const callbackSlots = [
   "so bald wie möglich",
   "vormittags (8–12 Uhr)",
