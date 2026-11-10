@@ -47,7 +47,7 @@ export default function BarrierefreiheitPage() {
             Formularfelder für eine leichtere Bedienung.
           </li>
           <li>
-            <strong>Bewegungsempfindlichkeit:</strong> Reduzierung von Video und Animationen –
+            <strong>Bewegungsempfindlichkeit:</strong> Reduzierung von Animationen –
             zusätzlich respektiert die Website automatisch die Systemeinstellung
             „Bewegung reduzieren“.
           </li>

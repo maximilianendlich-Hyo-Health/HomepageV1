@@ -9,7 +9,7 @@ import { Eyebrow, Headline, Section } from "@/components/ui/Section";
 import { IndikationenGrid } from "@/components/IndikationenGrid";
 import { knownTeam, therapistTeam } from "@/content/team";
 import { googleAdsEnabled } from "@/lib/ads";
-import { site } from "@/lib/site";
+import { site, trademarkNotice } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
 /** Werbe-Landingpage (Google Ads): nicht im Index, nicht in der Sitemap. */
@@ -237,6 +237,8 @@ export default function RueckrufPage() {
           <p className="leading-relaxed">
             <strong>{site.legal.company}</strong> · {site.address.building}, {site.address.street}, 2. OG ·{" "}
             {site.address.zip} {site.address.city} · Mo–Fr 8–18 Uhr
+            <br />
+            {trademarkNotice}
           </p>
           <nav aria-label="Rechtliches" className="flex gap-5 font-semibold">
             <a href="/impressum" className="underline underline-offset-4">Impressum</a>

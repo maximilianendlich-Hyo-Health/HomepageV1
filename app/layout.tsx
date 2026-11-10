@@ -6,7 +6,6 @@ import { CtaBand } from "@/components/CtaBand";
 import { Footer } from "@/components/Footer";
 import { AccessibilityPanel } from "@/components/AccessibilityPanel";
 import { booking, site } from "@/lib/site";
-import "leaflet/dist/leaflet.css";
 import "./globals.css";
 import { GoogleTag } from "@/components/GoogleTag";
 import { HideOnLanding } from "@/components/HideOnLanding";

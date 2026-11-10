@@ -1,5 +1,6 @@
 "use client";
 
+import "leaflet/dist/leaflet.css";
 import { useEffect, useRef, useState } from "react";
 import { CONSENT_CHANGED_EVENT, loadConsent, saveConsent } from "@/lib/consent";
 import { parkinsonCenters, strokeUnits } from "@/content/strokeUnits";

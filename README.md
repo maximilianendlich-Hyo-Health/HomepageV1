@@ -42,7 +42,6 @@ components/dashboard/ Wissensdashboard (Client-Komponente)
 content/              Inhalte: Leistungen, Wissen, Team, Dashboard-Daten
 lib/                  Site-Konstanten, SEO-Helfer, Consent, Zod-Schemas, Formularadapter
 public/images/        Logo-Varianten, Teamfotos, OG-Bild, Hero-Poster
-public/video/         Erklärvideo Schluckvorgang (Hero-Video optional, bei Bedarf anlegen)
 ```
 
 ## Umgebungsvariablen
@@ -52,8 +51,9 @@ Siehe `.env.example`:
 | Variable | Zweck |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Öffentliche Basis-URL (Canonical, Sitemap, OG) |
-| `NEXT_PUBLIC_GOOGLE_ADS_ID` | Google-Tag-ID (`AW-…`), schaltet Tag, Marketing-Banner und Datenschutztext ein |
-| `NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL` | Conversion-Label für `/rueckruf/danke` |
+| `NEXT_PUBLIC_GOOGLE_TAG_ID` | Google-Tag-ID (`G-…`); Standard `G-HSGX78DD1W` ist in `lib/ads.ts` hinterlegt |
+| `NEXT_PUBLIC_GOOGLE_ADS_ID` | optional: Ads-Konto-ID (`AW-…`), nur für Conversion mit Label |
+| `NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL` | optional: Conversion-Label für `/rueckruf/danke` |
 
 ## Formulare
 
@@ -98,17 +98,16 @@ Seite keine externen Inhalte lädt; sobald Tracking hinzukommt, muss er wieder
 erscheinen (`lib/landing.ts`, `components/CookieBanner.tsx`). In Netlify für das
 Formular „rueckruf“ eine E-Mail-Benachrichtigung einrichten.
 
-## Google-Ads-Tag
+## Google-Tag
 
-Das Tag ist eingebaut, aber nur aktiv, wenn `NEXT_PUBLIC_GOOGLE_ADS_ID` gesetzt ist
-(Netlify: Site configuration → Environment variables, danach neu deployen, weil die
-Werte beim Build eingebettet werden). Es lädt erst nach Einwilligung in die Kategorie
-„Marketing“ (`components/GoogleTag.tsx`, Consent Mode v2 mit „denied“ als Standard).
-`components/ConversionEvent.tsx` meldet auf `/rueckruf/danke` einmal pro Sitzung die
-Conversion an `AW-…/Label`. Bei aktivem Tag erscheinen Banner-Kategorie,
-Footer-Link „Cookie-Einstellungen“ auf der Landingpage und Datenschutz-Ziffer 8a
-automatisch. Das Tag nicht zusätzlich per Netlify-Snippet-Injection einbinden, das
-würde die Einwilligung umgehen.
+Das Google-Tag (`G-HSGX78DD1W`, in `lib/ads.ts`) ist eingebaut und lädt erst nach
+Einwilligung in die Kategorie „Marketing“ (`components/GoogleTag.tsx`, Consent Mode v2
+mit „denied“ als Standard). `components/ConversionEvent.tsx` sendet auf
+`/rueckruf/danke` einmal pro Sitzung `generate_lead` (und mit Ads-ID plus Label die
+Ads-Conversion). In Google Ads lässt sich die Danke-Seite zusätzlich als
+URL-Conversion hinterlegen. Banner-Kategorie, Footer-Link „Cookie-Einstellungen“ auf
+der Landingpage und Datenschutz-Ziffer 8a erscheinen automatisch. Das Tag nicht
+zusätzlich per Netlify-Snippet-Injection einbinden, das würde die Einwilligung umgehen.
 
 ## Datenschutz und Consent
 
@@ -153,10 +152,6 @@ statt Scheingenauigkeit, Evidenzkennzeichnung und Limitationen.
   in `components/Logo.tsx`.
 - **Teamfotos:** `public/images/team/*.jpg` (4:5, 720×900). Beim Austausch gleiche
   Dateinamen verwenden oder Pfade in `content/team.ts` anpassen.
-- **Hero-Video:** Dateien nach `public/video/` legen:
-  `hero.webm`, `hero.mp4`, `hero-mobile.mp4`; Posterbild
-  `public/images/hero-poster.jpg` ersetzen. Bis dahin zeigt der Hero die
-  geometrische Markenfläche.
 - **Kontaktdaten, Adresse, Buchungs-Link:** zentral in `lib/site.ts`.
 
 ## GitHub-Workflow

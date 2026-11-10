@@ -89,7 +89,7 @@ export default function DatenschutzPage() {
               Wir verarbeiten personenbezogene Daten nur, soweit dies zur Bereitstellung einer
               funktionsfähigen Website sowie zur Bearbeitung Ihrer Anfragen erforderlich ist.
               {googleAdsEnabled
-                ? "Diese Website verwendet keine Analyse- oder Tracking-Cookies. Zur Erfolgsmessung unserer Google-Anzeigen setzen wir nur mit Ihrer Einwilligung ein Marketing-Tag von Google ein (Ziffer 8)."
+                ? "Diese Website verwendet keine Analyse- oder Tracking-Cookies. Zur Erfolgsmessung unserer Anzeigen setzen wir nur mit Ihrer Einwilligung ein Google-Tag ein (Ziffer 8)."
                 : "Diese Website verwendet keine Analyse-, Tracking- oder Marketing-Cookies und bindet keine Werbedienste ein."}
             </p>
             <p>
@@ -299,8 +299,8 @@ export default function DatenschutzPage() {
               </li>
               {googleAdsEnabled && (
                 <li>
-                  <strong>Marketing (einwilligungspflichtig):</strong> das Google-Ads-Tag
-                  (Conversion-Messung, Ziffer 8a), Rechtsgrundlagen Art. 6 Abs. 1 lit. a DSGVO
+                  <strong>Marketing (einwilligungspflichtig):</strong> das Google-Tag
+                  (Mess- und Conversion-Daten, Ziffer 8a), Rechtsgrundlagen Art. 6 Abs. 1 lit. a DSGVO
                   und § 25 Abs. 1 TDDDG.
                 </li>
               )}
@@ -317,12 +317,12 @@ export default function DatenschutzPage() {
           </Block>
 
           {googleAdsEnabled && (
-            <Block title="8a. Google Ads (Conversion-Messung)">
+            <Block title="8a. Google-Tag (Reichweiten- und Conversion-Messung)">
               <p>
                 Wenn Sie im Einwilligungsbanner „Marketing“ zustimmen, laden wir das
-                Google-Ads-Tag der Google Ireland Limited, Gordon House, Barrow Street,
-                Dublin 4, Irland („Google“). Wir messen damit, ob eine Anzeige zu einer
-                Rückrufanfrage geführt hat. Dazu setzt Google Cookies (z.&nbsp;B. „_gcl_*“) und
+                Google-Tag der Google Ireland Limited, Gordon House, Barrow Street,
+                Dublin 4, Irland („Google“). Wir messen damit, wie unsere Website genutzt wird und ob eine
+                Anzeige zu einer Rückrufanfrage geführt hat. Dazu setzt Google Cookies (z.&nbsp;B. „_gcl_*“) und
                 verarbeitet Daten wie Ihre IP-Adresse, die aufgerufene Seite, die Klick-Kennung
                 der Anzeige und Angaben zu Ihrem Gerät. Die Daten können auch an Google LLC
                 in den USA übermittelt werden; Grundlage ist der Angemessenheitsbeschluss zum
@@ -409,7 +409,7 @@ export default function DatenschutzPage() {
             Hier können Sie Ihre Einwilligung für externe Inhalte (OpenStreetMap-Karte, VBB-Fahrinfo)
             jederzeit erteilen, ändern oder widerrufen.{" "}
             {googleAdsEnabled
-              ? "Marketing-Cookies (Google Ads) setzen wir nur mit Ihrer Einwilligung, Analyse- oder Tracking-Cookies nicht."
+              ? "Marketing-Cookies (Google-Tag) setzen wir nur mit Ihrer Einwilligung, Analyse- oder Tracking-Cookies nicht."
               : "Analyse-, Tracking- oder Marketing-Cookies setzen wir nicht ein."}{" "}
             Ihre Barrierefreiheits-Einstellungen
             werden unabhängig davon lokal gespeichert und können über „Ansicht anpassen“

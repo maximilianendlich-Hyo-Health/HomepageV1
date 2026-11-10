@@ -141,6 +141,14 @@ export default function ImpressumPage() {
           </p>
         </Block>
 
+        <Block title="Marke">
+          <p>
+            „HYO“ ist eine Marke der {site.legal.company}. Alle Markenrechte sind
+            vorbehalten. Die Verwendung der Marke, des Logos und der Gestaltungselemente ohne
+            vorherige schriftliche Zustimmung ist nicht gestattet.
+          </p>
+        </Block>
+
         <Block title="Urheberrecht">
           <p>
             Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten

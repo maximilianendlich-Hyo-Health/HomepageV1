@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        // Bilder und Videos ändern sich selten: lange zwischenspeichern, im Hintergrund erneuern.
+        source: "/:path(images|video)/:file*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }],
+      },
+      {
         source: "/:path*",
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },

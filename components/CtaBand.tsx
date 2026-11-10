@@ -42,6 +42,7 @@ export function CtaBand() {
         Für Kliniken und Pflege:{" "}
         <Link
           href="/fuer-partner#kooperation-anfragen"
+          prefetch={false}
           className="font-semibold text-white underline decoration-2 underline-offset-4"
         >
           {cta.cooperation}

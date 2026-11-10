@@ -7,12 +7,16 @@ import { CONSENT_CHANGED_EVENT, loadConsent } from "@/lib/consent";
 const SENT_KEY = "hyo-conversion-sent";
 
 /**
- * Löst auf der Danke-Seite die Google-Ads-Conversion aus – nur mit Marketing-Einwilligung
+ * Meldet auf der Danke-Seite die Rückrufanfrage an Google – nur mit Marketing-Einwilligung
  * und höchstens einmal pro Sitzung (Neuladen zählt nicht doppelt).
+ *
+ * - `generate_lead` (empfohlenes Ereignis) wird immer gesendet; die Seite /rueckruf/danke
+ *   lässt sich zusätzlich in Google Ads als URL-Conversion hinterlegen.
+ * - Mit Ads-ID und Conversion-Label wird außerdem die Ads-Conversion ausgelöst.
  */
 export function ConversionEvent() {
   useEffect(() => {
-    if (!googleAdsEnabled || !googleAdsConversionLabel) return;
+    if (!googleAdsEnabled) return;
 
     const fire = () => {
       if (!loadConsent().marketing || !window.gtag) return;
@@ -20,9 +24,12 @@ export function ConversionEvent() {
         if (window.sessionStorage.getItem(SENT_KEY)) return;
         window.sessionStorage.setItem(SENT_KEY, "1");
       } catch {
-        /* Sitzungsspeicher nicht verfügbar – Conversion trotzdem senden */
+        /* Sitzungsspeicher nicht verfügbar – Ereignis trotzdem senden */
       }
-      window.gtag("event", "conversion", { send_to: `${googleAdsId}/${googleAdsConversionLabel}` });
+      window.gtag("event", "generate_lead", { form_name: "rueckruf" });
+      if (googleAdsId && googleAdsConversionLabel) {
+        window.gtag("event", "conversion", { send_to: `${googleAdsId}/${googleAdsConversionLabel}` });
+      }
     };
 
     // GoogleTag legt gtag beim Consent-Ereignis an; kurz warten, falls beide gleichzeitig starten.

@@ -78,16 +78,23 @@ body {
 }
 
 /* Sanftes Einblenden beim Scrollen (per FadeIn-Komponente gesteuert) */
-.fade-init {
-  opacity: 0;
-  transform: translateY(18px);
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
-.fade-in {
-  opacity: 1;
-  transform: none;
+/* Nur wo scroll-getriebene Animationen unterstützt werden; sonst bleibt alles sichtbar. */
+@supports (animation-timeline: view()) {
+  .fade-init {
+    animation: fade-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0px entry 140px;
+  }
 }
 
 /* Ruhiger Scroll-Hinweis im Hero */
@@ -176,13 +183,8 @@ html[data-acc-targets="gross"] nav a {
 html[data-acc-motion="reduziert"] {
   scroll-behavior: auto;
 }
-html[data-acc-motion="reduziert"] .hero-video {
-  display: none;
-}
 html[data-acc-motion="reduziert"] .fade-init {
-  opacity: 1;
-  transform: none;
-  transition: none;
+  animation: none;
 }
 html[data-acc-motion="reduziert"] .scroll-hint {
   animation: none;
@@ -195,18 +197,13 @@ html[data-acc-motion="reduziert"] *::after {
   transition-duration: 0.01ms !important;
 }
 
-/* Reduzierte Bewegung: Video ausblenden, Animationen abschalten */
+/* Reduzierte Bewegung: Animationen abschalten */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .hero-video {
-    display: none;
-  }
   .fade-init {
-    opacity: 1;
-    transform: none;
-    transition: none;
+    animation: none;
   }
   .scroll-hint {
     animation: none;

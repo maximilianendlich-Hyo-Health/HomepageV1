@@ -59,7 +59,7 @@ export function ButtonLink({
     );
   }
   return (
-    <Link href={href} className={className}>
+    <Link href={href} prefetch={false} className={className}>
       {children}
       {arrow && <Arrow />}
     </Link>
@@ -94,7 +94,7 @@ export function TextLink({ href, children }: { href: string; children: ReactNode
     );
   }
   return (
-    <Link href={href} className={className}>
+    <Link href={href} prefetch={false} className={className}>
       {children}
       <Arrow />
     </Link>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { CookieSettingsButton } from "@/components/CookieSettingsButton";
-import { booking, cta, site } from "@/lib/site";
+import { booking, cta, site, trademarkNotice } from "@/lib/site";
 
 const footerNav = [
   { label: cta.appointment, href: booking.url },
@@ -79,7 +79,7 @@ export function Footer() {
                     {item.label}
                   </a>
                 ) : (
-                  <Link href={item.href} className="text-white/90 hover:text-mint-brand hover:underline">
+                  <Link href={item.href} prefetch={false} className="text-white/90 hover:text-mint-brand hover:underline">
                     {item.label}
                   </Link>
                 )}
@@ -94,7 +94,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5">
             {legalNav.map((item) => (
               <li key={item.label}>
-                <Link href={item.href} className="text-white/90 hover:text-mint-brand hover:underline">
+                <Link href={item.href} prefetch={false} className="text-white/90 hover:text-mint-brand hover:underline">
                   {item.label}
                 </Link>
               </li>
@@ -157,7 +157,9 @@ export function Footer() {
       <div className="border-t border-white/15">
         <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-5 py-5 text-sm text-white/80 sm:px-8">
           <p>Neu eröffnet · Berlin-Friedrichshain</p>
-          <p>© {new Date().getFullYear()} {site.legal.company}</p>
+          <p>
+            © {new Date().getFullYear()} {site.legal.company} · {trademarkNotice}
+          </p>
         </div>
       </div>
     </footer>

@@ -1,17 +1,29 @@
 /**
- * Google-Ads-Tag (Conversion-Messung).
+ * Google-Tag (Messung für Google Ads und ggf. Google Analytics).
  *
- * Wird ausschließlich über Umgebungsvariablen aktiviert (Netlify: Site configuration →
- * Environment variables) und lädt erst nach ausdrücklicher Einwilligung der Besucher:innen
- * (Kategorie „Marketing“ im Cookie-Banner). Ohne Variablen ist alles inaktiv: kein Skript,
- * keine zusätzliche Banner-Kategorie, keine Änderung an der Datenschutzerklärung.
+ * Das Tag lädt ausschließlich nach ausdrücklicher Einwilligung der Besucher:innen
+ * (Kategorie „Marketing“ im Cookie-Banner, siehe components/GoogleTag.tsx).
  *
- * NEXT_PUBLIC_GOOGLE_ADS_ID                   z. B. AW-1234567890
- * NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL     z. B. AbC-D_efG-h12345678 (optional, für die Danke-Seite)
+ * Konfiguration (alles optional, per Netlify-Umgebungsvariable überschreibbar):
+ * NEXT_PUBLIC_GOOGLE_TAG_ID                   Google-Tag-ID, z. B. G-HSGX78DD1W
+ * NEXT_PUBLIC_GOOGLE_ADS_ID                   Ads-Konto-ID, z. B. AW-1234567890 (nur für Conversion-Label)
+ * NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL     Conversion-Label der Ads-Conversion (optional)
+ *
+ * Ohne Tag-ID und Ads-ID ist alles inaktiv: kein Skript, keine Banner-Kategorie
+ * „Marketing“, keine Änderung an der Datenschutzerklärung.
  */
-const rawId = (process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? "").trim();
-const rawLabel = (process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL ?? "").trim();
+const DEFAULT_TAG_ID = "G-HSGX78DD1W";
 
-export const googleAdsId = /^AW-\d{6,}$/.test(rawId) ? rawId : "";
+const clean = (value: string | undefined) => (value ?? "").trim();
+
+const rawTag = clean(process.env.NEXT_PUBLIC_GOOGLE_TAG_ID) || DEFAULT_TAG_ID;
+const rawAds = clean(process.env.NEXT_PUBLIC_GOOGLE_ADS_ID);
+const rawLabel = clean(process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL);
+
+export const googleTagId = /^G-[A-Z0-9]{6,}$/.test(rawTag) ? rawTag : "";
+export const googleAdsId = /^AW-\d{6,}$/.test(rawAds) ? rawAds : "";
 export const googleAdsConversionLabel = /^[\w-]{6,}$/.test(rawLabel) ? rawLabel : "";
-export const googleAdsEnabled = googleAdsId !== "";
+
+/** Alle Ziele, die das Google-Tag konfiguriert (Tag-ID zuerst, sie lädt das Skript). */
+export const googleTagTargets = [googleTagId, googleAdsId].filter(Boolean);
+export const googleAdsEnabled = googleTagTargets.length > 0;

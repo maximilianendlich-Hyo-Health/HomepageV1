@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { googleAdsEnabled, googleAdsId } from "@/lib/ads";
+import { googleAdsEnabled, googleTagTargets } from "@/lib/ads";
 import { CONSENT_CHANGED_EVENT, loadConsent } from "@/lib/consent";
 
 declare global {
@@ -54,10 +54,10 @@ function apply() {
       ad_user_data: "granted",
       ad_personalization: "granted",
     });
-    window.gtag!("config", googleAdsId);
+    for (const target of googleTagTargets) window.gtag!("config", target);
     const script = document.createElement("script");
     script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleAdsId)}`;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleTagTargets[0])}`;
     document.head.appendChild(script);
   } else if (!marketing && loaded) {
     window.gtag!("consent", "update", {

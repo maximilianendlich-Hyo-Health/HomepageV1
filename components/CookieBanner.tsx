@@ -114,7 +114,7 @@ export function CookieBanner() {
           <>
             <p className="mt-1 max-w-3xl text-sm leading-relaxed text-ink/85">
               {googleAdsEnabled
-                ? "Wir messen mit Ihrer Einwilligung, ob unsere Google-Anzeigen zu Anfragen führen (Marketing). Externe Inhalte (OpenStreetMap, VBB-Fahrinfo) laden wir ebenfalls nur mit Ihrer Einwilligung. Mehr in der"
+                ? "Mit Ihrer Einwilligung messen wir mit einem Google-Tag, ob unsere Anzeigen zu Anfragen führen (Marketing). Externe Inhalte (OpenStreetMap, VBB-Fahrinfo) laden wir ebenfalls nur mit Ihrer Einwilligung. Mehr in der"
                 : "Wir setzen keine Analyse-, Tracking- oder Marketing-Cookies ein. Externe Inhalte (OpenStreetMap, VBB-Fahrinfo) laden wir nur mit Ihrer Einwilligung. Mehr in der"}{" "}
               <Link
                 href="/datenschutz"
@@ -216,7 +216,7 @@ export function CookieBanner() {
                   <div className="flex items-start justify-between gap-4">
                     <h3 className="font-extrabold">
                       <label htmlFor="consent-marketing" className="cursor-pointer">
-                        Marketing (Google Ads Conversion-Messung)
+                        Marketing und Messung (Google-Tag)
                       </label>
                     </h3>
                     <button
@@ -239,8 +239,9 @@ export function CookieBanner() {
                     </button>
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-ink/80">
-                    Lädt das Google-Ads-Tag der Google Ireland Limited und setzt Cookies, um zu
-                    messen, ob eine Anzeige zu einer Rückrufanfrage geführt hat. Dabei werden
+                    Lädt das Google-Tag der Google Ireland Limited und setzt Cookies, um zu
+                    messen, wie die Seite genutzt wird und ob eine Anzeige zu einer Rückrufanfrage
+                    geführt hat. Dabei werden
                     Daten, u.&nbsp;a. Ihre IP-Adresse, an Google übermittelt, möglicherweise auch
                     in die USA (Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO, §&nbsp;25 Abs.&nbsp;1
                     TDDDG). Ohne Einwilligung wird nichts geladen.

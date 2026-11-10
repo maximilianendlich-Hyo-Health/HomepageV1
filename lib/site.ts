@@ -60,6 +60,9 @@ export const booking = {
 /** Rückruf-Formular auf der Startseite (Abschnitt „Rückruf“). */
 export const callbackHref = "/#rueckruf";
 
+/** Markenhinweis (Footer, Impressum, Landingpage). */
+export const trademarkNotice = "HYO ist eine Marke der HYO Health GmbH. Alle Markenrechte vorbehalten.";
+
 export const cta = {
   appointment: "Rückruftermin buchen",
   appointmentBook: "Rückruftermin buchen",

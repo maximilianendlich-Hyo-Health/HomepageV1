@@ -291,7 +291,7 @@ export function AccessibilityPanel() {
 
             <Group
               title="Bewegungsempfindlichkeit"
-              hint="Reduziert Animationen und blendet das Hintergrundvideo aus, z. B. bei Schwindel oder vestibulären Beschwerden."
+              hint="Reduziert Animationen, z. B. bei Schwindel oder vestibulären Beschwerden."
             >
               <OptionGroup
                 legend="Animationen"

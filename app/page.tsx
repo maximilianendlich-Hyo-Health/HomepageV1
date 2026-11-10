@@ -6,7 +6,7 @@ import { HeroVideo } from "@/components/HeroVideo";
 import { CarePathTiles, GeoIcon } from "@/components/GeoShapes";
 import { ButtonLink, TextLink } from "@/components/ui/Buttons";
 import { Eyebrow, Headline, Lead, Section } from "@/components/ui/Section";
-import { CallbackForm } from "@/components/forms/CallbackForm";
+import { LazyCallbackForm } from "@/components/LazyCallbackForm";
 import { IndikationenGrid } from "@/components/IndikationenGrid";
 import { BookingCard } from "@/components/BookingCard";
 import { ConsentGatedMap } from "@/components/ConsentGatedMap";
@@ -530,7 +530,7 @@ export default function HomePage() {
             </div>
           </FadeIn>
           <FadeIn>
-            <CallbackForm />
+            <LazyCallbackForm />
           </FadeIn>
         </div>
       </Section>
