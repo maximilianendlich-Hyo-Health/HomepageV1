@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { googleAdsEnabled, googleTagTargets } from "@/lib/ads";
+import { googleAdsEnabled, googleTagManagerId, googleTagTargets } from "@/lib/ads";
 import { CONSENT_CHANGED_EVENT, loadConsent } from "@/lib/consent";
 
 declare global {
@@ -53,17 +53,25 @@ function apply() {
       ad_storage: "granted",
       ad_user_data: "granted",
       ad_personalization: "granted",
+      analytics_storage: "granted",
     });
-    for (const target of googleTagTargets) window.gtag!("config", target);
     const script = document.createElement("script");
     script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleTagTargets[0])}`;
+    if (googleTagManagerId) {
+      // Container-Variante: GTM lädt die im Container hinterlegten Tags (Google-Tag, Ads-Conversion …)
+      window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+      script.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(googleTagManagerId)}`;
+    } else {
+      for (const target of googleTagTargets) window.gtag!("config", target);
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleTagTargets[0])}`;
+    }
     document.head.appendChild(script);
   } else if (!marketing && loaded) {
     window.gtag!("consent", "update", {
       ad_storage: "denied",
       ad_user_data: "denied",
       ad_personalization: "denied",
+      analytics_storage: "denied",
     });
     deleteGoogleCookies();
   }
