@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { callbackSchema, callbackSlots, initialFormState, type FormState } from "@/lib/schemas";
 import { submitToNetlifyForm } from "@/lib/netlify-forms";
+import { trackLead } from "@/lib/tracking";
 import { Checkbox, Field, FormStatus, Honeypot, TextInput } from "@/components/forms/Fields";
 
 const SUCCESS = "Vielen Dank. Wir rufen Sie im gewünschten Zeitraum zurück.";
@@ -37,7 +38,11 @@ export function CallbackForm() {
     startTransition(async () => {
       const result = await submitToNetlifyForm("rueckruf", formData, callbackSchema, SUCCESS);
       setState(result);
-      if (result.status === "success") router.push("/rueckruf/danke");
+      if (result.status === "success") {
+        // Spam (Honeypot gefüllt) wird still als Erfolg beantwortet, aber nicht als Lead gemeldet
+        if (String(formData.get("website") ?? "") === "") trackLead();
+        router.push("/rueckruf/danke");
+      }
     });
   };
   const errors = state.fieldErrors ?? {};

@@ -16,30 +16,20 @@ const SENT_KEY = "hyo-conversion-sent";
  */
 export function ConversionEvent() {
   useEffect(() => {
-    if (!googleAdsEnabled) return;
+    // Mit GTM-Container sendet das Formular das Ereignis selbst (lib/tracking.ts)
+    if (!googleAdsEnabled || googleTagManagerId) return;
 
     const fire = () => {
-      if (!loadConsent().marketing) return;
-      // GTM-Modus: ausdrückliches dataLayer-Ereignis (Trigger „Benutzerdefiniertes Ereignis generate_lead“)
-      if (googleTagManagerId) {
-        if (!window.dataLayer) return;
-      } else if (!window.gtag) {
-        return;
-      }
+      if (!loadConsent().marketing || !window.gtag) return;
       try {
         if (window.sessionStorage.getItem(SENT_KEY)) return;
         window.sessionStorage.setItem(SENT_KEY, "1");
       } catch {
         /* Sitzungsspeicher nicht verfügbar – Ereignis trotzdem senden */
       }
-      if (googleTagManagerId) {
-        // Die Conversion selbst löst das Tag im Container aus (Label dort hinterlegt)
-        window.dataLayer.push({ event: "generate_lead", form_name: "rueckruf" });
-        return;
-      }
-      window.gtag!("event", "generate_lead", { form_name: "rueckruf" });
+      window.gtag("event", "generate_lead", { form_name: "rueckruf" });
       if (googleAdsId && googleAdsConversionLabel) {
-        window.gtag!("event", "conversion", { send_to: `${googleAdsId}/${googleAdsConversionLabel}` });
+        window.gtag("event", "conversion", { send_to: `${googleAdsId}/${googleAdsConversionLabel}` });
       }
     };
 
